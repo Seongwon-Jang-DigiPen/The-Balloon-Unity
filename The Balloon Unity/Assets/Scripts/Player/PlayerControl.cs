@@ -38,6 +38,7 @@ public partial class PlayerControl : MonoBehaviour
     {
         Cheat();
         Flip();
+        AnimInfo();
     }
     void FixedUpdate()
     {
@@ -81,7 +82,7 @@ public partial class PlayerControl : MonoBehaviour
         {
             playerRb.velocity = new Vector2(-player.MaxSpeed, playerRb.velocity.y);
         }
-        animator.SetBool("IsRun", verticalInput != 0);
+       
  
     }
     void Jump()
@@ -156,6 +157,12 @@ public partial class PlayerControl : MonoBehaviour
         playerRb.AddForce(angle * power, ForceMode2D.Impulse);
     }
 
+    public void Hitted()
+    {
+        isHitted = true;
+        animator.SetTrigger("IsHitted");
+    }
+
     private void Cheat()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -174,6 +181,13 @@ public partial class PlayerControl : MonoBehaviour
         {
             player.ChangeState(BALLOONSTATE.WATER);
         }
+    }
+
+    private void AnimInfo()
+    {
+        animator.SetBool("IsRun", verticalInput != 0);
+        animator.SetBool("IsJump", isJump);
+        animator.SetBool("IsFall", !isTouchingGround);
     }
 }
 
