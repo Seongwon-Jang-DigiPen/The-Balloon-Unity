@@ -13,12 +13,13 @@ public partial class PlayerControl : MonoBehaviour
 
     [Header("Jump")]
     public float jumpCutMultiplier = 1.0f;
+    [HideInInspector]
+    public bool isTouchingGround = false;
 
     /*private*/
     //input data
     private float verticalInput = 0;
     private bool isJumpKeyPressed = false;
-    private bool isTouchingGround = false;
     private bool isJump = false;
     private bool isFall = false;
 
@@ -146,6 +147,13 @@ public partial class PlayerControl : MonoBehaviour
         {
             DoAction();
         }
+    }
+
+    public void Boost(Vector2 angle, float power)
+    {
+        isJump = false;
+        playerRb.velocity = Vector2.zero;
+        playerRb.AddForce(angle * power, ForceMode2D.Impulse);
     }
 
     private void Cheat()

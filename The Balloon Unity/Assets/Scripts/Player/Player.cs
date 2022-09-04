@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
     [HideInInspector]
     public BalloonState balloonState;
+    public static string playerTag = "Player";
 
     [Header("StateData")]
 

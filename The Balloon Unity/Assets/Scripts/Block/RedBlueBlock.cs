@@ -6,40 +6,26 @@ public enum REDBLUESTATE
     RED, BLUE
 }
 
-public class REDBLUEEnumerator : IEnumerator
-{
-    private RedBlueBlock currentObj = null;
-    public bool MoveNext()
-    {
-        currentObj = (currentObj == null) ? RedBlueBlock.firstCreated : currentObj.nextBlock;
 
-        return (currentObj != null);
-    }
-
-    public void Reset()
-    {
-        currentObj = null;
-    }
-
-    public object Current
-    {
-        get { return currentObj; }
-    }
-
-}
 
 public class RedBlueBlock : MonoBehaviour, IEnumerable
 {
-    public static REDBLUESTATE WorldRedBlueState = REDBLUESTATE.RED;
-
-    public static RedBlueBlock lastCreated = null;
-    public static RedBlueBlock firstCreated = null;
-
-    public RedBlueBlock nextBlock = null;
-    public RedBlueBlock prevBlock = null;
-
     public REDBLUESTATE blockState = REDBLUESTATE.RED;
 
+    public Sprite activateSprite = null;
+    public Sprite deactivateSprite = null;
+
+    [HideInInspector]
+    public static RedBlueBlock lastCreated = null;
+    [HideInInspector]
+    public static RedBlueBlock firstCreated = null;
+    [HideInInspector]
+    public RedBlueBlock nextBlock = null;
+    [HideInInspector]
+    public RedBlueBlock prevBlock = null;
+
+    private SpriteRenderer spriteRenderer = null;
+    private BoxCollider2D collision2D = null;
     private void Awake()
     {
         if(firstCreated == null)
@@ -52,8 +38,31 @@ public class RedBlueBlock : MonoBehaviour, IEnumerable
             prevBlock = lastCreated;
         }
         lastCreated = this;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collision2D = GetComponent<BoxCollider2D>();
     }
 
+    void Start()
+    {
+        ChangeState();
+    }
+
+    public void ChangeState()
+    {
+        if (RedBlueSwitch.WorldRedBlueState == blockState)
+        {
+            spriteRenderer.sprite = activateSprite;
+            collision2D.enabled = true;
+            //collision2D.isTrigger = false;
+        }
+        else
+        {
+            spriteRenderer.sprite = deactivateSprite;
+            collision2D.enabled = false; 
+            //collision2D.isTrigger = true;
+        }
+    }
 
     private void OnDestroy()
     {
@@ -69,6 +78,6 @@ public class RedBlueBlock : MonoBehaviour, IEnumerable
 
     public IEnumerator GetEnumerator()
     {
-        return new REDBLUEEnumerator();
+        return new RedBlueEnumerator();
     }
 }
