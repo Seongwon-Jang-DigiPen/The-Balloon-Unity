@@ -47,7 +47,7 @@ public class ElectricMoveBlock : MoveBlock
         if(collision.collider.CompareTag(Player.playerTag))
         {
             PlayerControl temp = collision.collider.GetComponent<PlayerControl>();
-            if(temp.isTouchingGround == true)
+            if(temp.isTouchingGround == true && collision.collider.GetComponent<Player>().balloonState.state == BALLOONSTATE.ELECTRIC)
             {
                 CollidedPlayer = true;
                 timer = 0;

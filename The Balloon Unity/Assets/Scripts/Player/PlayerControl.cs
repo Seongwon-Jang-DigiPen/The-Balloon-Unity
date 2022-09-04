@@ -38,12 +38,16 @@ public partial class PlayerControl : MonoBehaviour
     {
         Cheat();
         Flip();
+        AnimInfo();
     }
     void FixedUpdate()
     {
         CheckGround();
-        Movement();
-        Jump();
+        if (isDoAction == false && isInteract == false)
+        {
+            Movement();
+            Jump();
+        }
     }
 
     void CheckGround()
@@ -81,7 +85,7 @@ public partial class PlayerControl : MonoBehaviour
         {
             playerRb.velocity = new Vector2(-player.MaxSpeed, playerRb.velocity.y);
         }
-        animator.SetBool("IsRun", verticalInput != 0);
+       
  
     }
     void Jump()
@@ -89,7 +93,6 @@ public partial class PlayerControl : MonoBehaviour
         if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
         {
             isJump = true;
-            playerRb.velocity = Vector2.zero;
             playerRb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
         }
         if(playerRb.velocity.y == 0)
@@ -156,6 +159,33 @@ public partial class PlayerControl : MonoBehaviour
         playerRb.AddForce(angle * power, ForceMode2D.Impulse);
     }
 
+    public void Hitted()
+    {
+        if (isHitted == false)
+        {
+            StartCoroutine(IHitted());
+        }
+    }
+
+    IEnumerator IHitted()
+    {
+        isHitted = true;
+        animator.SetTrigger("IsHitted");
+        yield return new WaitForSeconds(0.01f);
+        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(curAnimTime);
+        isHitted = false;
+        if(player.balloonState.state == BALLOONSTATE.Flat)
+        {
+
+        }
+        else
+        {
+            animator.SetTrigger("ChangeState");
+            player.ChangeState(BALLOONSTATE.Flat);
+        }
+    }
+
     private void Cheat()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -174,6 +204,13 @@ public partial class PlayerControl : MonoBehaviour
         {
             player.ChangeState(BALLOONSTATE.WATER);
         }
+    }
+
+    private void AnimInfo()
+    {
+        animator.SetBool("IsRun", verticalInput != 0);
+        animator.SetBool("IsJump", isJump);
+        animator.SetBool("IsFall", !isTouchingGround);
     }
 }
 
