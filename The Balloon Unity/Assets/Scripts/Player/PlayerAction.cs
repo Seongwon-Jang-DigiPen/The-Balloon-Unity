@@ -7,14 +7,14 @@ public partial class PlayerControl
     [Header("Action")]
     [Header("Dash")]
     public float dashTime = 1.0f;
-    public float DashForce = 10.0f;
+    public float dashForce = 10.0f;
     [Header("GetAir")]
     public float getAirTime = 3.0f;
     [Header("Sprinkle")]
-    public GameObject WaterBomb;
+    public GameObject waterBomb;
     public float sprinkleTime = 2.0f;
 
-    private bool IsDoAction = false;
+    private bool isDoAction = false;
     void DoAction() 
     {
         switch (player.balloonState.state)
@@ -40,13 +40,15 @@ public partial class PlayerControl
     }
     IEnumerator IGetAir()
     {
-        IsDoAction = true;
+        isDoAction = true;
         playerRb.velocity = new Vector3(0, 0);
-        yield return new WaitForSeconds(getAirTime);
-        if (IsDoAction == true)
+        yield return new WaitForSeconds(0.01f);
+        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(curAnimTime);
+        if (isDoAction == true)
         {
             player.ChangeState(BALLOONSTATE.NORMAL);
-            IsDoAction = false;
+            isDoAction = false;
         }
     }
 
@@ -57,26 +59,29 @@ public partial class PlayerControl
 
     IEnumerator IDash()
     {
-        IsDoAction = true;
-
-        //playerRb.AddForce(Vector2.right * transform.localScale.x * DashForce, ForceMode2D.Impulse);
-        playerRb.velocity = new Vector3(transform.localScale.x * DashForce, 0);
+        isDoAction = true;
+        playerRb.velocity = Vector2.zero;
+        playerRb.AddForce((Vector2.right + new Vector2(0,0.2f)) * transform.localScale.x * dashForce, ForceMode2D.Impulse);
+        animator.SetTrigger("Dash");
         float gravity = playerRb.gravityScale;
         playerRb.gravityScale = 0;
-        yield return new WaitForSeconds(dashTime);
+        yield return new WaitForSeconds(0.01f);
+        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(curAnimTime);
         playerRb.gravityScale = gravity;
-        if (IsDoAction == true)
+        if (isDoAction == true)
         {
             playerRb.velocity = new Vector3(0,0);
+            animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.Flat);
-            IsDoAction = false;
+            isDoAction = false;
         }
     }
     void Sprinkle() { StartCoroutine(ISprinkle()); }
     IEnumerator ISprinkle()
     {
-        IsDoAction = true;
+        isDoAction = true;
         yield return new WaitForSeconds(sprinkleTime);
-        IsDoAction = false;
+        isDoAction = false;
     }
 }

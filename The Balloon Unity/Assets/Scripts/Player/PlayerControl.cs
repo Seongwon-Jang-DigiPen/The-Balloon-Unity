@@ -43,8 +43,11 @@ public partial class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         CheckGround();
-        Movement();
-        Jump();
+        if (isDoAction == false && isInteract == false)
+        {
+            Movement();
+            Jump();
+        }
     }
 
     void CheckGround()
@@ -90,7 +93,6 @@ public partial class PlayerControl : MonoBehaviour
         if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
         {
             isJump = true;
-            playerRb.velocity = Vector2.zero;
             playerRb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
         }
         if(playerRb.velocity.y == 0)
@@ -159,8 +161,29 @@ public partial class PlayerControl : MonoBehaviour
 
     public void Hitted()
     {
+        if (isHitted == false)
+        {
+            StartCoroutine(IHitted());
+        }
+    }
+
+    IEnumerator IHitted()
+    {
         isHitted = true;
         animator.SetTrigger("IsHitted");
+        yield return new WaitForSeconds(0.01f);
+        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(curAnimTime);
+        isHitted = false;
+        if(player.balloonState.state == BALLOONSTATE.Flat)
+        {
+
+        }
+        else
+        {
+            animator.SetTrigger("ChangeState");
+            player.ChangeState(BALLOONSTATE.Flat);
+        }
     }
 
     private void Cheat()
