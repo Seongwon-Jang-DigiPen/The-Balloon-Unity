@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        SoundManager.instance.BGMvolume(BGMvol);
+        SoundManager.instance.SFXvolume(SFXvol);
+        SoundManager.instance.PlayBGM("Mainmenu");
         settingPanel.SetActive(false);
         creditPanel.SetActive(false);
         Debug.Log("Mainmenu");
@@ -118,6 +119,8 @@ public class GameManager : MonoBehaviour
                     image.color = new Color(1, 1, 1, 0);
                 }
             }
+            SoundManager.instance.BGMvolume(BGMvol);
+            SoundManager.instance.SFXvolume(SFXvol);
         }
     }
 }
