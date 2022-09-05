@@ -17,7 +17,7 @@ public partial class PlayerControl
     {
         isInteract = true;
         animator.SetTrigger("GetWater");
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForEndOfFrame();
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(curAnimTime);
         if (isHitted == false)
@@ -39,7 +39,7 @@ public partial class PlayerControl
     {
         isInteract = true;
         animator.SetTrigger("GetElectric");
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForEndOfFrame();
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(curAnimTime);
         if (isHitted == false)

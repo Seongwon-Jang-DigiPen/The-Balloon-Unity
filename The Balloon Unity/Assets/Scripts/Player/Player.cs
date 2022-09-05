@@ -30,17 +30,26 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
+    private SpriteRenderer renderer = null;
+    private BoxCollider2D boxCollider = null;
+
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>(); 
     }
 
     private void Start()
     {
         ChangeState(BALLOONSTATE.NORMAL);
+        
     }
-
+    private void Update()
+    {
+        ChangeColliderSize();
+    }
     public void ChangeState(BALLOONSTATE state)
     {
         switch (state)
@@ -72,5 +81,12 @@ public class Player : MonoBehaviour
         decceleration = balloonState.decceleration;
         jumpForce = balloonState.jumpForce;
         animator.runtimeAnimatorController = balloonState.animator.runtimeAnimatorController;
+    }
+
+    void ChangeColliderSize()
+    {
+        boxCollider.size = renderer.sprite.bounds.size - new Vector3(0.05f,0.05f,0);
+        //boxCollider.bounds = renderer.sprite.bounds;
+       // boxCollider.bounds = renderer.sprite.bounds;
     }
 }

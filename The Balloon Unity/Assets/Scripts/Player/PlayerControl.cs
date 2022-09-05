@@ -16,6 +16,8 @@ public partial class PlayerControl : MonoBehaviour
     [HideInInspector]
     public bool isTouchingGround = false;
 
+    [Header("Hitted")]
+    float invincibleTime = 1f;
     /*private*/
     //input data
     private float verticalInput = 0;
@@ -26,7 +28,9 @@ public partial class PlayerControl : MonoBehaviour
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
     private Player player = null;
+
     private bool isHitted = false;
+    private bool isInvincible = false;
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -174,8 +178,7 @@ public partial class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(curAnimTime);
-        isHitted = false;
-        if(player.balloonState.state == BALLOONSTATE.Flat)
+        if (player.balloonState.state == BALLOONSTATE.Flat)
         {
 
         }
@@ -183,6 +186,12 @@ public partial class PlayerControl : MonoBehaviour
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.Flat);
+
+            isHitted = false;
+            isInvincible = true;
+            yield return new WaitForSeconds(invincibleTime);
+
+            isInvincible = false;
         }
     }
 
@@ -212,6 +221,16 @@ public partial class PlayerControl : MonoBehaviour
         animator.SetBool("IsJump", isJump);
         animator.SetBool("IsFall", !isTouchingGround);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.CompareTag("Monster"))
+        {
+            Hitted();
+        }
+    }
+
 }
+
 
 

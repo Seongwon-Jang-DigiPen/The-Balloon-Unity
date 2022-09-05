@@ -15,6 +15,7 @@ public partial class PlayerControl
     public float sprinkleTime = 2.0f;
 
     private bool isDoAction = false;
+
     void DoAction() 
     {
         switch (player.balloonState.state)
@@ -40,9 +41,10 @@ public partial class PlayerControl
     }
     IEnumerator IGetAir()
     {
+        animator.SetTrigger("GetAir");
         isDoAction = true;
         playerRb.velocity = new Vector3(0, 0);
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForEndOfFrame();
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(curAnimTime);
         if (isDoAction == true)
@@ -65,7 +67,7 @@ public partial class PlayerControl
         animator.SetTrigger("Dash");
         float gravity = playerRb.gravityScale;
         playerRb.gravityScale = 0;
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForEndOfFrame();
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
         yield return new WaitForSeconds(curAnimTime);
         playerRb.gravityScale = gravity;
