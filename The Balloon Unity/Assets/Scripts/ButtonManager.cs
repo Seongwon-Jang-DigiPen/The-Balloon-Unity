@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -24,8 +25,19 @@ public class ButtonManager : MonoBehaviour
         
     }
 
+    public void Play()
+    {
+        SoundManager.instance.PlaySound("Button");
+    }
+
+    public void Load()
+    {
+        SoundManager.instance.PlaySound("Button");
+    }
+
     public void Setting()
     {
+        SoundManager.instance.PlaySound("Button");
         settingPanel.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(BGM.gameObject);
@@ -38,6 +50,8 @@ public class ButtonManager : MonoBehaviour
 
     public void Credit()
     {
+        SoundManager.instance.PlaySound("Button");
+        SoundManager.instance.PlayBGM("Credit");
         creditPanel.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(creditBack.gameObject);
@@ -50,12 +64,14 @@ public class ButtonManager : MonoBehaviour
 
     public void Quit()
     {
+        SoundManager.instance.PlaySound("Button");
         Application.Quit();
         Debug.Log("Quit");
     }
 
     public void Back()
     {
+        SoundManager.instance.PlaySound("Button");
         settingPanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(menuButtons[0].gameObject);
@@ -68,6 +84,8 @@ public class ButtonManager : MonoBehaviour
 
     public void CreditBack()
     {
+        SoundManager.instance.PlaySound("Button");
+        SoundManager.instance.PlayBGM("Mainmenu");
         creditPanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(menuButtons[0].gameObject);
