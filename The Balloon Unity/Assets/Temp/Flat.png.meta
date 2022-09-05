@@ -832,7 +832,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Flat_25: -753715235
-      Flat_29: -2056569212
       Flat_13: -1043431178
       Flat_14: 675287886
       Flat_8: 2057516441
@@ -861,9 +860,10 @@ TextureImporter:
       Flat_27: 2126069654
       Flat_2: 953432868
       Flat_9: 133702931
+      Flat_26: 288962174
       Flat_17: -1675630267
       Flat_16: 1570991056
-      Flat_26: 288962174
+      Flat_29: -2056569212
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

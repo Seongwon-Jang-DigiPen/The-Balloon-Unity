@@ -46,7 +46,6 @@ public partial class PlayerControl
         playerRb.velocity = new Vector3(0, 0);
         yield return new WaitForEndOfFrame();
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
-        Debug.Log(curAnimTime);
         yield return new WaitForSeconds(curAnimTime);
         if (isDoAction == true)
         {
@@ -70,7 +69,6 @@ public partial class PlayerControl
         playerRb.gravityScale = 0;
         yield return new WaitForEndOfFrame();
         float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
-        Debug.Log(curAnimTime);
         yield return new WaitForSeconds(curAnimTime);
         playerRb.gravityScale = gravity;
         if (isDoAction == true)
