@@ -9,7 +9,7 @@ public enum MOVEWAY
 
 public class MoveBlock : MonoBehaviour
 {
-    public List<Transform> posList;
+    public List<Vector3> posList;
     public float MoveSpeed;
     public MOVEWAY moveWay;
 
@@ -34,14 +34,14 @@ public class MoveBlock : MonoBehaviour
         {
             if (posList[index] != null)
             {
-                Vector2 temp = (posList[index].position - transform.position);
+                Vector2 temp = (posList[index] - transform.position);
                 length = temp.magnitude;
                 direction = temp.normalized;
                 rigid.velocity = direction * MoveSpeed;
             }
             if (length <= (direction * MoveSpeed * Time.fixedDeltaTime).magnitude + 0.01f)
             {
-                transform.position = posList[index].position;
+                transform.position = posList[index];
                 rigid.velocity = Vector2.zero;
                 index += moveOffset;
                 if (index == -1 || index == posList.Count)
@@ -60,5 +60,12 @@ public class MoveBlock : MonoBehaviour
             }
         }
     }
-
+    private void OnDrawGizmos()
+    {
+        for(int i = 0; i < posList.Count - 1; i++)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(posList[i], posList[i + 1]);
+        }
+    }
 }
