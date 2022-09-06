@@ -62,9 +62,10 @@ public partial class PlayerControl : MonoBehaviour
 
     void CheckGround()
     {
-        isTouchingGround =Physics2D.OverlapCircle(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size.x * 4 / 10, groundLayer);
+        isTouchingGround = Physics2D.OverlapBox(transform.position - new Vector3(0, boxCollider.size.y / 2), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f),0, groundLayer);
+        //isTouchingGround =Physics2D.OverlapCircle(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size.x * 4 / 10, groundLayer);
         //isTouchingGround = Physics2D.Linecast(transform.position, transform.position + Vector3.down * groundCheckLength, groundLayer);
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckLength);
+        //Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckLength);
     }
     void Movement()
     {
@@ -243,11 +244,13 @@ public partial class PlayerControl : MonoBehaviour
     }
 
 
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.white;
+        //Gizmos.color =new Vector4(1,1,1,0.5f);
         //Gizmos.DrawSphere(transform.position - new Vector3(0, boxCollider.size.y/2), boxCollider.size.x * 4 / 10);
-    }*/
+        //Gizmos.DrawCube(transform.position - new Vector3(0, boxCollider.size.y / 2), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f));
+        //Physics2D.OverlapBox(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size, groundLayer);
+    }
 }
 
 

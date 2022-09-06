@@ -17,7 +17,7 @@ public partial class PlayerControl
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag("FurryBlock"))
+        if (collision.collider.CompareTag("FurryBlock"))
         {
             if(transform.position.y > collision.gameObject.transform.position.y)
             {
