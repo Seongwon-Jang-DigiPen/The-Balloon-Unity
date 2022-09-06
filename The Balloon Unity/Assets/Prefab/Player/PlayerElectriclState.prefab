@@ -49,6 +49,7 @@ MonoBehaviour:
   state: 3
   rigid: {fileID: 7435515295643977479}
   animator: {fileID: 6116021669342919782}
+  layer: 8
   MaxSpeed: 6
   acceleration: 10
   decceleration: 10

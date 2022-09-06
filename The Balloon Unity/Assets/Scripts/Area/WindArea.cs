@@ -21,7 +21,7 @@ public class WindArea : MonoBehaviour
         {
             objLocalEulerAngle = angleObj.transform.localEulerAngles;
             angle = new Vector2(Mathf.Cos(objLocalEulerAngle.z * Mathf.Deg2Rad), Mathf.Sin(objLocalEulerAngle.z * Mathf.Deg2Rad)).normalized;
-
+            
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
