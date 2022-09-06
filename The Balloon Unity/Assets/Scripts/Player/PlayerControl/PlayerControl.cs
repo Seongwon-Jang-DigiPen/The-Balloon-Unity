@@ -62,40 +62,51 @@ public partial class PlayerControl : MonoBehaviour
 
     void CheckGround()
     {
-        isTouchingGround =Physics2D.OverlapCircle(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size.x * 4 / 10, groundLayer);
+        isTouchingGround = Physics2D.OverlapBox(transform.position - new Vector3(0, boxCollider.size.y / 2), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f),0, groundLayer);
+        //isTouchingGround =Physics2D.OverlapCircle(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size.x * 4 / 10, groundLayer);
         //isTouchingGround = Physics2D.Linecast(transform.position, transform.position + Vector3.down * groundCheckLength, groundLayer);
-        Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckLength);
+        //Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckLength);
     }
     void Movement()
     {
         if (inputValue.x != 0)
         {
-            playerRb.AddForce(new Vector2(inputValue.x, 0) * player.acceleration);
+            if (inputValue.x > 0 && playerRb.velocity.x < player.MaxSpeed)
+            {
+                playerRb.AddForce(new Vector2(inputValue.x, 0) * player.acceleration);
+            }
+            else if(inputValue.x < 0 && playerRb.velocity.x > -player.MaxSpeed)
+            {
+                playerRb.AddForce(new Vector2(inputValue.x, 0) * player.acceleration);
+            }
         }
         else if (Mathf.Abs(playerRb.velocity.x) < 0.1f)
         {
             playerRb.velocity = new Vector2(0, playerRb.velocity.y);
         }
-        if(playerRb.velocity.x != 0)
+
+        //if (isTouchingGround == true)
         {
-            if(playerRb.velocity.x > 0f && inputValue.x <= 0)
+            if (playerRb.velocity.x != 0)
             {
-                playerRb.AddForce(Vector2.left * player.decceleration);
-            }
-            else if (playerRb.velocity.x < -0f && inputValue.x >= 0)
-            {
-                playerRb.AddForce(Vector2.right * player.decceleration);
+                if (playerRb.velocity.x > 0f && inputValue.x <= 0)
+                {
+                    playerRb.AddForce(Vector2.left * player.decceleration);
+                }
+                else if (playerRb.velocity.x < -0f && inputValue.x >= 0)
+                {
+                    playerRb.AddForce(Vector2.right * player.decceleration);
+                }
             }
         }
-        
-        if(playerRb.velocity.x >player.MaxSpeed)
+       /* if(playerRb.velocity.x >player.MaxSpeed)
         {
             playerRb.velocity = new Vector2(player.MaxSpeed, playerRb.velocity.y);
         }
         else if (playerRb.velocity.x < -player.MaxSpeed)
         {
             playerRb.velocity = new Vector2(-player.MaxSpeed, playerRb.velocity.y);
-        }
+        }*/
     }
     void Jump()
     {
@@ -179,7 +190,7 @@ public partial class PlayerControl : MonoBehaviour
     public void Boost(Vector2 angle, float power)
     {
         isJump = false;
-        playerRb.velocity = Vector2.zero;
+        //playerRb.velocity = Vector2.zero;
         playerRb.AddForce(angle * power, ForceMode2D.Impulse);
     }
 
@@ -243,11 +254,13 @@ public partial class PlayerControl : MonoBehaviour
     }
 
 
-    /*private void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.white;
+        //Gizmos.color =new Vector4(1,1,1,0.5f);
         //Gizmos.DrawSphere(transform.position - new Vector3(0, boxCollider.size.y/2), boxCollider.size.x * 4 / 10);
-    }*/
+        //Gizmos.DrawCube(transform.position - new Vector3(0, boxCollider.size.y / 2), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f));
+        //Physics2D.OverlapBox(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size, groundLayer);
+    }
 }
 
 

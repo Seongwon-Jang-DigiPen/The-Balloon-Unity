@@ -44,9 +44,19 @@ public partial class PlayerControl
         animator.SetTrigger("GetAir");
         isDoAction = true;
         playerRb.velocity = new Vector3(0, 0);
-        yield return new WaitForEndOfFrame();
-        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(curAnimTime);
+        while (true)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetAir") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                break;
+            }
+            if (isHitted == true)
+            {
+                break;
+            }
+            yield return null;
+        }
         if (isDoAction == true)
         {
             player.ChangeState(BALLOONSTATE.NORMAL);
@@ -67,9 +77,20 @@ public partial class PlayerControl
         animator.SetTrigger("Dash");
         float gravity = playerRb.gravityScale;
         playerRb.gravityScale = 0;
-        yield return new WaitForEndOfFrame();
-        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(curAnimTime);
+
+        while (true)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                break;
+            }
+            if (isHitted == true)
+            {
+                break;
+            }
+            yield return null;
+        }
         playerRb.gravityScale = gravity;
         if (isDoAction == true)
         {

@@ -85,6 +85,9 @@ public class Player : MonoBehaviour
         animator.runtimeAnimatorController = balloonState.animator.runtimeAnimatorController;
         MaxDownFastSpeed = balloonState.MaxDownFastSpeed;
         MaxDownSpeed = balloonState.MaxDownSpeed;
+
+        this.gameObject.layer = balloonState.layer;
+ 
     }
 
     void ChangeColliderSize()
