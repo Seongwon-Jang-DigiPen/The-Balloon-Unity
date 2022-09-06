@@ -14,5 +14,7 @@ public class BalloonState : MonoBehaviour
     public float MaxSpeed = 10.0f;
     public float acceleration = 3.0f;
     public float decceleration = 3.0f;
+    public float MaxDownSpeed = 4f;
+    public float MaxDownFastSpeed = 7f;
     public float jumpForce;
 }

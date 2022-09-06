@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     /*public*/
     [Header("Movement")]
     public float MaxSpeed = 10.0f;
+    public float MaxDownSpeed = 4f;
+    public float MaxDownFastSpeed = 7f;
     public float jumpForce = 0.0f;
     public float acceleration = 3.0f;
     public float decceleration = 3.0f;
@@ -30,14 +32,14 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
-    private SpriteRenderer renderer = null;
+    private SpriteRenderer spriteRenderer = null;
     private BoxCollider2D boxCollider = null;
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        renderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>(); 
     }
 
@@ -81,11 +83,13 @@ public class Player : MonoBehaviour
         decceleration = balloonState.decceleration;
         jumpForce = balloonState.jumpForce;
         animator.runtimeAnimatorController = balloonState.animator.runtimeAnimatorController;
+        MaxDownFastSpeed = balloonState.MaxDownFastSpeed;
+        MaxDownSpeed = balloonState.MaxDownSpeed;
     }
 
     void ChangeColliderSize()
     {
-        boxCollider.size = renderer.sprite.bounds.size - new Vector3(0.05f,0.05f,0);
+        boxCollider.size = spriteRenderer.sprite.bounds.size - new Vector3(0.05f,0.05f,0);
         //boxCollider.bounds = renderer.sprite.bounds;
        // boxCollider.bounds = renderer.sprite.bounds;
     }

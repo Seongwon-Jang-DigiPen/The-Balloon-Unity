@@ -49,10 +49,12 @@ MonoBehaviour:
   state: 2
   rigid: {fileID: 2646817143280598922}
   animator: {fileID: 1687542141166159083}
-  MaxSpeed: 10
-  acceleration: 3
-  decceleration: 3
-  jumpForce: 6
+  MaxSpeed: 4
+  acceleration: 6
+  decceleration: 6
+  MaxDownSpeed: 7
+  MaxDownFastSpeed: 7
+  jumpForce: 5
 --- !u!50 &2646817143280598922
 Rigidbody2D:
   serializedVersion: 4

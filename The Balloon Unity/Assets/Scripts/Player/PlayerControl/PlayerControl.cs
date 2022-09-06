@@ -16,11 +16,14 @@ public partial class PlayerControl : MonoBehaviour
     [HideInInspector]
     public bool isTouchingGround = false;
 
+    [Header("DownFast")]
+    public float downFastSpeed = 7;
+
     [Header("Hitted")]
     float invincibleTime = 1f;
     /*private*/
     //input data
-    private float verticalInput = 0;
+    private Vector2 inputValue = new Vector2(0,0);
     private bool isJumpKeyPressed = false;
     private bool isJump = false;
     private bool isFall = false;
@@ -28,6 +31,7 @@ public partial class PlayerControl : MonoBehaviour
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
     private Player player = null;
+    private BoxCollider2D boxCollider = null;
 
     private bool isHitted = false;
     private bool isInvincible = false;
@@ -36,6 +40,7 @@ public partial class PlayerControl : MonoBehaviour
         player = GetComponent<Player>();
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -51,19 +56,21 @@ public partial class PlayerControl : MonoBehaviour
         {
             Movement();
             Jump();
+            DownFast();
         }
     }
 
     void CheckGround()
     {
-        isTouchingGround = Physics2D.Linecast(transform.position, transform.position + Vector3.down * groundCheckLength, groundLayer);
+        isTouchingGround =Physics2D.OverlapCircle(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size.x * 4 / 10, groundLayer);
+        //isTouchingGround = Physics2D.Linecast(transform.position, transform.position + Vector3.down * groundCheckLength, groundLayer);
         Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckLength);
     }
     void Movement()
     {
-        if (verticalInput != 0)
+        if (inputValue.x != 0)
         {
-            playerRb.AddForce(new Vector2(verticalInput, 0) * player.acceleration);
+            playerRb.AddForce(new Vector2(inputValue.x, 0) * player.acceleration);
         }
         else if (Mathf.Abs(playerRb.velocity.x) < 0.1f)
         {
@@ -71,11 +78,11 @@ public partial class PlayerControl : MonoBehaviour
         }
         if(playerRb.velocity.x != 0)
         {
-            if(playerRb.velocity.x > 0f && verticalInput <= 0)
+            if(playerRb.velocity.x > 0f && inputValue.x <= 0)
             {
                 playerRb.AddForce(Vector2.left * player.decceleration);
             }
-            else if (playerRb.velocity.x < -0f && verticalInput >= 0)
+            else if (playerRb.velocity.x < -0f && inputValue.x >= 0)
             {
                 playerRb.AddForce(Vector2.right * player.decceleration);
             }
@@ -89,15 +96,14 @@ public partial class PlayerControl : MonoBehaviour
         {
             playerRb.velocity = new Vector2(-player.MaxSpeed, playerRb.velocity.y);
         }
-       
- 
     }
     void Jump()
     {
         if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
         {
-            SoundManager.instance.PlaySound("Button");
+            SoundManager.instance?.PlaySound("Jump");
             isJump = true;
+            playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
             playerRb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
         }
         if(playerRb.velocity.y == 0)
@@ -111,6 +117,19 @@ public partial class PlayerControl : MonoBehaviour
             isFall = true;
         }
         JumpCut();
+    }
+
+    void DownFast()
+    {
+        if(playerRb.velocity.y < -player.MaxDownSpeed)
+        {
+            playerRb.velocity = new Vector2(playerRb.velocity.x,  -player.MaxDownSpeed);
+        }
+        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < 0)
+        {
+            playerRb.velocity = new Vector2(playerRb.velocity.x, -player.MaxDownFastSpeed);
+        }
+
     }
 
     void JumpCut()
@@ -134,7 +153,7 @@ public partial class PlayerControl : MonoBehaviour
     //Key Event Functions
     public void OnMovement(InputAction.CallbackContext context)
     {
-        verticalInput = context.ReadValue<Vector2>().x;
+        inputValue = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -218,19 +237,17 @@ public partial class PlayerControl : MonoBehaviour
 
     private void AnimInfo()
     {
-        animator.SetBool("IsRun", verticalInput != 0);
+        animator.SetBool("IsRun", inputValue.x != 0);
         animator.SetBool("IsJump", isJump);
         animator.SetBool("IsFall", !isTouchingGround);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.CompareTag("Monster"))
-        {
-            Hitted();
-        }
-    }
 
+    /*private void OnDrawGizmos()
+    {
+        //Gizmos.color = Color.white;
+        //Gizmos.DrawSphere(transform.position - new Vector3(0, boxCollider.size.y/2), boxCollider.size.x * 4 / 10);
+    }*/
 }
 
 
