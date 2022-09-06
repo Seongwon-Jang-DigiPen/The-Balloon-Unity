@@ -49,8 +49,12 @@ MonoBehaviour:
   state: 3
   rigid: {fileID: 7435515295643977479}
   animator: {fileID: 6116021669342919782}
-  speed: 3
-  jumpForce: 6
+  MaxSpeed: 6
+  acceleration: 10
+  decceleration: 10
+  MaxDownSpeed: 4
+  MaxDownFastSpeed: 7
+  jumpForce: 7
 --- !u!50 &7435515295643977479
 Rigidbody2D:
   serializedVersion: 4
@@ -82,7 +86,7 @@ Animator:
   m_GameObject: {fileID: 3892298606565350957}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4d63f66900d39041b7404c0b9994d6f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 52845177f284d4247a38d40e6c8552e7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
