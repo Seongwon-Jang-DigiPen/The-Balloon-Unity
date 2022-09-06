@@ -20,6 +20,7 @@ public class temp : MonoBehaviour
 
     public void wow()
     {
-        par.Play();
+        Vector3 wow = new Vector3(2, 0, 0);
+        ParticleManager.instance.PlayParticle(wow, ParticleManager.ParticleType.ElecJump);
     }
 }
