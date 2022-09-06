@@ -2216,6 +2216,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 984328887637165612, guid: 3bc8adb688c2e5e438e6a6646ad339f8, type: 3}
+      propertyPath: bgms.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 984328887637165612, guid: 3bc8adb688c2e5e438e6a6646ad339f8, type: 3}
+      propertyPath: bgms.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e16bd3871fc38e04c9fb782f0bb5b4e8, type: 3}
+    - target: {fileID: 984328887637165612, guid: 3bc8adb688c2e5e438e6a6646ad339f8, type: 3}
+      propertyPath: bgms.Array.data[5].name
+      value: CutScene
+      objectReference: {fileID: 0}
     - target: {fileID: 6206195767497952647, guid: 3bc8adb688c2e5e438e6a6646ad339f8, type: 3}
       propertyPath: m_Name
       value: SoundManager
