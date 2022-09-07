@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class temp : MonoBehaviour
+public class wow : MonoBehaviour
 {
-    public GameObject player;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +13,7 @@ public class temp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public void wow()
-    {
-        ParticleManager.instance.PlayDashParticle(player, false);
+        Vector3 wow = new Vector3(0.05f, 0, 0) + transform.position;
+        //transform.position = wow;
     }
 }
