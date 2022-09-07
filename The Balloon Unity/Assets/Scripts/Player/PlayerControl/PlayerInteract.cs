@@ -55,6 +55,7 @@ public partial class PlayerControl
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.WATER);
         }
+        StartCoroutine(IInvincible());
         isInteract = false;
     }
 
@@ -88,6 +89,7 @@ public partial class PlayerControl
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.ELECTRIC);
         }
+        StartCoroutine(IInvincible());
         isInteract = false;
     }
 

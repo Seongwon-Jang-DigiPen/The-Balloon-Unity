@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public partial class PlayerControl : MonoBehaviour
 {
-
-
     [Header("Collision")]
     public Transform groundCheck;
     public float groundCheckLength = 0.2f;
@@ -20,19 +18,19 @@ public partial class PlayerControl : MonoBehaviour
     public float downFastSpeed = 7;
 
     [Header("Hitted")]
-    float invincibleTime = 1f;
+    public float invincibleTime = 1f;
+    public float blinkCycle = 0.1f;
     /*private*/
     //input data
     private Vector2 inputValue = new Vector2(0,0);
     private bool isJumpKeyPressed = false;
     private bool isJump = false;
-    private bool isFall = false;
 
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
     private Player player = null;
     private BoxCollider2D boxCollider = null;
-
+    private SpriteRenderer spriteRenderer = null; 
     private bool isHitted = false;
     private bool isInvincible = false;
     private void Awake()
@@ -41,6 +39,7 @@ public partial class PlayerControl : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -52,7 +51,7 @@ public partial class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         CheckGround();
-        if (isDoAction == false && isInteract == false)
+        if (isDoAction == false && isInteract == false && isHitted == false)
         {
             Movement();
             Jump();
@@ -63,9 +62,6 @@ public partial class PlayerControl : MonoBehaviour
     void CheckGround()
     {
         isTouchingGround = Physics2D.OverlapBox(transform.position - new Vector3(0, boxCollider.size.y / 2), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f),0, groundLayer);
-        //isTouchingGround =Physics2D.OverlapCircle(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size.x * 4 / 10, groundLayer);
-        //isTouchingGround = Physics2D.Linecast(transform.position, transform.position + Vector3.down * groundCheckLength, groundLayer);
-        //Debug.DrawLine(transform.position, transform.position + Vector3.down * groundCheckLength);
     }
     void Movement()
     {
@@ -120,12 +116,10 @@ public partial class PlayerControl : MonoBehaviour
         if(playerRb.velocity.y == 0)
         {
             isJump = false;
-            isFall = false;
         }
         if(playerRb.velocity.y < 0)
         {
             isJump = false;
-            isFall = true;
         }
         JumpCut();
     }
@@ -136,7 +130,7 @@ public partial class PlayerControl : MonoBehaviour
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x,  -player.MaxDownSpeed);
         }
-        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < 0)
+        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < -0.8)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, -player.MaxDownFastSpeed);
         }
@@ -196,7 +190,7 @@ public partial class PlayerControl : MonoBehaviour
 
     public void Hitted()
     {
-        if (isHitted == false)
+        if (isHitted == false && isInvincible == false)
         {
             StartCoroutine(IHitted());
         }
@@ -206,23 +200,26 @@ public partial class PlayerControl : MonoBehaviour
     {
         isHitted = true;
         animator.SetTrigger("IsHitted");
-        yield return new WaitForSeconds(0.01f);
-        float curAnimTime = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(curAnimTime);
+        while (true)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hitted") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                break;
+            }
+            yield return null;
+        }
         if (player.balloonState.state == BALLOONSTATE.Flat)
         {
-
+           //gameOver;
         }
         else
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.Flat);
-
+            
+            StartCoroutine(IInvincible());
             isHitted = false;
-            isInvincible = true;
-            yield return new WaitForSeconds(invincibleTime);
-
-            isInvincible = false;
         }
     }
 
@@ -253,6 +250,28 @@ public partial class PlayerControl : MonoBehaviour
         animator.SetBool("IsFall", !isTouchingGround);
     }
 
+    IEnumerator IInvincible()
+    {
+        isInvincible = true;
+        float invincibleTimer = 0;
+        bool blinking = false;
+        while (invincibleTimer < invincibleTime)
+        {
+            if(blinking == true)
+            {
+                spriteRenderer.color = Color.gray;
+            }
+            else
+            {
+                spriteRenderer.color = Color.white;
+            }
+            blinking = !blinking;
+            invincibleTimer += blinkCycle;
+            yield return new WaitForSeconds(blinkCycle);
+        }
+        spriteRenderer.color = Color.white;
+        isInvincible = false;
+    }
 
     private void OnDrawGizmos()
     {

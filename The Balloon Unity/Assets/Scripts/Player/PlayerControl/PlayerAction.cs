@@ -16,6 +16,7 @@ public partial class PlayerControl
 
     private bool isDoAction = false;
 
+    public bool isDash { get { return isDoAction == true && player.balloonState.state == BALLOONSTATE.NORMAL; } }
     void DoAction() 
     {
         switch (player.balloonState.state)
@@ -60,6 +61,7 @@ public partial class PlayerControl
         if (isDoAction == true)
         {
             player.ChangeState(BALLOONSTATE.NORMAL);
+            StartCoroutine(IInvincible());
             isDoAction = false;
         }
     }
@@ -91,13 +93,14 @@ public partial class PlayerControl
             }
             yield return null;
         }
-        playerRb.gravityScale = gravity;
-        if (isDoAction == true)
+        if (isHitted == false)
         {
-            playerRb.velocity = new Vector3(0,0);
+            playerRb.gravityScale = gravity;
+            playerRb.velocity = new Vector3(0, 0);
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.Flat);
             isDoAction = false;
+            StartCoroutine(IInvincible());
         }
     }
     void Sprinkle() { StartCoroutine(ISprinkle()); }

@@ -7,11 +7,15 @@ public partial class PlayerControl
     bool isInsideWater = false;
     bool isNearFurryBlock = false;
     bool isOnFurryBlock = false;
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Monster"))
         {
-            Hitted();
+            if (isDash == false)
+            {
+                Hitted();
+            }
         }
     }
 

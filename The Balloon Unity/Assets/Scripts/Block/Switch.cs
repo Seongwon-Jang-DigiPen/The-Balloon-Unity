@@ -16,6 +16,9 @@ public class Switch : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        turnSwitch = true;
+        if (collision.CompareTag("Player"))
+        {
+            turnSwitch = true;
+        }
     }
 }
