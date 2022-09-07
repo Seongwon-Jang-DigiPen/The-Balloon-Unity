@@ -10,5 +10,7 @@ public class ThornBlock : MonoBehaviour
         {
             collision.collider.GetComponent<PlayerControl>().Hitted();
         }
+    
     }
+    
 }

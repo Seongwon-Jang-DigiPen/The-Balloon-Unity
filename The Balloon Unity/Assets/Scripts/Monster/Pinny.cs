@@ -30,6 +30,11 @@ public class Pinny : MonoBehaviour
         Move();
     }
 
+    void Hitted()
+    {
+        
+    }
+
     IEnumerator ChangeMovement()
     {
         movementFlag = Random.Range(0, 3);
@@ -68,6 +73,17 @@ public class Pinny : MonoBehaviour
             moveVelocity = Vector3.zero;
         }
         Rb.velocity = moveVelocity * movePower;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag(Player.playerTag))
+        {
+            if(collision.gameObject.GetComponent<PlayerControl>().isDash)
+            {
+                Hitted();
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
