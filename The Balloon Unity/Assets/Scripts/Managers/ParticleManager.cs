@@ -21,7 +21,6 @@ public class ParticleManager : MonoBehaviour
         WaterJump,
         ElecJump,
         IntoWater,
-        Dash,
     }
 
     public ParticleSystem JumpPref;
@@ -32,11 +31,13 @@ public class ParticleManager : MonoBehaviour
 
     public ParticleSystem DashPref;
 
+    private GameObject jumpplayer;
     private GameObject player;
     private ParticleSystem Dash;
 
-    public void PlayParticle(Vector3 pos, ParticleType particletype)
+    public void PlayParticle(GameObject gameobject, ParticleType particletype)
     {
+        jumpplayer = gameobject;
         ParticleSystem temp = JumpPref;
         switch(particletype)
         {
@@ -53,6 +54,7 @@ public class ParticleManager : MonoBehaviour
                 temp = WaterPref;
                 break;
         }
+        Vector3 pos = new Vector3(jumpplayer.GetComponent<Renderer>().bounds.center.x, jumpplayer.GetComponent<Renderer>().bounds.min.y, 0);
         ParticleSystem effect = Instantiate(temp, pos, Quaternion.identity);
         effect.Play();
     }
@@ -65,8 +67,7 @@ public class ParticleManager : MonoBehaviour
         if (right == true)
         {
             var shape = Dash.shape;
-            Vector3 rot = new Vector3(0, 0, -36);
-            shape.rotation = rot;
+            shape.rotation = new Vector3(0, 0, -36);
         }
         Dash.Play();
     }
@@ -82,9 +83,7 @@ public class ParticleManager : MonoBehaviour
     {
         if(Dash != null)
         {
-            var shape = Dash.shape;
-            Vector3 temp = player.GetComponent<Renderer>().bounds.center;
-            shape.position = temp;
+            Dash.transform.position = player.GetComponent<Renderer>().bounds.center;
         }
     }
 }

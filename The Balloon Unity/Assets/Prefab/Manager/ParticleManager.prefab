@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &445920697603528436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445920697603528442}
+  - component: {fileID: 445920697603528443}
+  m_Layer: 0
+  m_Name: ParticleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &445920697603528442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445920697603528436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &445920697603528443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445920697603528436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ae8e74bc1789b4ab5ea4b2e3eb6fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpPref: {fileID: 703901805427591751, guid: f257ae77b502c1e4590667f7d6ce5b4a, type: 3}
+  FlatJumpPref: {fileID: 844143925417852372, guid: 47cfa8a08e233534888154eb81ddc68c, type: 3}
+  WaterJumpPref: {fileID: 3010570802647762415, guid: 28d0b0f71c22f3647aa5de3488fee5ce, type: 3}
+  ElecJumpPref: {fileID: 6283978092527158347, guid: 1ac6b997feb62254284303667af9457a, type: 3}
+  WaterPref: {fileID: 1243964994377427403, guid: ae109333f933aa249961db28ab9cded5, type: 3}
+  DashPref: {fileID: 5790102067598287518, guid: 4a4b3593292cd364c86d3dae035cce36, type: 3}
