@@ -73,6 +73,7 @@ public partial class PlayerControl
 
     IEnumerator IDash()
     {
+        ParticleManager.instance.PlayDashParticle(gameObject, false);
         isDoAction = true;
         playerRb.velocity = Vector2.zero;
         playerRb.AddForce((Vector2.right + new Vector2(0,0.2f)) * transform.localScale.x * dashForce, ForceMode2D.Impulse);

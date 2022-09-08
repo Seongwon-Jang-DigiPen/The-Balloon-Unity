@@ -109,6 +109,7 @@ public partial class PlayerControl : MonoBehaviour
         if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
         {
             SoundManager.instance?.PlaySound("Jump");
+            ParticleManager.instance.PlayParticle(this.gameObject, ParticleManager.ParticleType.Jump);
             isJump = true;
             playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
             playerRb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
