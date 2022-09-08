@@ -175,7 +175,7 @@ public partial class PlayerControl : MonoBehaviour
 
     public void OnAction(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if (context.started && isDoAction == false && isHitted == false)
         {
             DoAction();
         }
@@ -200,6 +200,7 @@ public partial class PlayerControl : MonoBehaviour
     {
         isHitted = true;
         animator.SetTrigger("IsHitted");
+        playerRb.velocity = Vector2.zero;
         while (true)
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Hitted") &&

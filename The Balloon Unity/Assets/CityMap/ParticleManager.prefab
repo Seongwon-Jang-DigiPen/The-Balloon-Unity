@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ae8e74bc1789b4ab5ea4b2e3eb6fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpPref: {fileID: 703901805427591751, guid: 189c9e959cbf5714da8208b4a7d16ac2, type: 3}
-  FlatJumpPref: {fileID: 844143925417852372, guid: 50664ef00cb964d4fb1730f1200b28e8, type: 3}
-  WaterJumpPref: {fileID: 3010570802647762415, guid: ea04f57e37816934ebf235d5c467e5fc, type: 3}
-  ElecJumpPref: {fileID: 6283978092527158347, guid: 1be85cde18e096248b9d67fc68d4e2d0, type: 3}
-  WaterPref: {fileID: 1243964994377427403, guid: a36f18c31ccddd04b8d93a63bd5570ec, type: 3}
-  DashPref: {fileID: 5790102067598287518, guid: d2f4b09b3a268394ea1cc369e81d5979, type: 3}
+  JumpPref: {fileID: 703901805427591751, guid: fc0310e718386f14b9d8bc8447dcc617, type: 3}
+  FlatJumpPref: {fileID: 844143925417852372, guid: 305d0fd1f63fb8047a8c0ba156723571, type: 3}
+  WaterJumpPref: {fileID: 3010570802647762415, guid: 098d7034e14d14b44bbb0f6d931af7d0, type: 3}
+  ElecJumpPref: {fileID: 6283978092527158347, guid: ffc718eae6ed7514ab10e27a7502b882, type: 3}
+  WaterPref: {fileID: 1243964994377427403, guid: f21027b489c28c440a2f88c5035e8043, type: 3}
+  DashPref: {fileID: 5790102067598287518, guid: af4241d715386e041be40698419654e5, type: 3}

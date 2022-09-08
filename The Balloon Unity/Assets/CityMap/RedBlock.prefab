@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1395817313, guid: 18cb2f6383926f74ca68ed4eea2a1188, type: 3}
+  m_Sprite: {fileID: 1395817313, guid: 08e983b1e8ae1644987f5f0fbc2bcb8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1278803298802167660}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 25f33ca7244c849488c6c22ff3d956cd, type: 2}
+  m_Material: {fileID: 6200000, guid: c51118fef5b8bc1438cc2542eda8035b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -129,7 +129,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 25f33ca7244c849488c6c22ff3d956cd, type: 2}
+  m_Material: {fileID: 6200000, guid: c51118fef5b8bc1438cc2542eda8035b, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockState: 0
-  activateSprite: {fileID: 1395817313, guid: 18cb2f6383926f74ca68ed4eea2a1188, type: 3}
-  deactivateSprite: {fileID: 1966421439, guid: 18cb2f6383926f74ca68ed4eea2a1188, type: 3}
+  activateSprite: {fileID: 1395817313, guid: 08e983b1e8ae1644987f5f0fbc2bcb8d, type: 3}
+  deactivateSprite: {fileID: 1966421439, guid: 08e983b1e8ae1644987f5f0fbc2bcb8d, type: 3}
   nextBlock: {fileID: 0}
   prevBlock: {fileID: 0}

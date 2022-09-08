@@ -75,7 +75,7 @@ public partial class PlayerControl
     {
         isDoAction = true;
         playerRb.velocity = Vector2.zero;
-        playerRb.AddForce((Vector2.right + new Vector2(0,0.2f)) * transform.localScale.x * dashForce, ForceMode2D.Impulse);
+        playerRb.AddForce((Vector2.right * transform.localScale.x + new Vector2(0,0.2f)) * dashForce, ForceMode2D.Impulse);
         animator.SetTrigger("Dash");
         float gravity = playerRb.gravityScale;
         playerRb.gravityScale = 0;

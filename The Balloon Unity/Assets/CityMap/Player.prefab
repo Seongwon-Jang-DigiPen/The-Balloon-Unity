@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e0e6ac201ad997d4e834af19ac37d481, type: 2}
+  - {fileID: 2100000, guid: 8102d5199cc7e234eb4a7aed68fbd660, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1251691534, guid: 8a93cd1009132114f97ad634cd8ce89e, type: 3}
+  m_Sprite: {fileID: -1251691534, guid: ebcc90c638f6916468d3371be08afabf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 8f2051eb23bff654cb855ce0f2e03931, type: 2}
+  m_Material: {fileID: 6200000, guid: f3866bc066a33c64ab9609bdc60ac659, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6322240160975169381}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 8f2051eb23bff654cb855ce0f2e03931, type: 2}
+  m_Material: {fileID: 6200000, guid: f3866bc066a33c64ab9609bdc60ac659, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   balloonState: {fileID: 0}
-  NORMALSTATE: {fileID: 4506258831888667770, guid: 0e53938e33fc3fa489e26a2d87750c85, type: 3}
-  FLATSTATE: {fileID: 3975233659364937679, guid: d9b3b1d2052efec4e8c0a3e0e7330d38, type: 3}
-  WATERSTATE: {fileID: 6418360199591643298, guid: 81e09424154bf9e4bbec750968629031, type: 3}
-  ELECTRICSTATE: {fileID: 1916769237496164399, guid: cb8e8db16428f2f4694cbc183a437282, type: 3}
+  NORMALSTATE: {fileID: 4506258831888667770, guid: 8939693aeeacfc54691b75cb33c952ba, type: 3}
+  FLATSTATE: {fileID: 3975233659364937679, guid: 67060539136562344b1e2723eaf8d946, type: 3}
+  WATERSTATE: {fileID: 6418360199591643298, guid: 77f6ef6b3bf0352419fe0b7654ab6293, type: 3}
+  ELECTRICSTATE: {fileID: 1916769237496164399, guid: bc3eb56bd1e36c446a5b7ad59d10263a, type: 3}
   MaxSpeed: 7
   MaxDownSpeed: 4
   MaxDownFastSpeed: 7
@@ -301,7 +301,7 @@ Animator:
   m_GameObject: {fileID: 6322240160975169381}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5206f30c3e485004a9c0369e985d4bc5, type: 2}
+  m_Controller: {fileID: 9100000, guid: bca0064451b5fdd4090713746f6ac5b8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -397,14 +397,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElecJumpParticle
       objectReference: {fileID: 0}
-    - target: {fileID: 6283978092527158345, guid: 1be85cde18e096248b9d67fc68d4e2d0, type: 3}
+    - target: {fileID: 6283978092527158345, guid: ffc718eae6ed7514ab10e27a7502b882, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1be85cde18e096248b9d67fc68d4e2d0, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: ffc718eae6ed7514ab10e27a7502b882, type: 3}
 --- !u!4 &6283978091569510718 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 6283978092527158345, guid: 1be85cde18e096248b9d67fc68d4e2d0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6283978092527158345, guid: ffc718eae6ed7514ab10e27a7502b882, type: 3}
   m_PrefabInstance: {fileID: 960331127}
   m_PrefabAsset: {fileID: 0}

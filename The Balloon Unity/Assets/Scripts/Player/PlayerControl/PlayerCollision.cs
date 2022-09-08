@@ -8,7 +8,7 @@ public partial class PlayerControl
     bool isNearFurryBlock = false;
     bool isOnFurryBlock = false;
     
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Monster"))
         {
@@ -17,11 +17,7 @@ public partial class PlayerControl
                 Hitted();
             }
         }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("FurryBlock"))
+        else if (collision.collider.CompareTag("FurryBlock"))
         {
             if(transform.position.y - 0.5f > collision.gameObject.transform.position.y)
             {
