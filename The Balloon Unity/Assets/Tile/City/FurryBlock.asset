@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: FurryBlock
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 0}
-  m_DefaultGameObject: {fileID: 0}
+  m_DefaultSprite: {fileID: 1688919922, guid: 99796e1a1aa8b9d49bdb15f361897ddf, type: 3}
+  m_DefaultGameObject: {fileID: 8965208899015390506, guid: 712dc0b883bd4954d86ce1269c0b9bf3, type: 3}
   m_DefaultColliderType: 1
   m_TilingRules: []

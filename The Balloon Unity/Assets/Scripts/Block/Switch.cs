@@ -8,8 +8,8 @@ public class Switch : MonoBehaviour
     public Sprite activateSprite = null;
     public Sprite deactivateSprite = null;
 
-    SpriteRenderer spriteRenderer;
-    private void Start()
+    protected SpriteRenderer spriteRenderer;
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = deactivateSprite;

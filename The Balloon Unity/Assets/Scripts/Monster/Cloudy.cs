@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Cloudy : MoveBlock
 {
+    public Collider2D traceLimit;
+    private GameObject player;
     Animator animator;
     SpriteRenderer render;
     BoxCollider2D boxCollider; 
     bool isHitted = false;
+    bool isTrace = false;
+    public BangMark bang;
     protected override void Awake()
     {
         base.Awake();
@@ -20,7 +24,57 @@ public class Cloudy : MoveBlock
     {
         render.flipX = (rigid.velocity.x > 0);
     }
+    protected override void FixedUpdate()
+    {
+        if (isHitted == false)
+        {
+            if (isTrace == false)
+            {
+                base.FixedUpdate();
+            }
+            else
+            {
+                TraceTarget();
+            }
+        }
+    }
 
+    void TraceTarget()
+    {
+        Vector3 playerPos = player.transform.position;
+        direction = (playerPos - transform.position).normalized;
+        rigid.velocity = direction * moveSpeed;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Player.playerTag))
+        {
+            player = collision.gameObject;
+
+            if (traceLimit?.IsTouching(player.GetComponent<Collider2D>()) == true)
+            {
+                if (isTrace == false)
+                {
+                    bang.StartBangMark();
+                    isTrace = true;
+                }
+            }
+            else
+            {
+                isTrace = false;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Player.playerTag))
+        {
+            isTrace = false;
+        }
+    }
+    
     private void OnCollisionStay2D(Collision2D collision)
     {
 
@@ -32,10 +86,8 @@ public class Cloudy : MoveBlock
             }
         }
     }
-
     IEnumerator Hitted()
     {
-        Debug.Log("Cloudy Hitted");
         isHitted = true;
         animator.SetTrigger("Hitted");
         boxCollider.enabled = false;

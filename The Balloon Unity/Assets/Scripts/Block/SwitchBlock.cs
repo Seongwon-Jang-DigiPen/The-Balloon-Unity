@@ -19,7 +19,7 @@ public class SwitchBlock : MonoBehaviour
 
     private void Update()
     {
-        if(switchObj.turnSwitch == true && spriteRenderer.sprite != activateSprite)
+        if(switchObj?.turnSwitch == true && spriteRenderer.sprite != activateSprite)
         { 
             spriteRenderer.sprite = activateSprite;
             col.enabled = true;

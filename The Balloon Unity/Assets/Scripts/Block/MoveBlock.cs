@@ -10,14 +10,15 @@ public enum MOVEWAY
 public class MoveBlock : MonoBehaviour
 {
     public List<Vector3> posList;
-    public float MoveSpeed;
+    public float moveSpeed;
     public MOVEWAY moveWay;
-
+    public float stopTime = 1.0f;
     protected Rigidbody2D rigid;
-    private Vector2 direction = new Vector2(0, 0);
+    protected Vector2 direction = new Vector2(0, 0);
     private float length = 0;
     private int index;
     private int moveOffset = 1;
+    protected bool isStop = false;
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -28,33 +29,37 @@ public class MoveBlock : MonoBehaviour
         BlockMove();
     }
 
-    protected void BlockMove()
+    protected virtual void BlockMove()
     {
-        if (posList.Count > index)
+        if (isStop == false)
         {
-            if (posList[index] != null)
+            if (posList.Count > index)
             {
-                Vector2 temp = (posList[index] - transform.position);
-                length = temp.magnitude;
-                direction = temp.normalized;
-                rigid.velocity = direction * MoveSpeed;
-            }
-            if (length <= (direction * MoveSpeed * Time.fixedDeltaTime).magnitude + 0.01f)
-            {
-                transform.position = posList[index];
-                rigid.velocity = Vector2.zero;
-                index += moveOffset;
-                if (index == -1 || index == posList.Count)
+                if (posList[index] != null)
                 {
-                    if (moveWay == MOVEWAY.ReturnPrevPos)
+                    Vector2 temp = (posList[index] - transform.position);
+                    length = temp.magnitude;
+                    direction = temp.normalized;
+                    rigid.velocity = direction * moveSpeed;
+                }
+                if (length <= (direction * moveSpeed * Time.fixedDeltaTime).magnitude + 0.01f)
+                {
+                    transform.position = posList[index];
+                    rigid.velocity = Vector2.zero;
+                    index += moveOffset;
+                    if (index == -1 || index == posList.Count)
                     {
+                        if (moveWay == MOVEWAY.ReturnPrevPos)
+                        {
 
-                        moveOffset = -moveOffset;
-                        index += moveOffset;
-                    }
-                    else
-                    {
-                        index = 0;
+                            moveOffset = -moveOffset;
+                            index += moveOffset;
+                        }
+                        else
+                        {
+                            index = 0;
+                        }
+                        StartCoroutine(IStop());
                     }
                 }
             }
@@ -67,5 +72,12 @@ public class MoveBlock : MonoBehaviour
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(posList[i], posList[i + 1]);
         }
+    }
+
+    IEnumerator IStop()
+    {
+        isStop = true;
+        yield return new WaitForSeconds(stopTime);
+        isStop = false;
     }
 }

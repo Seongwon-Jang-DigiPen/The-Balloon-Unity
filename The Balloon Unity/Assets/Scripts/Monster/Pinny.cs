@@ -2,106 +2,121 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pinny : MonoBehaviour
+public class Pinny : MoveBlock
 {
-    Vector3 moveVelocity;
-    public float movePower = 1f;
-    private bool isTracing = false;
-    private GameObject target;
-    private Rigidbody2D Rb;
-    private Animator animator;
-    private int movementFlag = 0; // 0 = idle, 1 = left, 2 = right
-
-    void Awake()
+    bool isTrace = false;
+    bool isHitted = false;
+    public Collider2D traceLimit;
+    private GameObject player;
+    Animator animator;
+    BoxCollider2D boxCollider;
+    public BangMark bang;
+    protected override void Awake()
     {
-        Rb = GetComponent<Rigidbody2D>();
+        base.Awake();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
-    private void Start()
-    {
-        StartCoroutine(ChangeMovement());
-    }
+
     private void Update()
     {
-        animator.SetBool("IsRun", movementFlag != 0);
-    }
-    void FixedUpdate()
-    {
-        Move();
-    }
-
-    void Hitted()
-    {
-        
-    }
-
-    IEnumerator ChangeMovement()
-    {
-        movementFlag = Random.Range(0, 3);
-        yield return new WaitForSeconds(Random.Range(2.0f, 4.0f));
-
-        StartCoroutine(ChangeMovement());
-    }
-
-    private void Move()
-    {
-        if(isTracing == true)
+        if(direction.x > 0)
         {
-            Vector3 playerPos = target.transform.position;
-
-            if(playerPos.x < transform.position.x)
-            {
-                movementFlag = 1;
-            }
-            else if(playerPos.x > transform.position.x)
-            {
-                movementFlag = 2;
-            }
-        }
-        if(movementFlag == 1)
-        {
-            moveVelocity = Vector3.left;
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (movementFlag == 2)
-        {
-            moveVelocity = Vector3.right;
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else
+        else if(direction.x < 0)
         {
-            moveVelocity = Vector3.zero;
+            transform.localScale = new Vector3(1, 1, 1);
         }
-        Rb.velocity = moveVelocity * movePower;
+        animator.SetBool("IsRun", rigid.velocity != Vector2.zero);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void FixedUpdate()
     {
-        if (collision.gameObject.CompareTag(Player.playerTag))
+        if (isHitted == false)
         {
-            if(collision.gameObject.GetComponent<PlayerControl>().isDash)
+            if (isTrace == false)
             {
-                Hitted();
+                base.FixedUpdate();
+            }
+            else
+            {
+                TraceTarget();
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    void TraceTarget()
     {
-        if(collision.gameObject.CompareTag(Player.playerTag))
+        Vector3 playerPos = player.transform.position;
+
+        if (playerPos.x < transform.position.x)
         {
-            target = collision.gameObject;
-            isTracing = true;
-            StopCoroutine(ChangeMovement());
+            direction = Vector3.left;
+            transform.localScale = new Vector3(1, 1, 1);
         }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag(Player.playerTag))
+        else if (playerPos.x > transform.position.x)
         {
-            isTracing = false;
-            StartCoroutine(ChangeMovement());
+            direction = Vector3.right;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        rigid.velocity = direction * moveSpeed + new Vector2(0, rigid.velocity.y);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (isHitted == false && collision.gameObject.CompareTag(Player.playerTag) == true)
+        {
+            if (collision.gameObject.GetComponent<PlayerControl>().isDash == true)
+            {
+                StartCoroutine(Hitted());
+            }
         }
     }
 
-    
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Player.playerTag))
+        {
+            player = collision.gameObject;
+
+            if (traceLimit?.IsTouching(player.GetComponent<Collider2D>()) == true)
+            {
+                if(isTrace == false)
+                {
+                    bang.StartBangMark();
+                    isTrace = true;
+                }
+            }
+            else
+            {
+                isTrace = false;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag(Player.playerTag))
+        {
+            isTrace = false;
+        }
+    }
+
+    IEnumerator Hitted()
+    {
+        isHitted = true;
+        animator.SetTrigger("Hitted");
+        boxCollider.enabled = false;
+        while (true)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                break;
+            }
+            yield return null;
+        }
+        Destroy(this.gameObject);
+    }
 }
