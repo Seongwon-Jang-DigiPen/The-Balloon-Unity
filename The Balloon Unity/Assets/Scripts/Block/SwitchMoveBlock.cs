@@ -16,13 +16,21 @@ public class SwitchMoveBlock : MoveBlock
     }
     protected override void FixedUpdate()
     {
-       if(switchObj.turnSwitch == true)
+       if(switchObj?.turnSwitch == true)
         {
             if(spriteRenderer.sprite != activateSprite)
             {
                 spriteRenderer.sprite = activateSprite;
             }
             base.FixedUpdate();
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        if(switchObj != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, switchObj.transform.position);
         }
     }
 }

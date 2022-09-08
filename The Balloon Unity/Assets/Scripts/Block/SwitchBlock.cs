@@ -19,10 +19,19 @@ public class SwitchBlock : MonoBehaviour
 
     private void Update()
     {
-        if(switchObj.turnSwitch == true && spriteRenderer.sprite != activateSprite)
+        if(switchObj?.turnSwitch == true && spriteRenderer.sprite != activateSprite)
         { 
             spriteRenderer.sprite = activateSprite;
             col.enabled = true;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (switchObj != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, switchObj.transform.position);
         }
     }
 }
