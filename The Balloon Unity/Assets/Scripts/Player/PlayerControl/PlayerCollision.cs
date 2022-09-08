@@ -23,10 +23,11 @@ public partial class PlayerControl
     {
         if (collision.collider.CompareTag("FurryBlock"))
         {
-            if(transform.position.y > collision.gameObject.transform.position.y)
+            if(transform.position.y - 0.5f > collision.gameObject.transform.position.y)
             {
                 isOnFurryBlock = true;
             }
+            isNearFurryBlock = true;
         }
     }
 
@@ -35,11 +36,9 @@ public partial class PlayerControl
         if (collision.collider.CompareTag("FurryBlock"))
         {
             isNearFurryBlock = false;
-            if (transform.position.y > collision.gameObject.transform.position.y)
-            {
-                isOnFurryBlock = false;
-            }
+            isOnFurryBlock = false;
         }
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)

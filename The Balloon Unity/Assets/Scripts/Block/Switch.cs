@@ -18,7 +18,8 @@ public class Switch : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            turnSwitch = true;
+            spriteRenderer.sprite = activateSprite;
+           turnSwitch = true;
         }
     }
 }

@@ -25,4 +25,13 @@ public class SwitchBlock : MonoBehaviour
             col.enabled = true;
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        if (switchObj != null)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, switchObj.transform.position);
+        }
+    }
 }

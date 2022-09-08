@@ -54,8 +54,8 @@ public partial class PlayerControl
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.WATER);
+            StartCoroutine(IInvincible());
         }
-        StartCoroutine(IInvincible());
         isInteract = false;
     }
 
@@ -69,10 +69,19 @@ public partial class PlayerControl
     IEnumerator IGetElectric()
     {
         isInteract = true;
-        animator.SetTrigger("GetElectric");
+        if(isOnFurryBlock == true)
+        {
+            animator.SetTrigger("GetElectricDown");
+        }
+        else
+        {
+            animator.SetTrigger("GetElectricSide");
+        }
+
        while(true)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetElectric") &&
+            playerRb.velocity = new Vector2(0, 0);
+            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("GetElectricSide") || animator.GetCurrentAnimatorStateInfo(0).IsName("GetElectricDown")) &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 break;
@@ -88,8 +97,9 @@ public partial class PlayerControl
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.ELECTRIC);
+            StartCoroutine(IInvincible());
         }
-        StartCoroutine(IInvincible());
+        
         isInteract = false;
     }
 

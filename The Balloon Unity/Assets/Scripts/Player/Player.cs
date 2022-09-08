@@ -92,7 +92,8 @@ public class Player : MonoBehaviour
 
     void ChangeColliderSize()
     {
-        boxCollider.size = spriteRenderer.sprite.bounds.size - new Vector3(0.05f,0.05f,0);
+        boxCollider.offset = new Vector3(0, -0.1f, 0);
+        boxCollider.size = spriteRenderer.sprite.bounds.size - new Vector3(0.1f,0.2f,0);
         //boxCollider.bounds = renderer.sprite.bounds;
        // boxCollider.bounds = renderer.sprite.bounds;
     }
