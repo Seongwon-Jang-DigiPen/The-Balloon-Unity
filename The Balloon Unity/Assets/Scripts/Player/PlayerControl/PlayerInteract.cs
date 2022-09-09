@@ -53,9 +53,9 @@ public partial class PlayerControl
     }
     IEnumerator IGetWater()
     {
-        Debug.Log("IGetWater");
         isInteract = true;
         animator.SetTrigger("GetWater");
+        SoundManager.instance.PlaySound("NormalToWater");
         while (true)
         {
             playerRb.velocity = new Vector2(0, 0);
@@ -74,6 +74,7 @@ public partial class PlayerControl
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.WATER);
+
             StartCoroutine(IInvincible());
         }
         isInteract = false;
@@ -130,6 +131,7 @@ public partial class PlayerControl
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.ELECTRIC);
+            SoundManager.instance.PlaySound("NormalToElectric");
             StartCoroutine(IInvincible());
         }
         

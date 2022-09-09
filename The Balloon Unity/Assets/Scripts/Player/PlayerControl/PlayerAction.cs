@@ -19,17 +19,20 @@ public partial class PlayerControl
     public bool isDash { get { return isDoAction == true && player.balloonState.state == BALLOONSTATE.NORMAL; } }
     void DoAction() 
     {
-        switch (player.balloonState.state)
+        if (isHitted == false && isInteract == false && isDoAction == false && isCatched == false)
         {
-            case BALLOONSTATE.Flat:
-                GetAir();
-                break;
-            case BALLOONSTATE.NORMAL:
-                Dash();
-                break;
-            case BALLOONSTATE.WATER:
-                Sprinkle();
-                break;
+            switch (player.balloonState.state)
+            {
+                case BALLOONSTATE.Flat:
+                    GetAir();
+                    break;
+                case BALLOONSTATE.NORMAL:
+                    Dash();
+                    break;
+                case BALLOONSTATE.WATER:
+                    Sprinkle();
+                    break;
+            }
         }
     }
 
@@ -43,6 +46,7 @@ public partial class PlayerControl
     IEnumerator IGetAir()
     {
         animator.SetTrigger("GetAir");
+        SoundManager.instance.PlaySound("FlatToNormal");
         isDoAction = true;
         playerRb.velocity = new Vector3(0, 0);
         while (true)
@@ -73,6 +77,7 @@ public partial class PlayerControl
 
     IEnumerator IDash()
     {
+        SoundManager.instance.PlaySound("Dash");
         isDoAction = true;
         playerRb.velocity = Vector2.zero;
         playerRb.AddForce((Vector2.right * transform.localScale.x + new Vector2(0,0.2f)) * dashForce, ForceMode2D.Impulse);

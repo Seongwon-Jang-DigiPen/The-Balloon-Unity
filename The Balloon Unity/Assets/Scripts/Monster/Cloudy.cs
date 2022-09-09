@@ -89,6 +89,8 @@ public class Cloudy : MoveBlock
     IEnumerator Hitted()
     {
         isHitted = true;
+        
+        SoundManager.instance.PlaySound("DashHit");
         animator.SetTrigger("Hitted");
         boxCollider.enabled = false;
         while (true)

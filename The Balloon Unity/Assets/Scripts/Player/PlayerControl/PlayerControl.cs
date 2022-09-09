@@ -117,6 +117,7 @@ public partial class PlayerControl : MonoBehaviour
         if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
         {
             JumpParticle();
+            SoundManager.instance.PlaySound("Jump");
             isJump = true;
             playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
             playerRb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
@@ -238,6 +239,7 @@ public partial class PlayerControl : MonoBehaviour
     {
         if (isHitted == false && isInvincible == false)
         {
+            SoundManager.instance.PlaySound("HitMonster");
             StartCoroutine(IHitted());
         }
     }
