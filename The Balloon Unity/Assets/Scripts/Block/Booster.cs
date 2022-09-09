@@ -10,7 +10,11 @@ public class Booster : MonoBehaviour
     {
         if(collision.CompareTag(Player.playerTag))
         {
-            collision.GetComponent<PlayerControl>().Boost(angle.normalized, boostPower);   
+            collision.transform.position = this.transform.position;
+            PlayerControl pc = collision.GetComponent<PlayerControl>();
+            pc.boostAngle = angle.normalized;
+            pc.boostPower = boostPower;
+            pc.Boost();
         }
     }
 

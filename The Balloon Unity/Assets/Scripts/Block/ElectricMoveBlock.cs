@@ -16,19 +16,22 @@ public class ElectricMoveBlock : MoveBlock
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    protected override void FixedUpdate()
+    private void Update()
     {
         if (CollidedPlayer == true)
         {
-            if(spriteRenderer.sprite != ActivateSprite)
+            if (spriteRenderer.sprite != ActivateSprite)
             {
-                spriteRenderer.sprite = ActivateSprite; 
+                spriteRenderer.sprite = ActivateSprite;
+                moveOffset = 1;
+                if(index != posList.Count - 1) { index += 1; }
             }
-            BlockMove();
-            timer += Time.fixedDeltaTime;
-            if(timer >= ElectricTime)
+            timer += Time.deltaTime;
+            if (timer >= ElectricTime)
             {
                 CollidedPlayer = false;
+                moveOffset = -1;
+                if(index != 0) { index -= 1; }
             }
         }
         else
@@ -37,20 +40,59 @@ public class ElectricMoveBlock : MoveBlock
             {
                 spriteRenderer.sprite = DeactivateSprite;
             }
-            rigid.velocity = Vector2.zero;
+            moveOffset = -1;
         }
+    }
+
+    protected override void FixedUpdate()
+    {
+        BlockMove();
+        
     
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected override void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.CompareTag(Player.playerTag))
+        base.OnCollisionStay2D(collision);
+
+        if(collision.collider.CompareTag(Player.playerTag) && OnCollider.IsTouching(collision.collider))
         {
             PlayerControl temp = collision.collider.GetComponent<PlayerControl>();
-            if(temp.isTouchingGround == true && collision.collider.GetComponent<Player>().balloonState.state == BALLOONSTATE.ELECTRIC)
+            if(collision.collider.GetComponent<Player>().balloonState.state == BALLOONSTATE.ELECTRIC)
             {
                 CollidedPlayer = true;
                 timer = 0;
+            }
+        }
+    }
+
+    protected override void BlockMove()
+    {
+        if (isStop == false)
+        {
+            if (posList.Count > index)
+            {
+                if (posList[index] != null)
+                {
+                    Vector2 temp = (posList[index] - transform.position);
+                    length = temp.magnitude;
+                    direction = temp.normalized;
+                    rigid.velocity = direction * moveSpeed;
+                }
+                if (length <= (direction * moveSpeed * Time.fixedDeltaTime).magnitude + 0.01f)
+                {
+                    transform.position = posList[index];
+                    rigid.velocity = Vector2.zero;
+                    index += moveOffset;
+                    if (index == posList.Count)
+                    {
+                        StartCoroutine(IStop());
+                    }
+                    if(index < 0)
+                    {
+                        index = 0;
+                    }
+                }
             }
         }
     }

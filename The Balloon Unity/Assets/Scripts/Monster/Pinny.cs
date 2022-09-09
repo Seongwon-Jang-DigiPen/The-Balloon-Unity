@@ -62,7 +62,7 @@ public class Pinny : MoveBlock
         rigid.velocity = direction * moveSpeed + new Vector2(0, rigid.velocity.y);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected override void OnCollisionStay2D(Collision2D collision)
     {
         if (isHitted == false && collision.gameObject.CompareTag(Player.playerTag) == true)
         {

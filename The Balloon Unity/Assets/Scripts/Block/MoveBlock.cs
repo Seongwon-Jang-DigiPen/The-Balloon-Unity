@@ -9,15 +9,16 @@ public enum MOVEWAY
 
 public class MoveBlock : MonoBehaviour
 {
+    public BoxCollider2D OnCollider;
     public List<Vector3> posList;
     public float moveSpeed;
     public MOVEWAY moveWay;
     public float stopTime = 1.0f;
     protected Rigidbody2D rigid;
     protected Vector2 direction = new Vector2(0, 0);
-    private float length = 0;
-    private int index;
-    private int moveOffset = 1;
+    protected float length = 0;
+    protected int index;
+    protected int moveOffset = 1;
     protected bool isStop = false;
     protected virtual void Awake()
     {
@@ -42,6 +43,7 @@ public class MoveBlock : MonoBehaviour
                     direction = temp.normalized;
                     rigid.velocity = direction * moveSpeed;
                 }
+                
                 if (length <= (direction * moveSpeed * Time.fixedDeltaTime).magnitude + 0.01f)
                 {
                     transform.position = posList[index];
@@ -65,6 +67,15 @@ public class MoveBlock : MonoBehaviour
             }
         }
     }
+
+    protected virtual void OnCollisionStay2D(Collision2D collision)
+    {
+        if (OnCollider.IsTouching(collision.collider))
+        {
+            collision.transform.Translate(rigid.velocity * Time.deltaTime);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         for(int i = 0; i < posList.Count - 1; i++)
@@ -74,7 +85,7 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
-    IEnumerator IStop()
+    protected virtual IEnumerator IStop()
     {
         isStop = true;
         yield return new WaitForSeconds(stopTime);

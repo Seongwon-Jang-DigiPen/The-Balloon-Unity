@@ -27,6 +27,7 @@ public partial class PlayerControl
         }
     }
 
+
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("FurryBlock"))
@@ -36,12 +37,23 @@ public partial class PlayerControl
         }
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Water"))
+        {
+            ParticleManager.instance?.PlayParticle(this.gameObject, ParticleManager.ParticleType.IntoWater);
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Water"))
         {
             isInsideWater = true;
+            if(player.balloonState.state == BALLOONSTATE.ELECTRIC)
+            {
+                player.ChangeState(BALLOONSTATE.NORMAL);
+            }
         }
     }
 

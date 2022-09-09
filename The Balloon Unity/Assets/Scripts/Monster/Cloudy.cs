@@ -75,7 +75,7 @@ public class Cloudy : MoveBlock
         }
     }
     
-    private void OnCollisionStay2D(Collision2D collision)
+    protected override void OnCollisionStay2D(Collision2D collision)
     {
 
         if(isHitted == false && collision.gameObject.CompareTag(Player.playerTag) == true)

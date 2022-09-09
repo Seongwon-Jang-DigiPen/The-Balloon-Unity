@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 4866885020179184090}
   - component: {fileID: 2524964806037980601}
   - component: {fileID: 7560664081957295810}
-  - component: {fileID: 6283861405416860149}
-  - component: {fileID: 375018568}
+  - component: {fileID: 5787755605290637174}
   m_Layer: 0
   m_Name: arrow dr
   m_TagString: Untagged
@@ -107,22 +106,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6283861405416860149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4676633473266316665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a90cdffe98c1f7047bad60c942698ff2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boostPower: 10
-  angle: {x: 1, y: -1}
---- !u!61 &375018568
-BoxCollider2D:
+--- !u!60 &5787755605290637174
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,6 +129,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.0017428398, y: 0.4131459}
+      - {x: -0.3698893, y: 0.36741874}
+      - {x: -0.38595438, y: 0.17073971}
+      - {x: -0.47226906, y: 0.12909126}
+      - {x: -0.40351248, y: -0.0032899193}
+      - {x: -0.24477394, y: -0.18360358}
+      - {x: -0.1437724, y: -0.25561643}
+      - {x: -0.085406624, y: -0.32549542}
+      - {x: 0.33665663, y: -0.3383348}
+      - {x: 0.31457904, y: 0.09534925}
+      - {x: 0.16975838, y: 0.19625258}

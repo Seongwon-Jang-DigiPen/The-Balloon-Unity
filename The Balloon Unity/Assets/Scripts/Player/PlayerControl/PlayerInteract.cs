@@ -4,24 +4,44 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public partial class PlayerControl
 {
+    [Header("Interact")]
+    public InteractCheck checker;
     bool isInteract = false;
-
+    bool isCatched = false;
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            if (isDoAction == false && isHitted == false && isInteract == false && player.balloonState.state == BALLOONSTATE.NORMAL)
+            if (player.balloonState.state == BALLOONSTATE.NORMAL)
             {
-                if (isInsideWater == true)
+                if (isDoAction == false && isHitted == false && isInteract == false)
                 {
-                    GetWater();
+                    if (isInsideWater == true)
+                    {
+                        GetWater();
+                    }
+                    else if (isNearFurryBlock == true)
+                    {
+                        GetElectric();
+                    }
                 }
-                else if (isNearFurryBlock == true)
+            }
+            if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
+            {
+                if(checker.interactedObj != null)
                 {
-                    GetElectric();
+                    isCatched = true;
+                    flipLock = true;
                 }
             }
         }
+        
+        if(context.canceled)
+        {
+            isCatched = false;
+            flipLock = false;
+        }
+
     }
 
     void GetWater() 
@@ -58,7 +78,20 @@ public partial class PlayerControl
         }
         isInteract = false;
     }
-
+    
+    void CatchBox()
+    {
+        if(isCatched == true)
+        {
+            if (isHitted == true || isBoost == true || isTouchingGround == false)
+            {
+                isCatched = false;
+                flipLock = false;
+                return;
+            }
+            checker.interactedObj?.transform.Translate(playerRb.velocity * Time.fixedDeltaTime);
+        }
+    }
     void GetElectric()
     {
         if (isHitted == false && isTouchingGround == true)

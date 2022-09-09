@@ -14,6 +14,12 @@ public partial class PlayerControl : MonoBehaviour
     [HideInInspector]
     public bool isTouchingGround = false;
 
+    [Header("Boost")]
+    public float boostTime = 0.5f;
+    private bool isBoost = false;
+    public Vector2 boostAngle;
+    public float boostPower = 0;
+
     [Header("DownFast")]
     public float downFastSpeed = 7;
 
@@ -25,6 +31,7 @@ public partial class PlayerControl : MonoBehaviour
     private Vector2 inputValue = new Vector2(0,0);
     private bool isJumpKeyPressed = false;
     private bool isJump = false;
+    public bool flipLock = false;
 
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
@@ -56,6 +63,7 @@ public partial class PlayerControl : MonoBehaviour
             Movement();
             Jump();
             DownFast();
+            CatchBox();
         }
     }
 
@@ -108,7 +116,7 @@ public partial class PlayerControl : MonoBehaviour
     {
         if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
         {
-            SoundManager.instance?.PlaySound("Jump");
+            JumpParticle();
             isJump = true;
             playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
             playerRb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
@@ -124,6 +132,26 @@ public partial class PlayerControl : MonoBehaviour
         JumpCut();
     }
 
+    void JumpParticle()
+    {
+
+        switch (player.balloonState.state)
+        {
+            case BALLOONSTATE.Flat:
+                ParticleManager.instance?.PlayParticle(this.gameObject, ParticleManager.ParticleType.Flat);
+                break;
+            case BALLOONSTATE.NORMAL:
+                ParticleManager.instance?.PlayParticle(this.gameObject, ParticleManager.ParticleType.Jump);
+                break;
+            case BALLOONSTATE.WATER:
+                ParticleManager.instance?.PlayParticle(this.gameObject, ParticleManager.ParticleType.WaterJump);
+                break;
+            case BALLOONSTATE.ELECTRIC:
+                ParticleManager.instance?.PlayParticle(this.gameObject, ParticleManager.ParticleType.ElecJump);
+                break;
+        }
+
+    }
     void DownFast()
     {
         if(playerRb.velocity.y < -player.MaxDownSpeed)
@@ -146,12 +174,14 @@ public partial class PlayerControl : MonoBehaviour
     }
 
     void Flip()
-    {
-        if ((playerRb.velocity.x > 0.1f && 0 > gameObject.transform.localScale.x)
-            || (playerRb.velocity.x < -0.1f && 0 < gameObject.transform.localScale.x))
+    {if (flipLock == false)
         {
+            if ((playerRb.velocity.x > 0.1f && 0 > gameObject.transform.localScale.x)
+                || (playerRb.velocity.x < -0.1f && 0 < gameObject.transform.localScale.x))
+            {
                 int r = (playerRb.velocity.x > 0) ? 1 : -1;
-            gameObject.transform.localScale = new Vector3(r, 1, 1);
+                gameObject.transform.localScale = new Vector3(r, 1, 1);
+            }
         }
     }
     
@@ -181,13 +211,29 @@ public partial class PlayerControl : MonoBehaviour
         }
     }
 
-    public void Boost(Vector2 angle, float power)
-    {
+    public void Boost()
+    { 
         isJump = false;
-        //playerRb.velocity = Vector2.zero;
-        playerRb.AddForce(angle * power, ForceMode2D.Impulse);
+        if(isBoost == true)
+        {
+            StopCoroutine(IBoost());
+        }
+        StartCoroutine(IBoost());
     }
 
+    IEnumerator IBoost()
+    {
+        isBoost = true;
+        float timer = 0;
+        while (timer < boostTime)
+        {
+            if (isHitted == true) { break; }
+            playerRb.velocity = boostAngle * boostPower;
+            timer += Time.deltaTime;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        isBoost = false;
+    }
     public void Hitted()
     {
         if (isHitted == false && isInvincible == false)
