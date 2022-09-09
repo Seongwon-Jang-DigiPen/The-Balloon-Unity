@@ -12,8 +12,8 @@ public partial class PlayerControl
     public float getAirTime = 3.0f;
     [Header("Sprinkle")]
     public GameObject waterBomb;
-    public float sprinkleTime = 2.0f;
-
+    public int SprinkleNum = 3;
+    public int SprinklePower = 5;
     private bool isDoAction = false;
 
     public bool isDash { get { return isDoAction == true && player.balloonState.state == BALLOONSTATE.NORMAL; } }
@@ -111,8 +111,36 @@ public partial class PlayerControl
     void Sprinkle() { StartCoroutine(ISprinkle()); }
     IEnumerator ISprinkle()
     {
+        SprinkleNum--;
         isDoAction = true;
-        yield return new WaitForSeconds(sprinkleTime);
-        isDoAction = false;
+        playerRb.velocity = new Vector3(0, 0);
+        animator.SetTrigger("Sprinkle");
+        animator.SetInteger("RemainSprinkle", SprinkleNum);
+        GameObject bomb = Instantiate(waterBomb,transform.position,waterBomb.transform.rotation);
+        bomb.transform.localScale = transform.localScale;
+        bomb.GetComponent<Rigidbody2D>().velocity = 
+            new Vector2(transform.localScale.x * SprinklePower, 0);
+        while (true)
+        {
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Sprinkle") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                break;
+            }
+            if (isHitted == true)
+            {
+                break;
+            }
+            yield return null;
+        }
+        if (isDoAction == true)
+        {
+            if (SprinkleNum == 0)
+            {
+                player.ChangeState(BALLOONSTATE.NORMAL);
+            }
+            StartCoroutine(IInvincible());
+        }
+    isDoAction = false;
     }
 }

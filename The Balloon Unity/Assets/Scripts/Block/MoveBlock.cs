@@ -70,7 +70,8 @@ public class MoveBlock : MonoBehaviour
 
     protected virtual void OnCollisionStay2D(Collision2D collision)
     {
-        if (OnCollider.IsTouching(collision.collider))
+        
+        if ( OnCollider != null && OnCollider.IsTouching(collision.collider))
         {
             collision.transform.Translate(rigid.velocity * Time.deltaTime);
         }

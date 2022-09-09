@@ -249,8 +249,9 @@ MonoBehaviour:
   dashTime: 0.3
   dashForce: 10
   getAirTime: 3
-  waterBomb: {fileID: 0}
-  sprinkleTime: 1
+  waterBomb: {fileID: 2105577316045938824, guid: 2f2b338d52119574ca1b760e50c24a16, type: 3}
+  SprinkleNum: 3
+  SprinklePower: 5
   groundCheck: {fileID: 6322240162840614114}
   groundCheckLength: 0.22
   groundLayer:

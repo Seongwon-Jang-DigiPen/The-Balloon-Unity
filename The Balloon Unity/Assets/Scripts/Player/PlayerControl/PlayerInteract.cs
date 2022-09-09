@@ -74,7 +74,7 @@ public partial class PlayerControl
         {
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.WATER);
-
+            SprinkleNum = 3;
             StartCoroutine(IInvincible());
         }
         isInteract = false;
