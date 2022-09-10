@@ -97,7 +97,7 @@ public partial class PlayerControl
         if (isHitted == false)
         {
             playerRb.gravityScale = gravity;
-            playerRb.velocity = new Vector3(0, 0);
+            playerRb.velocity = playerRb.velocity / 2;
             animator.SetTrigger("ChangeState");
             player.ChangeState(BALLOONSTATE.Flat);
             isDoAction = false;
