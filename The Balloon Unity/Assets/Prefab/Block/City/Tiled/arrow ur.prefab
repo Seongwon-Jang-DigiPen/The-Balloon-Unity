@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4995793392511947547}
   - component: {fileID: 4320833593343457402}
   - component: {fileID: 5298030430355641211}
-  - component: {fileID: 1164899655}
+  - component: {fileID: 2045022257613166724}
   m_Layer: 0
   m_Name: arrow ur
   m_TagString: Untagged
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostPower: 10
   angle: {x: 1, y: 1}
---- !u!61 &1164899655
-BoxCollider2D:
+--- !u!60 &2045022257613166724
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,6 +144,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.08940768, y: 0.32916784}
+      - {x: -0.25602436, y: 0.09981696}
+      - {x: -0.40390325, y: -0.06314677}
+      - {x: -0.35336846, y: -0.3667965}
+      - {x: -0.029652193, y: -0.41601992}
+      - {x: 0.15420938, y: -0.19046545}
+      - {x: 0.32222176, y: -0.07587004}
+      - {x: 0.34389973, y: 0.32569456}

@@ -29,7 +29,6 @@ public class BangMark : MonoBehaviour
             {
                 break;
             }
-            Debug.Log(animator.GetCurrentAnimatorStateInfo(0).ToString());
             yield return null;
         }
         animator.SetTrigger("EndBang");

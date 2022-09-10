@@ -8,7 +8,7 @@ public partial class PlayerControl
     bool isNearFurryBlock = false;
     bool isOnFurryBlock = false;
     
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Monster"))
         {
@@ -17,11 +17,7 @@ public partial class PlayerControl
                 Hitted();
             }
         }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("FurryBlock"))
+        else if (collision.collider.CompareTag("FurryBlock"))
         {
             if(transform.position.y - 0.5f > collision.gameObject.transform.position.y)
             {
@@ -30,6 +26,7 @@ public partial class PlayerControl
             isNearFurryBlock = true;
         }
     }
+
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -40,12 +37,23 @@ public partial class PlayerControl
         }
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Water"))
+        {
+            ParticleManager.instance?.PlayParticle(this.gameObject, ParticleManager.ParticleType.IntoWater);
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Water"))
         {
             isInsideWater = true;
+            if(player.balloonState.state == BALLOONSTATE.ELECTRIC)
+            {
+                player.ChangeState(BALLOONSTATE.NORMAL);
+            }
         }
     }
 

@@ -6,7 +6,8 @@ public class Robo : MoveBlock
 {
     Animator animator;
     SpriteRenderer render;
-
+    bool isHitted = false;
+    public float hittedTime = 5.0f;
     protected override void Awake()
     {
         base.Awake();
@@ -18,24 +19,31 @@ public class Robo : MoveBlock
     {
         render.flipX = (rigid.velocity.x > 0);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+  
+    protected override void FixedUpdate()
     {
-
+        if(isHitted == false)
+        {
+            BlockMove();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isHitted == false && collision.CompareTag("WaterBomb"))
+        {
+            StartCoroutine(Hitted());
+            Destroy(collision.gameObject);
+        }
     }
 
     IEnumerator Hitted()
     {
+        isHitted = true;
         animator.SetTrigger("Hitted");
-        while (true)
-        {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Die") &&
-                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                break;
-            }
-            yield return null;
-        }
-        Destroy(this.gameObject);
+
+        yield return new WaitForSeconds(hittedTime);
+
+        animator.SetTrigger("Idle");
+        isHitted = false;
     }
 }

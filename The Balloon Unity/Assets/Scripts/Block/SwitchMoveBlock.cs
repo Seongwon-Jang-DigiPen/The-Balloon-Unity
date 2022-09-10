@@ -24,6 +24,13 @@ public class SwitchMoveBlock : MoveBlock
             }
             base.FixedUpdate();
         }
+        else
+        {
+            if (spriteRenderer.sprite != deactivateSprite)
+            {
+                spriteRenderer.sprite = deactivateSprite;
+            }
+        }
     }
     private void OnDrawGizmos()
     {
