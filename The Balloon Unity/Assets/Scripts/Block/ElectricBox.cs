@@ -55,7 +55,8 @@ public class ElectricBox : MonoBehaviour
             if (isElectric == true) { break; }
 
             timer += timeCycle;
-            yield return new WaitForSeconds(timeCycle);
+           
+            yield return YieldInstructionCache.WaitForSeconds(timeCycle);
         }
         
         if(isElectric == false)

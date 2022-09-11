@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class LoadingSceneController : MonoBehaviour
 {
     static string nextScene;
+    public static SaveData saveData;
+    public static bool isDataLoad = false;
     [SerializeField]
     Image progressBar;
     [SerializeField]
@@ -16,11 +18,20 @@ public class LoadingSceneController : MonoBehaviour
     {
         nextScene = sceneName;
         SceneManager.LoadScene("Loading");
+        isDataLoad = false;
+    }
+
+    public static void LoadScene(SaveData da)
+    {
+        saveData = da;
+        SceneManager.LoadScene("Loading");
+        nextScene = saveData.SceneName;
+        isDataLoad = true;
     }
 
     private void Start()
     {
-        Background.sprite = spriteList[Random.Range(0, spriteList.Count)]; 
+        Background.sprite = spriteList[Random.Range(0, spriteList.Count)];
         progressBar.fillAmount = 1;
         //StartCoroutine(LoadSceneProcess());
     }

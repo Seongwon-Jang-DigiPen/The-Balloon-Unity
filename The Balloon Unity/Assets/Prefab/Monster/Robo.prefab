@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7168287544439681224}
   m_Layer: 0
   m_Name: Robo
-  m_TagString: Monster
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,3 +172,4 @@ MonoBehaviour:
   moveSpeed: 0
   moveWay: 0
   stopTime: 1
+  hittedTime: 5

@@ -46,7 +46,11 @@ public class Player : MonoBehaviour
     private void Start()
     {
         ChangeState(BALLOONSTATE.NORMAL);
-        
+        if(LoadingSceneController.isDataLoad == true)
+        {
+            gameObject.transform.position = new Vector3(LoadingSceneController.saveData.xPos, LoadingSceneController.saveData.yPos, gameObject.transform.position.z);
+        }
+
     }
     private void Update()
     {
@@ -58,15 +62,19 @@ public class Player : MonoBehaviour
         {
             case BALLOONSTATE.Flat:
                 balloonState = FLATSTATE;
+                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Change_Flat, this);
                 break;
             case BALLOONSTATE.NORMAL:
                 balloonState = NORMALSTATE;
+                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Change_Normal, this);
                 break;
             case BALLOONSTATE.WATER:
                 balloonState = WATERSTATE;
+                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Change_Water,this);
                 break;
             case BALLOONSTATE.ELECTRIC:
                 balloonState = ELECTRICSTATE;
+                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Change_Electric, this);
                 break;
         }
         StateEnter();

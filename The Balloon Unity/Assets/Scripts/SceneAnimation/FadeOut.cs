@@ -19,7 +19,6 @@ public class FadeOut : SceneAnimation
             image.color = Color.black * blackColor;
             yield return null;
         }
-        Debug.Log("End");
         end = true;
         isDoSceneAnimation = false;
     }

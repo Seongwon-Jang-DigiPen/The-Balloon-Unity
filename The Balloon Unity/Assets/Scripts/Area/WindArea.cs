@@ -26,10 +26,17 @@ public class WindArea : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag(Player.playerTag) && collision.GetComponent<Player>().balloonState.state == BALLOONSTATE.WATER)
+        if(collision.CompareTag(Player.playerTag))
         {
-            return;
+            if (collision.GetComponent<Player>().balloonState.state == BALLOONSTATE.WATER)
+            {
+                return;
+            }
+            collision.GetComponent<Rigidbody2D>().AddForce(angle * windForce, ForceMode2D.Force);
         }
-        collision.GetComponent<Rigidbody2D>().AddForce(angle * windForce, ForceMode2D.Force);
+        else if(collision.CompareTag("Box"))
+        {
+            collision.GetComponent<Rigidbody2D>().AddForce(angle * windForce, ForceMode2D.Force);
+        }
     }
 }

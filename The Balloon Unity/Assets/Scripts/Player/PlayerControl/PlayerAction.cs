@@ -82,6 +82,7 @@ public partial class PlayerControl
         playerRb.velocity = Vector2.zero;
         playerRb.AddForce((Vector2.right * transform.localScale.x + new Vector2(0,0.2f)) * dashForce, ForceMode2D.Impulse);
         animator.SetTrigger("Dash");
+        ParticleManager.instance.PlayDashParticle(this.gameObject, transform.localScale.x < 0);
         float gravity = playerRb.gravityScale;
         playerRb.gravityScale = 0;
 
@@ -116,13 +117,14 @@ public partial class PlayerControl
         playerRb.velocity = new Vector3(0, 0);
         animator.SetTrigger("Sprinkle");
         animator.SetInteger("RemainSprinkle", SprinkleNum);
+        EventManager.Instance.PostNotification(EVENT_TYPE.Player_Sprinkle, this);
         GameObject bomb = Instantiate(waterBomb,transform.position,waterBomb.transform.rotation);
         bomb.transform.localScale = transform.localScale;
         bomb.GetComponent<Rigidbody2D>().velocity = 
             new Vector2(transform.localScale.x * SprinklePower, 0);
         while (true)
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Sprinkle") &&
+            if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Sprinkle")|| animator.GetCurrentAnimatorStateInfo(0).IsName("LastSprinkle")) &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 break;
@@ -137,7 +139,12 @@ public partial class PlayerControl
         {
             if (SprinkleNum == 0)
             {
+                animator.SetTrigger("ChangeState");
                 player.ChangeState(BALLOONSTATE.NORMAL);
+            }
+            else
+            {
+                animator.SetTrigger("EndAction");
             }
             StartCoroutine(IInvincible());
         }

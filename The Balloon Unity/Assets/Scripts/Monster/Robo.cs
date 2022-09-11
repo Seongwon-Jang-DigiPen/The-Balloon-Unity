@@ -41,7 +41,7 @@ public class Robo : MoveBlock
         isHitted = true;
         animator.SetTrigger("Hitted");
 
-        yield return new WaitForSeconds(hittedTime);
+        yield return YieldInstructionCache.WaitForSeconds(hittedTime);
 
         animator.SetTrigger("Idle");
         isHitted = false;
