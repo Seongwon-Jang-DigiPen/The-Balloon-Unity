@@ -26,6 +26,7 @@ public partial class PlayerControl : MonoBehaviour
     [Header("Hitted")]
     public float invincibleTime = 1f;
     public float blinkCycle = 0.1f;
+    public bool isDead = false;
     /*private*/
     //input data
     private Vector2 inputValue = new Vector2(0,0);
@@ -231,7 +232,7 @@ public partial class PlayerControl : MonoBehaviour
             if (isHitted == true) { break; }
             playerRb.velocity = boostAngle * boostPower;
             timer += Time.deltaTime;
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return YieldInstructionCache.WaitForSeconds(Time.deltaTime);
         }
         isBoost = false;
     }
@@ -260,7 +261,8 @@ public partial class PlayerControl : MonoBehaviour
         }
         if (player.balloonState.state == BALLOONSTATE.Flat)
         {
-           //gameOver;
+            isDead = true;
+            EventManager.Instance.PostNotification(EVENT_TYPE.Player_Dead, this);
         }
         else
         {
@@ -316,7 +318,7 @@ public partial class PlayerControl : MonoBehaviour
             }
             blinking = !blinking;
             invincibleTimer += blinkCycle;
-            yield return new WaitForSeconds(blinkCycle);
+            yield return YieldInstructionCache.WaitForSeconds(blinkCycle);
         }
         spriteRenderer.color = Color.white;
         isInvincible = false;

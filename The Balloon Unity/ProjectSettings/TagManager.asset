@@ -8,6 +8,7 @@ TagManager:
   - FurryBlock
   - Water
   - Box
+  - WaterBomb
   layers:
   - Default
   - TransparentFX

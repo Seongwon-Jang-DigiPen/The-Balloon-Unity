@@ -89,7 +89,7 @@ public class MoveBlock : MonoBehaviour
     protected virtual IEnumerator IStop()
     {
         isStop = true;
-        yield return new WaitForSeconds(stopTime);
+        yield return YieldInstructionCache.WaitForSeconds(stopTime);
         isStop = false;
     }
 }
