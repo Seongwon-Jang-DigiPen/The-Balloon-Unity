@@ -11,13 +11,13 @@ public struct SaveData
 
 public class SaveLoadManager : MonoBehaviour
 {
-     static void Save(SaveData data)
+    public static void Save(SaveData data)
     {
         PlayerPrefs.SetString("SceneName", data.SceneName);
         PlayerPrefs.SetFloat("X", data.xPos);
         PlayerPrefs.SetFloat("Y", data.yPos);
     }
-    static SaveData LoadData()
+    public static SaveData LoadData()
     {
         SaveData d;
         d.SceneName = PlayerPrefs.GetString("SceneName");

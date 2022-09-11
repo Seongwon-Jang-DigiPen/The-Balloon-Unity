@@ -32,12 +32,13 @@ public class LoadingSceneController : MonoBehaviour
     private void Start()
     {
         Background.sprite = spriteList[Random.Range(0, spriteList.Count)];
-        progressBar.fillAmount = 1;
-        //StartCoroutine(LoadSceneProcess());
+        
+        StartCoroutine(LoadSceneProcess());
     }
 
     IEnumerator LoadSceneProcess()
     {
+        progressBar.fillAmount = 0;
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
         float timer = 0;
@@ -51,7 +52,7 @@ public class LoadingSceneController : MonoBehaviour
             }
             else
             {
-                timer += Time.unscaledTime;
+                timer += Time.unscaledDeltaTime;
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
                 if(progressBar.fillAmount >= 1f)
                 {
