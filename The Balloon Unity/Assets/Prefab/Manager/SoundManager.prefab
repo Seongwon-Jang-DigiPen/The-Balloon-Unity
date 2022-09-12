@@ -1468,9 +1468,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eeb7b77b6e9860b4e801db1366c0e9dd, type: 3}
   - name: Credit
     clip: {fileID: 8300000, guid: be329dea6ac127447bb1f193aa438163, type: 3}
-  - name: Chpter1BGM
+  - name: Chapter1BGM
     clip: {fileID: 8300000, guid: aaf442d97b0fe21428629c600547b6e4, type: 3}
-  - name: Chpter2BGM
+  - name: Chapter2BGM
     clip: {fileID: 8300000, guid: e72c5b5ef4dfe86418d92edf77381075, type: 3}
   - name: CutScene
     clip: {fileID: 8300000, guid: e16bd3871fc38e04c9fb782f0bb5b4e8, type: 3}

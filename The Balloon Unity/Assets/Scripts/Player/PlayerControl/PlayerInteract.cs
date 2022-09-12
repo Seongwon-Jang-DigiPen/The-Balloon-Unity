@@ -29,7 +29,7 @@ public partial class PlayerControl
             }
             if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
             {
-                if(checker.interactedObj != null)
+                if (checker.interactedObj != null)
                 {
                     boxDistance = checker.interactedObj.transform.position - player.transform.position;
                     isCatched = true;
@@ -87,7 +87,13 @@ public partial class PlayerControl
     
     void CatchBox()
     {
-        if(isCatched == true)
+        if(player.balloonState.state == BALLOONSTATE.ELECTRIC)
+        {
+            animator.SetBool("IsCatched", isCatched);
+            animator.SetBool("LookRight", transform.localScale.x > 0);
+            animator.SetFloat("Horizontal", inputValue.x);
+        }
+        if (isCatched == true)
         {
             if (isHitted == true || isBoost == true || isTouchingGround == false || checker.interactedObj == null)
             {

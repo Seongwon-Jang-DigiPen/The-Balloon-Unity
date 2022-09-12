@@ -11,9 +11,6 @@ public class ElectricBox : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigid;
 
-    
-
-    bool isElectric = false;
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
