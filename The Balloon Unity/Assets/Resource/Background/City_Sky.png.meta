@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8806c24b800360749b1124d119eeeff1
+guid: 25a6abb4cd49aed4e8f0051548d5d9b7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -128,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Water_0
+      name: City_Sky_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 59
-        width: 40
-        height: 12
+        x: 0
+        y: 400
+        width: 1200
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9f24101c6677f546af0d34c91afdfd7
-      internalID: 530063954
+      spriteID: 84120b14f506097428e0e40986084870
+      internalID: -578005731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Water_1
+      name: City_Sky_1
       rect:
         serializedVersion: 2
-        x: 76
-        y: 59
-        width: 40
-        height: 12
+        x: 0
+        y: 0
+        width: 1200
+        height: 400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,50 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5a21e3f38f8b124bbd262f084ed2f9f
-      internalID: -1578734534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Water_2
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 59
-        width: 40
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a38471a1bcc2ad4e943bc167e4b6d30
-      internalID: -1030674169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Water_3
-      rect:
-        serializedVersion: 2
-        x: 204
-        y: 59
-        width: 40
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58ab9612781ec0c49995c51f8ea7271e
-      internalID: 1664988611
+      spriteID: b0494be9d768c894bafc85bdee26ba43
+      internalID: 854080643
       vertices: []
       indices: 
       edges: []
@@ -222,10 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Water_2: -1030674169
-      Water_1: -1578734534
-      Water_0: 530063954
-      Water_3: 1664988611
+      City_Sky_0: -578005731
+      City_Sky_1: 854080643
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
