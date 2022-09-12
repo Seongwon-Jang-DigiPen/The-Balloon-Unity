@@ -85,6 +85,7 @@ public class SoundManager : MonoBehaviour
         {
             asSFX[i].Stop();
         }
+        asBGM.Stop();
     }
 
     public void StopSFX(string name)
