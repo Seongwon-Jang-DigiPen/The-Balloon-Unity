@@ -77,7 +77,7 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         for(int i = 0; i < posList.Count - 1; i++)
         {

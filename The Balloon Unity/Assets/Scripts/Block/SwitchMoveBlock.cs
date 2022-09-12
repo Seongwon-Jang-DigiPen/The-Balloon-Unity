@@ -30,14 +30,16 @@ public class SwitchMoveBlock : MoveBlock
             {
                 spriteRenderer.sprite = deactivateSprite;
             }
+            rigid.velocity = Vector2.zero;
         }
     }
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
         if(switchObj != null)
         {
             Gizmos.color = Color.white;
             Gizmos.DrawLine(transform.position, switchObj.transform.position);
         }
+        base.OnDrawGizmos();
     }
 }
