@@ -6,11 +6,11 @@ public class ElectricBox : MonoBehaviour
 {
     public Sprite activateBlock;
     public Sprite deactivateBlock;
-    public float electricTime;
+    public bool electricActivate;
 
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigid;
-    private float timeCycle = 0.1f;
+
     
 
     bool isElectric = false;
@@ -19,52 +19,20 @@ public class ElectricBox : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    public void isCatched(bool catched)
     {
-        if (collision.gameObject.CompareTag(Player.playerTag))
-        {
-            if (collision.gameObject.GetComponent<Player>().balloonState.state == BALLOONSTATE.ELECTRIC)
-            {
-                isElectric = true;
-                rigid.drag = 7;
-                rigid.mass = 1;
-                spriteRenderer.sprite = activateBlock;
-            }
-            else
-            {
-                isElectric = false;
-                StartCoroutine(EndElectric());
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag(Player.playerTag))
-        {
-            isElectric = false;
-            StartCoroutine(EndElectric());
-        }
-    }
-
-    IEnumerator EndElectric()
-    {
-        float timer = 0;
-        while(electricTime > timer)
-        {
-            if (isElectric == true) { break; }
-
-            timer += timeCycle;
-           
-            yield return YieldInstructionCache.WaitForSeconds(timeCycle);
-        }
-        
-        if(isElectric == false)
+        electricActivate = catched;
+        spriteRenderer.sprite = (catched) ? activateBlock : deactivateBlock;
+        if (catched == false)
         {
             rigid.drag = 10000;
             rigid.mass = 100;
-            spriteRenderer.sprite = deactivateBlock;
         }
-
+        else
+        {
+            rigid.drag = 7;
+            rigid.mass = 0.1f;
+        }
     }
 }

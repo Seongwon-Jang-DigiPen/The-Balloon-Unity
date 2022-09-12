@@ -19,6 +19,7 @@ public class InteractCheck : MonoBehaviour
     {
         if (collision.CompareTag("Box"))
         {
+            interactedObj.GetComponent<ElectricBox>()?.isCatched(false);
             interactedObj = null;
         }
     }

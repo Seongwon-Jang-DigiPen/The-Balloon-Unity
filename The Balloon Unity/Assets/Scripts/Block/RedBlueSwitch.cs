@@ -19,6 +19,11 @@ public class RedBlueSwitch : MonoBehaviour
         spriteRenderer.sprite = (WorldRedBlueState == REDBLUESTATE.RED) ? redOnSprite : blueOnSprite;
     }
 
+    private void Update()
+    {
+        spriteRenderer.sprite = (WorldRedBlueState == REDBLUESTATE.RED) ? redOnSprite : blueOnSprite;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Player.playerTag) == true)

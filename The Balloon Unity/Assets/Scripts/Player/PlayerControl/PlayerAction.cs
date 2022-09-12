@@ -47,10 +47,12 @@ public partial class PlayerControl
     {
         animator.SetTrigger("GetAir");
         SoundManager.instance.PlaySound("FlatToNormal");
+
         isDoAction = true;
         playerRb.velocity = new Vector3(0, 0);
         while (true)
         {
+            player.ChangeColliderSize();
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("GetAir") &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
@@ -88,6 +90,7 @@ public partial class PlayerControl
 
         while (true)
         {
+            player.ChangeColliderSize();
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Dash") &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
