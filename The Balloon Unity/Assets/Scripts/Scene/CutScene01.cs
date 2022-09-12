@@ -20,6 +20,7 @@ public class CutScene01 : MonoBehaviour
     void Start()
     {
         Castlecut.GetComponent<Animator>().Play("Castlecut", -1 , 0);
+        SoundManager.instance.PlayBGM("CutScene", false);
     }
 
     // Update is called once per frame

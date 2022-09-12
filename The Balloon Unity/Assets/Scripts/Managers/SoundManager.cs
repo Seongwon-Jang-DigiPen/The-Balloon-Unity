@@ -65,7 +65,7 @@ public class SoundManager : MonoBehaviour
         Debug.Log(name + "does not exist");
     }
 
-    public void PlayBGM(string name)
+    public void PlayBGM(string name, bool loop)
     {
         for (int i = 0; i < bgms.Length; i++)
         {
@@ -73,6 +73,7 @@ public class SoundManager : MonoBehaviour
             {
                 asBGM.clip = bgms[i].clip;
                 asBGM.Play();
+                asBGM.loop = loop;
                 return;
             }
         }

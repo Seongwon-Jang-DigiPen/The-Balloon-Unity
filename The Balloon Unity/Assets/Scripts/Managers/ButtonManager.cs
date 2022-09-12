@@ -51,7 +51,7 @@ public class ButtonManager : MonoBehaviour
     public void Credit()
     {
         SoundManager.instance.PlaySound("Button");
-        SoundManager.instance.PlayBGM("Credit");
+        SoundManager.instance.PlayBGM("Credit", true);
         creditPanel.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(creditBack.gameObject);
@@ -85,7 +85,7 @@ public class ButtonManager : MonoBehaviour
     public void CreditBack()
     {
         SoundManager.instance.PlaySound("Button");
-        SoundManager.instance.PlayBGM("Mainmenu");
+        SoundManager.instance.PlayBGM("Mainmenu", true);
         creditPanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(menuButtons[0].gameObject);

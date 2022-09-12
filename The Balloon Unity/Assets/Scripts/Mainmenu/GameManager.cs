@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         SoundManager.instance.BGMvolume(BGMvol);
         SoundManager.instance.SFXvolume(SFXvol);
-        SoundManager.instance.PlayBGM("Mainmenu");
+        SoundManager.instance.PlayBGM("Mainmenu", true);
         settingPanel.SetActive(false);
         creditPanel.SetActive(false);
         Debug.Log("Mainmenu");
