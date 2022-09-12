@@ -40,7 +40,7 @@ public class Robo : MoveBlock
     {
         isHitted = true;
         animator.SetTrigger("Hitted");
-
+        rigid.velocity = Vector2.zero;
         yield return YieldInstructionCache.WaitForSeconds(hittedTime);
 
         animator.SetTrigger("Idle");

@@ -14,6 +14,9 @@ public class ElectricMoveBlock : MoveBlock
     {
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        CollidedPlayer = false;
+        moveOffset = -1;
+
     }
 
     private void Update()
@@ -91,6 +94,7 @@ public class ElectricMoveBlock : MoveBlock
                     if(index < 0)
                     {
                         index = 0;
+                        StartCoroutine(IStop());
                     }
                 }
             }

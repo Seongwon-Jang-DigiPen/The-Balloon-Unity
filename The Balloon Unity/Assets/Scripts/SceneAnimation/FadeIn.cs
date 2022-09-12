@@ -13,7 +13,6 @@ public class FadeIn : SceneAnimation
 
     protected override IEnumerator IAnimation()
     {
-        Debug.Log("Start");
         while(blackColor > 0)
         {
             blackColor -= Time.unscaledDeltaTime / aniTime;
