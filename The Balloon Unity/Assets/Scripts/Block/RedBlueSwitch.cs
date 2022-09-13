@@ -9,6 +9,7 @@ public class RedBlueSwitch : MonoBehaviour
     public Sprite redOnSprite;
     public Sprite blueOnSprite;
     private SpriteRenderer spriteRenderer = null;
+    public bool touched = false;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class RedBlueSwitch : MonoBehaviour
             SoundManager.instance.PlaySound("RedBlueSwitch");
             WorldRedBlueState = (WorldRedBlueState == REDBLUESTATE.RED) ? REDBLUESTATE.BLUE : REDBLUESTATE.RED;
             spriteRenderer.sprite = (WorldRedBlueState == REDBLUESTATE.RED) ? redOnSprite : blueOnSprite;
+            touched = true;
             if (RedBlueBlock.firstCreated != null)
             {
                 foreach (RedBlueBlock rbBlock in RedBlueBlock.firstCreated)
