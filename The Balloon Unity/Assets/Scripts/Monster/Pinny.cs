@@ -71,6 +71,11 @@ public class Pinny : MoveBlock
                 StartCoroutine(Hitted());
             }
         }
+        else if (isHitted == false && collision.gameObject.CompareTag("WaterBomb"))
+        {
+            StartCoroutine(Hitted());
+            Destroy(collision.gameObject);
+        }
     }
 
 
@@ -93,11 +98,6 @@ public class Pinny : MoveBlock
             {
                 isTrace = false;
             }
-        }
-        else if (isHitted == false && collision.CompareTag("WaterBomb"))
-        {
-            StartCoroutine(Hitted());
-            Destroy(collision.gameObject);
         }
     }
 
