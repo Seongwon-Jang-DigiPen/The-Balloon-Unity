@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Box
   - WaterBomb
+  - Wind
   layers:
   - Default
   - TransparentFX

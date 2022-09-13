@@ -21,6 +21,7 @@ public class Switch : MonoBehaviour
             spriteRenderer.sprite = activateSprite;
             if(turnSwitch == false)
             SoundManager.instance.PlaySound("Switch");
+            CameraShake.instance.DoShake();
             turnSwitch = true;
         }
     }

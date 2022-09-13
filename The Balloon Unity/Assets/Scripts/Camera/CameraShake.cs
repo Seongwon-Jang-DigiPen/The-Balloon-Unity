@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     private Transform thisTransform = null;
-
+    static public CameraShake instance = null;
     public float shakeTime = 2.0f;
     public float shakeAmount = 3.0f;
     public float shakeSpeed = 2.0f;
@@ -13,12 +13,21 @@ public class CameraShake : MonoBehaviour
     private void Start()
     {
         thisTransform = GetComponent<Transform>();
-        DoShake();
+        instance = this;
     }
     
+    public void DoShake(float time, float amount, float speed)
+    {
+        shakeTime = time;
+        shakeAmount = amount;
+        shakeSpeed = speed;
+        DoShake();
+    }
+
+
     public void DoShake()
     {
-        if(isShake == false)
+        if (isShake == false)
         {
             StartCoroutine(Shake());
             isShake = true;
@@ -30,7 +39,6 @@ public class CameraShake : MonoBehaviour
             isShake = true;
         }
     }
-
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.I))

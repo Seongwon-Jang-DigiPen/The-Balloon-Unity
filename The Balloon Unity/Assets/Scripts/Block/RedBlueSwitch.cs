@@ -29,6 +29,7 @@ public class RedBlueSwitch : MonoBehaviour
         if (collision.CompareTag(Player.playerTag) == true)
         {
             SoundManager.instance.PlaySound("RedBlueSwitch");
+            CameraShake.instance.DoShake();
             WorldRedBlueState = (WorldRedBlueState == REDBLUESTATE.RED) ? REDBLUESTATE.BLUE : REDBLUESTATE.RED;
             spriteRenderer.sprite = (WorldRedBlueState == REDBLUESTATE.RED) ? redOnSprite : blueOnSprite;
             if (RedBlueBlock.firstCreated != null)
