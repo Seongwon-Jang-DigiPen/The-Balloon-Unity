@@ -88,22 +88,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2998571318153230586}
     m_Modifications:
-    - target: {fileID: 2951952141447171428, guid: adaaaefd3f9fdfc47b6b9133a064602b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1849292891, guid: bbde635d794792b4d993433de5cb60c2, type: 3}
     - target: {fileID: 2951952141447171432, guid: adaaaefd3f9fdfc47b6b9133a064602b, type: 3}
       propertyPath: traceLimit
       value: 
       objectReference: {fileID: 2998571319647178638}
-    - target: {fileID: 2951952141447171433, guid: adaaaefd3f9fdfc47b6b9133a064602b, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.3333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951952141447171433, guid: adaaaefd3f9fdfc47b6b9133a064602b, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.3333334
-      objectReference: {fileID: 0}
     - target: {fileID: 2951952141447171441, guid: adaaaefd3f9fdfc47b6b9133a064602b, type: 3}
       propertyPath: m_Name
       value: CloudyBody
