@@ -28,11 +28,13 @@ public class ButtonManager : MonoBehaviour
     public void Play()
     {
         SoundManager.instance.PlaySound("Button");
+        EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
     }
 
     public void Load()
     {
         SoundManager.instance.PlaySound("Button");
+        LoadingSceneController.LoadScene(SaveLoadManager.LoadData());
     }
 
     public void Setting()

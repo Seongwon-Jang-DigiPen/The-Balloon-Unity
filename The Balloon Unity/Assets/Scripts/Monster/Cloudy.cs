@@ -5,10 +5,12 @@ using UnityEngine;
 public class Cloudy : MoveBlock
 {
     public Collider2D traceLimit;
+    public Collider2D findLimit;
     private GameObject player;
     Animator animator;
     SpriteRenderer render;
-    BoxCollider2D boxCollider; 
+    BoxCollider2D boxCollider;
+    
     bool isHitted = false;
     bool isTrace = false;
     public BangMark bang;
@@ -19,7 +21,10 @@ public class Cloudy : MoveBlock
         render = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
-
+    private void Start()
+    {
+        player = GameObject.FindWithTag(Player.playerTag);
+    }
     private void Update()
     {
         render.flipX = (rigid.velocity.x > 0);
@@ -28,6 +33,7 @@ public class Cloudy : MoveBlock
     {
         if (isHitted == false)
         {
+            checkPlayer();
             if (isTrace == false)
             {
                 base.FixedUpdate();
@@ -46,12 +52,10 @@ public class Cloudy : MoveBlock
         rigid.velocity = direction * moveSpeed;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    void checkPlayer()
     {
-        if (collision.CompareTag(Player.playerTag))
+        if (findLimit.IsTouching(player.GetComponent<Collider2D>()) == true)
         {
-            player = collision.gameObject;
-
             if (traceLimit?.IsTouching(player.GetComponent<Collider2D>()) == true)
             {
                 if (isTrace == false)
@@ -66,16 +70,19 @@ public class Cloudy : MoveBlock
                 isTrace = false;
             }
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag(Player.playerTag))
+        else
         {
             isTrace = false;
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isHitted == false && collision.CompareTag("WaterBomb"))
+        {
+            StartCoroutine(Hitted());
+            Destroy(collision.gameObject);
+        }
+    }
     protected override void OnCollisionStay2D(Collision2D collision)
     {
 
@@ -85,11 +92,6 @@ public class Cloudy : MoveBlock
             {
                 StartCoroutine(Hitted());
             }
-        }
-        else if (isHitted == false && collision.gameObject.CompareTag("WaterBomb"))
-        {
-            StartCoroutine(Hitted());
-            Destroy(collision.gameObject);
         }
     }
     IEnumerator Hitted()

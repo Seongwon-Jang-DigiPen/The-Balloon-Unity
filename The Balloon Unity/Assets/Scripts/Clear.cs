@@ -14,7 +14,7 @@ public class Clear : MonoBehaviour
         if (collision.CompareTag(Player.playerTag))
         {
             EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
-
+            Destroy(this.gameObject);
         }
     }
 

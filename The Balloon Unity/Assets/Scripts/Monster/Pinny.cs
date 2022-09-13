@@ -7,6 +7,7 @@ public class Pinny : MoveBlock
     bool isTrace = false;
     bool isHitted = false;
     public Collider2D traceLimit;
+    public Collider2D findLimit;
     private GameObject player;
     Animator animator;
     BoxCollider2D boxCollider;
@@ -17,7 +18,10 @@ public class Pinny : MoveBlock
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
-
+    private void Start()
+    {
+        player = GameObject.FindWithTag(Player.playerTag);
+    }
     private void Update()
     {
         if(direction.x > 0)
@@ -34,6 +38,7 @@ public class Pinny : MoveBlock
     {
         if (isHitted == false)
         {
+            checkPlayer();
             if (isTrace == false)
             {
                 base.FixedUpdate();
@@ -44,7 +49,29 @@ public class Pinny : MoveBlock
             }
         }
     }
-
+    void checkPlayer()
+    {
+        if (findLimit.IsTouching(player.GetComponent<Collider2D>()) == true)
+        {
+            if (traceLimit?.IsTouching(player.GetComponent<Collider2D>()) == true)
+            {
+                if (isTrace == false)
+                {
+                    SoundManager.instance.PlaySound("FindPlayer");
+                    bang.StartBangMark();
+                    isTrace = true;
+                }
+            }
+            else
+            {
+                isTrace = false;
+            }
+        }
+        else
+        {
+            isTrace = false;
+        }
+    }
     void TraceTarget()
     {
         Vector3 playerPos = player.transform.position;
@@ -71,41 +98,13 @@ public class Pinny : MoveBlock
                 StartCoroutine(Hitted());
             }
         }
-        else if (isHitted == false && collision.gameObject.CompareTag("WaterBomb"))
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isHitted == false && collision.CompareTag("WaterBomb"))
         {
             StartCoroutine(Hitted());
             Destroy(collision.gameObject);
-        }
-    }
-
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag(Player.playerTag))
-        {
-            player = collision.gameObject;
-
-            if (traceLimit?.IsTouching(player.GetComponent<Collider2D>()) == true)
-            {
-                if(isTrace == false)
-                {
-                    SoundManager.instance.PlaySound("FindPlayer");
-                    bang.StartBangMark();
-                    isTrace = true;
-                }
-            }
-            else
-            {
-                isTrace = false;
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag(Player.playerTag))
-        {
-            isTrace = false;
         }
     }
 
