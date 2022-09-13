@@ -13,10 +13,10 @@ public class WindParticle : MonoBehaviour
         Vector3 size = new Vector3(0.5f, area.transform.localScale.y - 1, 0); ;
         if (area.transform.localScale.x > 4.5)
         {
-            size = new Vector3(area.transform.localScale.x - 4, area.transform.localScale.y - 1, 0);
+            size = new Vector3(area.transform.localScale.x - 4, area.transform.localScale.y - 1, -3);
         }
         Vector3 center = area.GetComponent<Renderer>().bounds.center;
-        Vector3 pos = new Vector3(center.x - (area.transform.localScale.x - size.x) / 2, center.y - 0.4f, 0);
+        Vector3 pos = new Vector3(center.x - (area.transform.localScale.x - size.x) / 2, center.y - 0.4f, -3);
         if (angle.transform.localEulerAngles.z >= 180)
         {
             pos = new Vector3(center.x + (area.transform.localScale.x - size.x) / 2, center.y - 0.4f, 0);
