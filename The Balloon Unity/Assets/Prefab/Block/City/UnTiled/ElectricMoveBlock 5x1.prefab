@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 5938148904226282146}
   - component: {fileID: 3702372774437586274}
   - component: {fileID: 596458026372914570}
+  - component: {fileID: 1394572383556524409}
   m_Layer: 6
   m_Name: ElectricMoveBlock 5x1
   m_TagString: Untagged
@@ -213,3 +214,25 @@ MonoBehaviour:
   ElectricTime: 0.5
   ActivateSprite: {fileID: -1349136314, guid: 889215cd7c8855a429614834e603a362, type: 3}
   DeactivateSprite: {fileID: 1711844426, guid: 889215cd7c8855a429614834e603a362, type: 3}
+  ActivateAnimator: {fileID: 0}
+  DeactivateAnimator: {fileID: 0}
+--- !u!95 &1394572383556524409
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6706433083948953110}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

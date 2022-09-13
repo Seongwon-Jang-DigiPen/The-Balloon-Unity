@@ -53,7 +53,7 @@ MonoBehaviour:
   MaxSpeed: 5
   acceleration: 7
   decceleration: 7
-  MaxDownSpeed: 4
+  MaxDownSpeed: 7
   MaxDownFastSpeed: 7
   jumpForce: 5
 --- !u!50 &5369178340715575527

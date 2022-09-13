@@ -6,17 +6,21 @@ public class ElectricMoveBlock : MoveBlock
 {
     private bool CollidedPlayer;
     SpriteRenderer spriteRenderer;
+    Animator animator;
     public float ElectricTime = 0.5f;
     float timer = 0;
     public Sprite ActivateSprite;
     public Sprite DeactivateSprite;
+    public RuntimeAnimatorController ActivateAnimator = null;
+    public RuntimeAnimatorController DeactivateAnimator = null;
     protected override void Awake()
     {
         base.Awake();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
+        
         CollidedPlayer = false;
         moveOffset = -1;
-
     }
 
     private void Update()
@@ -26,6 +30,7 @@ public class ElectricMoveBlock : MoveBlock
             if (spriteRenderer.sprite != ActivateSprite)
             {
                 spriteRenderer.sprite = ActivateSprite;
+                animator.runtimeAnimatorController = ActivateAnimator;
                 moveOffset = 1;
                 if(index != posList.Count - 1) { index += 1; }
             }
@@ -42,6 +47,7 @@ public class ElectricMoveBlock : MoveBlock
             if (spriteRenderer.sprite != DeactivateSprite)
             {
                 spriteRenderer.sprite = DeactivateSprite;
+                animator.runtimeAnimatorController = DeactivateAnimator;
             }
             moveOffset = -1;
         }
@@ -50,8 +56,6 @@ public class ElectricMoveBlock : MoveBlock
     protected override void FixedUpdate()
     {
         BlockMove();
-        
-    
     }
 
     protected override void OnCollisionStay2D(Collision2D collision)
@@ -63,6 +67,10 @@ public class ElectricMoveBlock : MoveBlock
             PlayerControl temp = collision.collider.GetComponent<PlayerControl>();
             if(collision.collider.GetComponent<Player>().balloonState.state == BALLOONSTATE.ELECTRIC)
             {
+                if(CollidedPlayer == false)
+                {
+                    SoundManager.instance.PlaySound("ElectricInteract");
+                }
                 CollidedPlayer = true;
                 timer = 0;
             }

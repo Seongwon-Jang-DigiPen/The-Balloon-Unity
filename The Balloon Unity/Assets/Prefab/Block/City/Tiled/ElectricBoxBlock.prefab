@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2714010182647668581}
   - component: {fileID: 2714010182647668578}
   - component: {fileID: 2714010182647668580}
+  - component: {fileID: 3553511032208625378}
   m_Layer: 6
   m_Name: ElectricBoxBlock
   m_TagString: Box
@@ -121,7 +122,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0015122145, y: 0.044433773}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.96673095, y: 0.91113245}
   m_EdgeRadius: 0
 --- !u!114 &2714010182647668580
 MonoBehaviour:
@@ -148,4 +149,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activateBlock: {fileID: 1777224368, guid: 99796e1a1aa8b9d49bdb15f361897ddf, type: 3}
   deactivateBlock: {fileID: 766469876, guid: 99796e1a1aa8b9d49bdb15f361897ddf, type: 3}
-  electricTime: 0.5
+  electricActivate: 0
+--- !u!58 &3553511032208625378
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714010182647668577}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: f0bf0345a1a8c424fbe2af3299b55152, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.003024459, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4788288

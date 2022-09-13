@@ -1468,9 +1468,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eeb7b77b6e9860b4e801db1366c0e9dd, type: 3}
   - name: Credit
     clip: {fileID: 8300000, guid: be329dea6ac127447bb1f193aa438163, type: 3}
-  - name: Chpter1BGM
+  - name: Chapter1BGM
     clip: {fileID: 8300000, guid: aaf442d97b0fe21428629c600547b6e4, type: 3}
-  - name: Chpter2BGM
+  - name: Chapter2BGM
     clip: {fileID: 8300000, guid: e72c5b5ef4dfe86418d92edf77381075, type: 3}
   - name: CutScene
     clip: {fileID: 8300000, guid: e16bd3871fc38e04c9fb782f0bb5b4e8, type: 3}
@@ -1480,7 +1480,7 @@ MonoBehaviour:
   - name: Dash
     clip: {fileID: 8300000, guid: 46000aa49554bb04183030f4dc6e4123, type: 3}
   - name: DashHit
-    clip: {fileID: 8300000, guid: abab4a95d35648347b0bf4b93a0cfd4a, type: 3}
+    clip: {fileID: 8300000, guid: b7c41fdd4f0549646993fa2927111b65, type: 3}
   - name: FlatToNormal
     clip: {fileID: 8300000, guid: 55ea357dafff91a44b6c8093cd3061ff, type: 3}
   - name: HitMonster
@@ -1490,21 +1490,35 @@ MonoBehaviour:
   - name: NormalToElectric
     clip: {fileID: 8300000, guid: 2d17a272871593b479ea14eace1a2d43, type: 3}
   - name: NormalToWater
-    clip: {fileID: 8300000, guid: 44c107900d8835c48a0ced54aff16f05, type: 3}
+    clip: {fileID: 8300000, guid: 8626c738613bafb488046f9860ded035, type: 3}
   - name: GetItem
     clip: {fileID: 8300000, guid: e0456bdf59dc2d24eb375d032aae23b7, type: 3}
   - name: Splash
     clip: {fileID: 8300000, guid: 6f15fe516bdefc64cb8f32d0c9228c0e, type: 3}
+  - name: Booster
+    clip: {fileID: 8300000, guid: 52afc0365cf2551439f8b57c3b9e1c33, type: 3}
+  - name: RedBlueSwitch
+    clip: {fileID: 8300000, guid: d6f73db740fe89245903d167ea63141d, type: 3}
+  - name: Switch
+    clip: {fileID: 8300000, guid: d6f73db740fe89245903d167ea63141d, type: 3}
+  - name: ElectricInteract
+    clip: {fileID: 8300000, guid: c7a497c4dbe56984490848d0e2ca0aea, type: 3}
+  - name: FindPlayer
+    clip: {fileID: 8300000, guid: 10abd6b919b07d744a4ef85a942bb91e, type: 3}
+  - name: PressedSwitch
+    clip: {fileID: 8300000, guid: d6f73db740fe89245903d167ea63141d, type: 3}
+  - name: Sprinkle
+    clip: {fileID: 8300000, guid: d3c70a329a7b14141a355b9919d8e8f2, type: 3}
   asBGM: {fileID: 8657097305430111659}
   asSFX:
   - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
-  - {fileID: 6997327894571420010}
+  - {fileID: 5385841161386247239}
+  - {fileID: 5385841161788597127}
+  - {fileID: 5385841160793260123}
+  - {fileID: 5385841161921449327}
+  - {fileID: 5385841162284681356}
+  - {fileID: 5385841161637629990}
+  - {fileID: 5385841161456400446}
+  - {fileID: 5385841160655753421}
+  - {fileID: 5385841162482126733}
   nowPlay: []

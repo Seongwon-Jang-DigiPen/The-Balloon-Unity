@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        ChangeColliderSize();
     }
     public void ChangeState(BALLOONSTATE state)
     {
@@ -95,14 +94,18 @@ public class Player : MonoBehaviour
         MaxDownSpeed = balloonState.MaxDownSpeed;
 
         this.gameObject.layer = balloonState.layer;
- 
+        StartCoroutine(IChangeColliderSize());
+        
     }
 
-    void ChangeColliderSize()
+    IEnumerator IChangeColliderSize()
+    {
+        yield return null;
+        ChangeColliderSize();
+    }
+    public void ChangeColliderSize()
     {
         boxCollider.offset = new Vector3(0, -0.1f, 0);
         boxCollider.size = spriteRenderer.sprite.bounds.size - new Vector3(0.2f,0.23f,0);
-        //boxCollider.bounds = renderer.sprite.bounds;
-       // boxCollider.bounds = renderer.sprite.bounds;
     }
 }

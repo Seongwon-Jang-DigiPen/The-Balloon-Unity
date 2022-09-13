@@ -8,6 +8,7 @@ public partial class PlayerControl
     public InteractCheck checker;
     bool isInteract = false;
     bool isCatched = false;
+    private Vector3 boxDistance;
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -26,12 +27,22 @@ public partial class PlayerControl
                     }
                 }
             }
-            if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
+            else if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
             {
-                if(checker.interactedObj != null)
+                if (checker.interactedObj != null)
                 {
+                    SoundManager.instance.PlaySound("ElectricInteract");
+                    boxDistance = checker.interactedObj.transform.position - player.transform.position;
                     isCatched = true;
                     flipLock = true;
+                }
+            }
+            else if (player.balloonState.state == BALLOONSTATE.WATER)
+            {
+                if (isHitted == false && isInteract == false && isDoAction == false && isCatched == false)
+                {
+                    SprinkleNum = 1;
+                    Sprinkle();
                 }
             }
         }
@@ -40,8 +51,11 @@ public partial class PlayerControl
         {
             isCatched = false;
             flipLock = false;
+            if (checker.interactedObj != null)
+            {
+                checker.interactedObj?.GetComponent<ElectricBox>()?.isCatched(false);
+            }
         }
-
     }
 
     void GetWater() 
@@ -82,15 +96,29 @@ public partial class PlayerControl
     
     void CatchBox()
     {
-        if(isCatched == true)
+        if(player.balloonState.state == BALLOONSTATE.ELECTRIC)
         {
-            if (isHitted == true || isBoost == true || isTouchingGround == false)
+            animator.SetBool("IsCatched", isCatched);
+            animator.SetBool("LookRight", transform.localScale.x > 0);
+            animator.SetFloat("Horizontal", inputValue.x);
+        }
+        if (isCatched == true)
+        {
+            if (isHitted == true || isBoost == true || isTouchingGround == false || checker.interactedObj == null)
             {
                 isCatched = false;
                 flipLock = false;
+                checker.interactedObj?.GetComponent<ElectricBox>()?.isCatched(false);
                 return;
             }
-            checker.interactedObj?.transform.Translate(playerRb.velocity * Time.fixedDeltaTime);
+            if (checker.interactedObj != null)
+            {
+                if (checker.interactedObj.GetComponent<ElectricBox>() != null)
+                {
+                    checker.interactedObj.GetComponent<ElectricBox>()?.isCatched(true);
+                    checker.interactedObj.transform.position = boxDistance + player.transform.position;
+                }
+            }
         }
     }
     void GetElectric()

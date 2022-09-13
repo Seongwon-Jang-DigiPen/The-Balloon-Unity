@@ -15,6 +15,7 @@ public class Booster : MonoBehaviour
             PlayerControl pc = collision.GetComponent<PlayerControl>();
             pc.boostAngle = angle.normalized;
             pc.boostPower = boostPower;
+            SoundManager.instance.PlaySound("Booster");
             pc.Boost();
         }
     }

@@ -37,10 +37,12 @@ public class SoundManager : MonoBehaviour
     float bgmvolume = 1;
     float sfxvolume = 1;
 
-    // Start is called before the first frame update
+ 
     void Start()
-    {
+    { 
         nowPlay = new string[asSFX.Length];
+        BGMvolume(5);
+        SFXvolume(5);
     }
 
     public void PlaySound(string name)

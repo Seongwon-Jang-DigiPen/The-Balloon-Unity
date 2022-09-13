@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class WaterBomb : MonoBehaviour
 {
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public float destroyTime = 3.0f;
+    private void Start()
     {
-        if(LayerMask.LayerToName(collision.gameObject.layer) == "Platform")
-        {
-            Destroy(this.gameObject);
-        }
+        StartCoroutine(IDestroyTime());
     }
+
+    IEnumerator IDestroyTime()
+    {
+        yield return YieldInstructionCache.WaitForSeconds(destroyTime);
+        Destroy(this.gameObject);
+    }    
 }
