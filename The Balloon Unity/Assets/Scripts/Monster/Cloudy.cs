@@ -66,11 +66,6 @@ public class Cloudy : MoveBlock
                 isTrace = false;
             }
         }
-        else if (isHitted == false && collision.CompareTag("WaterBomb"))
-        {
-            StartCoroutine(Hitted());
-            Destroy(collision.gameObject);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -90,6 +85,11 @@ public class Cloudy : MoveBlock
             {
                 StartCoroutine(Hitted());
             }
+        }
+        else if (isHitted == false && collision.gameObject.CompareTag("WaterBomb"))
+        {
+            StartCoroutine(Hitted());
+            Destroy(collision.gameObject);
         }
     }
     IEnumerator Hitted()
