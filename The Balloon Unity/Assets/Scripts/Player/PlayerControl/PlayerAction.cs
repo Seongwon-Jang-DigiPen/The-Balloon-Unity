@@ -38,7 +38,7 @@ public partial class PlayerControl
 
     void GetAir()
     {
-        if (isTouchingGround == true)
+        if (isTouchingGround == true && isInsideWater == false)
         {
             StartCoroutine(IGetAir());
         }
@@ -121,16 +121,19 @@ public partial class PlayerControl
         animator.SetTrigger("Sprinkle");
         animator.SetInteger("RemainSprinkle", SprinkleNum);
         EventManager.Instance.PostNotification(EVENT_TYPE.Player_Sprinkle, this);
-        GameObject bomb = Instantiate(waterBomb,transform.position,waterBomb.transform.rotation);
-        bomb.transform.localScale = transform.localScale;
-        bomb.GetComponent<Rigidbody2D>().velocity = 
-            new Vector2(transform.localScale.x * SprinklePower, 0);
+        bool isShoot = false;       
         while (true)
         {
             if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Sprinkle")|| animator.GetCurrentAnimatorStateInfo(0).IsName("LastSprinkle")) &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 break;
+            }
+            if (isShoot == false && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && (animator.GetCurrentAnimatorStateInfo(0).IsName("Sprinkle") || animator.GetCurrentAnimatorStateInfo(0).IsName("LastSprinkle")))
+            {
+                SoundManager.instance.PlaySound("Sprinkle");
+                GenerateWaterBomb();
+                isShoot = true;
             }
             if (isHitted == true)
             {
@@ -152,5 +155,12 @@ public partial class PlayerControl
             StartCoroutine(IInvincible());
         }
     isDoAction = false;
+    }
+    void GenerateWaterBomb()
+    {
+        GameObject bomb = Instantiate(waterBomb, transform.position, waterBomb.transform.rotation);
+        bomb.transform.localScale = transform.localScale;
+        bomb.GetComponent<Rigidbody2D>().velocity =
+            new Vector2(transform.localScale.x * SprinklePower, 0);
     }
 }

@@ -160,7 +160,7 @@ public partial class PlayerControl : MonoBehaviour
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x,  -player.MaxDownSpeed);
         }
-        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < -0.8)
+        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < -0.8 && isInsideWater == false)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, -player.MaxDownFastSpeed);
         }

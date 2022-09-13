@@ -27,13 +27,22 @@ public partial class PlayerControl
                     }
                 }
             }
-            if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
+            else if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
             {
                 if (checker.interactedObj != null)
                 {
+                    SoundManager.instance.PlaySound("ElectricInteract");
                     boxDistance = checker.interactedObj.transform.position - player.transform.position;
                     isCatched = true;
                     flipLock = true;
+                }
+            }
+            else if (player.balloonState.state == BALLOONSTATE.WATER)
+            {
+                if (isHitted == false && isInteract == false && isDoAction == false && isCatched == false)
+                {
+                    SprinkleNum = 1;
+                    Sprinkle();
                 }
             }
         }

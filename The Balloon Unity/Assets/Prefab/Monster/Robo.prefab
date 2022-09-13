@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7168287544439681225}
   - component: {fileID: 7168287544439681226}
   - component: {fileID: 7168287544439681224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Robo
   m_TagString: Box
   m_Icon: {fileID: 0}

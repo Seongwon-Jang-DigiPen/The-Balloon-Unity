@@ -56,6 +56,7 @@ public class Cloudy : MoveBlock
             {
                 if (isTrace == false)
                 {
+                    SoundManager.instance.PlaySound("FindPlayer");
                     bang.StartBangMark();
                     isTrace = true;
                 }

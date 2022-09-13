@@ -19,7 +19,9 @@ public class Switch : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             spriteRenderer.sprite = activateSprite;
-           turnSwitch = true;
+            if(turnSwitch == false)
+            SoundManager.instance.PlaySound("Switch");
+            turnSwitch = true;
         }
     }
 }

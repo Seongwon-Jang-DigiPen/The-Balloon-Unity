@@ -23,8 +23,9 @@ public class ElectricBox : MonoBehaviour
         spriteRenderer.sprite = (catched) ? activateBlock : deactivateBlock;
         if (catched == false)
         {
-            rigid.drag = 10000;
-            rigid.mass = 100;
+          
+            rigid.drag = 1;
+            rigid.mass = 10000;
         }
         else
         {

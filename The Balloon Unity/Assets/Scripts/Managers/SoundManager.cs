@@ -41,6 +41,8 @@ public class SoundManager : MonoBehaviour
     void Start()
     { 
         nowPlay = new string[asSFX.Length];
+        BGMvolume(5);
+        SFXvolume(5);
     }
 
     public void PlaySound(string name)

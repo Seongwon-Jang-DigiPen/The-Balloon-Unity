@@ -63,6 +63,10 @@ public class ElectricMoveBlock : MoveBlock
             PlayerControl temp = collision.collider.GetComponent<PlayerControl>();
             if(collision.collider.GetComponent<Player>().balloonState.state == BALLOONSTATE.ELECTRIC)
             {
+                if(CollidedPlayer == false)
+                {
+                    SoundManager.instance.PlaySound("ElectricInteract");
+                }
                 CollidedPlayer = true;
                 timer = 0;
             }
