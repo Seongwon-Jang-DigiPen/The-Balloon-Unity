@@ -7,7 +7,7 @@ public partial class PlayerControl
     bool isInsideWater = false;
     bool isNearFurryBlock = false;
     bool isOnFurryBlock = false;
-    
+    bool isInsideWind = false;
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Monster"))
@@ -55,6 +55,10 @@ public partial class PlayerControl
                 player.ChangeState(BALLOONSTATE.NORMAL);
             }
         }
+        else if(collision.CompareTag("Wind"))
+        {
+            isInsideWind = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -62,6 +66,10 @@ public partial class PlayerControl
         if (collision.CompareTag("Water"))
         {
             isInsideWater = false;
+        }
+        else if (collision.CompareTag("Wind"))
+        {
+            isInsideWind = false;
         }
     }
 }
