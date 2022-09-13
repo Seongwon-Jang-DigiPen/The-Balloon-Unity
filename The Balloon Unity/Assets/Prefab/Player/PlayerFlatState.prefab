@@ -52,7 +52,7 @@ MonoBehaviour:
   layer: 10
   MaxSpeed: 5
   acceleration: 7
-  decceleration: 7
+  decceleration: 15
   MaxDownSpeed: 7
   MaxDownFastSpeed: 7
   jumpForce: 5
