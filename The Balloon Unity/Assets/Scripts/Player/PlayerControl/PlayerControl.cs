@@ -178,10 +178,10 @@ public partial class PlayerControl : MonoBehaviour
     void Flip()
     {if (flipLock == false)
         {
-            if ((playerRb.velocity.x > 0.1f && 0 > gameObject.transform.localScale.x)
-                || (playerRb.velocity.x < -0.1f && 0 < gameObject.transform.localScale.x))
+            if ((inputValue.x> 0.1f && 0 > gameObject.transform.localScale.x)
+                || (inputValue.x < -0.1f && 0 < gameObject.transform.localScale.x))
             {
-                int r = (playerRb.velocity.x > 0) ? 1 : -1;
+                int r = (inputValue.x > 0) ? 1 : -1;
                 gameObject.transform.localScale = new Vector3(r, 1, 1);
             }
         }
