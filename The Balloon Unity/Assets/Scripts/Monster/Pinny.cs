@@ -94,6 +94,11 @@ public class Pinny : MoveBlock
                 isTrace = false;
             }
         }
+        else if (isHitted == false && collision.CompareTag("WaterBomb"))
+        {
+            StartCoroutine(Hitted());
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
