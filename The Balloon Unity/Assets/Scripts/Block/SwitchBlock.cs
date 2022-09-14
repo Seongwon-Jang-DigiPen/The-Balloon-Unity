@@ -15,6 +15,7 @@ public class SwitchBlock : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+        spriteRenderer.sprite = deactivateSprite;
         col.enabled = inverseCollision;
     }
 
