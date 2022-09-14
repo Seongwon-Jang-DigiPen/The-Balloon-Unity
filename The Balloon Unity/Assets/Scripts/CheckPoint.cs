@@ -14,6 +14,7 @@ public class CheckPoint : MonoBehaviour
         if(collision.CompareTag(Player.playerTag) && canCheckPoint)
         {
             Debug.Log("StartSave");
+            ParticleManager.instance.PlayParticle(this.gameObject, ParticleManager.ParticleType.Jump);
             Vector3 pos = GameObject.Find("Player").transform.position;
             SaveData d;
             d.SceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
