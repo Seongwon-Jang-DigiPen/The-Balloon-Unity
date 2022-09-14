@@ -65,7 +65,7 @@ public partial class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         CheckGround();
-        if (isDoAction == false && isInteract == false && isHitted == false && canMove == true)
+        if (isDoAction == false && isInteract == false && isHitted == false)
         {
             Movement();
             Jump();
@@ -192,28 +192,42 @@ public partial class PlayerControl : MonoBehaviour
             }
         }
     }
-    
+
     //Key Event Functions
     public void OnMovement(InputAction.CallbackContext context)
     {
-        inputValue = context.ReadValue<Vector2>();
+        if (canMove == false)
+        {
+            inputValue = Vector2.zero;
+        }
+        else
+        {
+            inputValue = context.ReadValue<Vector2>();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(context.started == true)
-        {
-            isJumpKeyPressed = true;
-        }
-        if(context.canceled == true)
+        if (canMove == false)
         {
             isJumpKeyPressed = false;
+        }
+        else
+        {
+            if (context.started == true)
+            {
+                isJumpKeyPressed = true;
+            }
+            if (context.canceled == true)
+            {
+                isJumpKeyPressed = false;
+            }
         }
     }
 
     public void OnAction(InputAction.CallbackContext context)
     {
-        if (context.started && isDoAction == false && isHitted == false)
+        if (context.started && isDoAction == false && isHitted == false && canMove == true)
         {
             DoAction();
         }
