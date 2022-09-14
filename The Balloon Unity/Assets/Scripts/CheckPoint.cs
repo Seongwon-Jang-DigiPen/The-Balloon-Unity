@@ -18,6 +18,7 @@ public class CheckPoint : MonoBehaviour
             SoundManager.instance.PlaySound("GetItem");
             Vector3 pos = GameObject.Find("Player").transform.position;
             SaveData d;
+            d.isSave = true;
             d.SceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             d.xPos = pos.x;
             d.yPos = pos.y;

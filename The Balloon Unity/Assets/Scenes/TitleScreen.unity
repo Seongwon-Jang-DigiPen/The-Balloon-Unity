@@ -1588,23 +1588,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2.5
-  m_Text: 'President: Claude Comair
+  m_Text: 'Producer: Seongwon Jang
 
-    Instructor: KiKyeong Lim, David Ly
+    Programmer: Sangbeom Kim
 
-    Teaching
-    Assistant: Jina Hyun, Haewon Shon
-
-    Producer: Seongwon Jang
-
-    Technical
-    Director: Hyunjin Kim
-
-    Game Designer: Sehun Kim
-
-    Test Manager: Sangbeom
+    Artist: Sehun
     Kim
-
 
 
     Special Thanks!!!
@@ -1676,10 +1665,13 @@ MonoBehaviour:
 
     www.gamedevmarket.net/asset/casual-soundfx-pack/
 
+    SFX
+    Creater: Davit Masia
+
+    https://kronbits.itch.io/freesfx
 
 
-    All
-    content 2021 DigiPen (USA) Corporation, all rights reserved.'
+'
 --- !u!222 &1089836529
 CanvasRenderer:
   m_ObjectHideFlags: 0
