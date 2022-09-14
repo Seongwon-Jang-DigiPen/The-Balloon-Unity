@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] BGMrect;
     public GameObject[] SFXrect;
 
-    int BGMvol = 2;
+    int BGMvol = 5;
     int SFXvol = 5;
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         creditPanel.SetActive(false);
         Debug.Log("Mainmenu");
         BGMrect = new GameObject[10];
-        Vector3 BGMpos = new Vector3(-195, 160, 0);
+        Vector3 BGMpos = new Vector3(-195, 180, 0);
         for (int i = 0; i < 10; ++i)
         {
             GameObject bgm = new GameObject();
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             BGMrect[i] = bgm;
         }
         SFXrect = new GameObject[10];
-        Vector3 SFXpos = new Vector3(-195, -80, 0);
+        Vector3 SFXpos = new Vector3(-195, 0, 0);
         for (int i = 0; i < 10; ++i)
         {
             GameObject sfx = new GameObject();
