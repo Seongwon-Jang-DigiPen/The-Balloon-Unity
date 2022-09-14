@@ -19,7 +19,7 @@ public partial class PlayerControl
     public bool isDash { get { return isDoAction == true && player.balloonState.state == BALLOONSTATE.NORMAL; } }
     void DoAction() 
     {
-        if (isHitted == false && isInteract == false && isDoAction == false && isCatched == false)
+        if (isHitted == false && isInteract == false && isDoAction == false && isCatched == false && canMove == true)
         {
             switch (player.balloonState.state)
             {

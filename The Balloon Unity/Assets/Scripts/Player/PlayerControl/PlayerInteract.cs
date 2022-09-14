@@ -11,7 +11,7 @@ public partial class PlayerControl
     private Vector3 boxDistance;
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && canMove == true)
         {
             if (player.balloonState.state == BALLOONSTATE.NORMAL)
             {
