@@ -7,6 +7,10 @@ public class ElectricBox : MonoBehaviour
     public Sprite activateBlock;
     public Sprite deactivateBlock;
     public bool electricActivate;
+    public float activateMass = 0.1f;
+    public float activateDrag = 7;
+    public float deactivateMass = 10000;
+    public float deactivateDrag = 1;
 
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigid;
@@ -24,13 +28,13 @@ public class ElectricBox : MonoBehaviour
         if (catched == false)
         {
           
-            rigid.drag = 1;
-            rigid.mass = 10000;
+            rigid.drag = deactivateDrag;
+            rigid.mass = deactivateMass;
         }
         else
         {
-            rigid.drag = 7;
-            rigid.mass = 0.1f;
+            rigid.drag = activateDrag;
+            rigid.mass = activateMass;
         }
     }
 }
