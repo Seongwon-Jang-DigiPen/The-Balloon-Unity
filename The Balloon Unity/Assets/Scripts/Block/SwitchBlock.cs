@@ -10,11 +10,12 @@ public class SwitchBlock : MonoBehaviour
     Collider2D col;
     public Sprite activateSprite = null;
     public Sprite deactivateSprite = null;
+    public bool inverseCollision = false;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-        col.enabled = false;
+        col.enabled = inverseCollision;
     }
 
     private void Update()
@@ -22,7 +23,7 @@ public class SwitchBlock : MonoBehaviour
         if(switchObj?.turnSwitch == true && spriteRenderer.sprite != activateSprite)
         { 
             spriteRenderer.sprite = activateSprite;
-            col.enabled = true;
+            col.enabled = !inverseCollision;
         }
     }
 
