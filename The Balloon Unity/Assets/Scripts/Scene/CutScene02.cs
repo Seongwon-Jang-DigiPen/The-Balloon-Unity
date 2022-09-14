@@ -56,6 +56,7 @@ public class CutScene02 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
                 Debug.Log("Cutscene end");
             }
         }
