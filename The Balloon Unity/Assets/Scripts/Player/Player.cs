@@ -33,14 +33,14 @@ public class Player : MonoBehaviour
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
     private SpriteRenderer spriteRenderer = null;
-    private BoxCollider2D boxCollider = null;
+    private CircleCollider2D Collider = null;
 
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>(); 
+        Collider = GetComponent<CircleCollider2D>(); 
     }
 
     private void Start()
@@ -105,7 +105,15 @@ public class Player : MonoBehaviour
     }
     public void ChangeColliderSize()
     {
-        boxCollider.offset = new Vector3(0, -0.1f, 0);
-        boxCollider.size = spriteRenderer.sprite.bounds.size - new Vector3(0.2f,0.23f,0);
+        if(balloonState.state == BALLOONSTATE.Flat)
+        {
+            Collider.offset = new Vector3(0, -0.03f, 0);
+        }
+        else
+        {
+            Collider.offset = new Vector3(0, -0.1f, 0);
+        }
+
+        Collider.radius = spriteRenderer.sprite.bounds.size.x / 2 - spriteRenderer.sprite.bounds.size.x / 10;
     }
 }

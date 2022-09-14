@@ -2748,6 +2748,14 @@ PrefabInstance:
       propertyPath: posList.Array.data[1].y
       value: 29.45
       objectReference: {fileID: 0}
+    - target: {fileID: 3506412587566464350, guid: 6be3ac25ff04d55488c86035065d0ca5, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506412587566464350, guid: 6be3ac25ff04d55488c86035065d0ca5, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3506412588418771368, guid: 6be3ac25ff04d55488c86035065d0ca5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.45
@@ -3709,11 +3717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1828191739, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0999997
+      value: 0.1399997
       objectReference: {fileID: 0}
     - target: {fileID: 1828191739, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.4
+      value: 32.06
       objectReference: {fileID: 0}
     - target: {fileID: 1828191739, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3857,11 +3865,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0999997
+      value: 0.1399997
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.4
+      value: 32.06
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4301,7 +4309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1532919880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31969,11 +31977,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6322240160975169378, guid: 702f2dc7d8d4bf24abddd1278facd708, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 6322240160975169378, guid: 702f2dc7d8d4bf24abddd1278facd708, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.4
+      value: 32.06
       objectReference: {fileID: 0}
     - target: {fileID: 6322240160975169378, guid: 702f2dc7d8d4bf24abddd1278facd708, type: 3}
       propertyPath: m_LocalPosition.z

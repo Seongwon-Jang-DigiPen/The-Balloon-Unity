@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CutScene/CutSceneCh1.unity
     guid: 46f294dfb52352147a95e4dc83f3fc04
+  - enabled: 1
+    path: Assets/Scenes/Level/Sky/CloudMap.unity
+    guid: 92caa1f8da450ea42a475c88a3129b1f
   m_configObjects: {}

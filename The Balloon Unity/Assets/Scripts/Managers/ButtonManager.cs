@@ -34,7 +34,11 @@ public class ButtonManager : MonoBehaviour
     public void Load()
     {
         SoundManager.instance.PlaySound("Button");
-        LoadingSceneController.LoadScene(SaveLoadManager.LoadData());
+        SaveData data = SaveLoadManager.LoadData();
+        if (data.isSave == true)
+        {
+            LoadingSceneController.LoadScene(data);
+        }
     }
 
     public void Setting()

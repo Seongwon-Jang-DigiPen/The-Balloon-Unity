@@ -13,6 +13,7 @@ public class SceneChangeManager : MonoBehaviour, IListener
     [SerializeField]
     SceneAnimation endAni;
 
+    public string startSound = "";
     public string NextSceneName = "";
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,10 @@ public class SceneChangeManager : MonoBehaviour, IListener
         EventManager.Instance.AddListener(EVENT_TYPE.Player_Clear, this);
         
         EventManager.Instance.PostNotification(EVENT_TYPE.Player_Start, this);
+        if(startSound != "")
+        {
+            SoundManager.instance.PlayBGM(startSound, true);
+        }
     }
 
     public void ChangeNextScene()
