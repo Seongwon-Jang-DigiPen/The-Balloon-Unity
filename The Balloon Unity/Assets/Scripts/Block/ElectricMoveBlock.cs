@@ -97,6 +97,7 @@ public class ElectricMoveBlock : MoveBlock
                     index += moveOffset;
                     if (index == posList.Count)
                     {
+                        index = posList.Count - 1;
                         StartCoroutine(IStop());
                     }
                     if(index < 0)
