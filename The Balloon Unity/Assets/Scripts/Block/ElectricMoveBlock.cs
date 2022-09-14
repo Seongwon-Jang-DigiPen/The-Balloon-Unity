@@ -32,14 +32,14 @@ public class ElectricMoveBlock : MoveBlock
                 spriteRenderer.sprite = ActivateSprite;
                 animator.runtimeAnimatorController = ActivateAnimator;
                 moveOffset = 1;
-                if(index != posList.Count - 1) { index += 1; }
+                if(index < posList.Count - 1) { index += 1; }
             }
             timer += Time.deltaTime;
             if (timer >= ElectricTime)
             {
                 CollidedPlayer = false;
                 moveOffset = -1;
-                if(index != 0) { index -= 1; }
+                if(index > 0) { index -= 1; }
             }
         }
         else
@@ -81,7 +81,7 @@ public class ElectricMoveBlock : MoveBlock
     {
         if (isStop == false)
         {
-            if (posList.Count > index)
+            if (posList.Count > index && index >= 0)
             {
                 if (posList[index] != null)
                 {
