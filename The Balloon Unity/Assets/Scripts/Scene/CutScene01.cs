@@ -26,6 +26,11 @@ public class CutScene01 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
+            Debug.Log("Cutscene end");
+        }
         if (Castlecut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Castlecut.GetComponent<SpriteRenderer>().isVisible)
         {
             if (!CastlecutLoop.GetComponent<SpriteRenderer>().isVisible)
