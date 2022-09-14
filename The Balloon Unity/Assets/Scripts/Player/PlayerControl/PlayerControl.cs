@@ -166,7 +166,7 @@ public partial class PlayerControl : MonoBehaviour
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x,  -player.MaxDownSpeed);
         }
-        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < -0.8 && isInsideWind == false)
+        if(isTouchingGround == false && isJumpKeyPressed == false && inputValue.y < -0.8 && isInsideWind == false && isBoost == false)
         {
             playerRb.velocity = new Vector2(playerRb.velocity.x, -player.MaxDownFastSpeed);
         }

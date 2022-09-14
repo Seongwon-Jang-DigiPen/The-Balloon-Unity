@@ -15,6 +15,7 @@ public class CheckPoint : MonoBehaviour
         {
             Debug.Log("StartSave");
             ParticleManager.instance.PlayParticle(this.gameObject, ParticleManager.ParticleType.Jump);
+            SoundManager.instance.PlaySound("GetItem");
             Vector3 pos = GameObject.Find("Player").transform.position;
             SaveData d;
             d.SceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;

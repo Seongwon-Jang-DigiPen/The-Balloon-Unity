@@ -55,7 +55,7 @@ public class SceneChangeManager : MonoBehaviour, IListener
 
         }
 
-        LoadingSceneController.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        LoadingSceneController.LoadScene(SaveLoadManager.LoadData());
     }
 
     public void OnEvent(EVENT_TYPE event_Type, Component sender, object Param = null)

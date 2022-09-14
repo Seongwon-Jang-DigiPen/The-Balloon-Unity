@@ -32,7 +32,7 @@ public class LoadingSceneController : MonoBehaviour
     private void Start()
     {
         Background.sprite = spriteList[Random.Range(0, spriteList.Count)];
-        
+        SoundManager.instance.asBGM.Stop();
         StartCoroutine(LoadSceneProcess());
     }
 
