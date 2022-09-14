@@ -68,12 +68,18 @@ public class PauseManager : MonoBehaviour
     public void LastSave()
     {
         SoundManager.instance.PlaySound("Button");
+        SaveData data = SaveLoadManager.LoadData();
+        if (data.isSave == true)
+        {
+            LoadingSceneController.LoadScene(data);
+        }
         Debug.Log("lastsave");
     }
 
     public void Mainmenu()
     {
         SoundManager.instance.PlaySound("Button");
+        LoadingSceneController.LoadScene("TitleScreen");
         Debug.Log("mainmenu");
     }
 }

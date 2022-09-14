@@ -27,7 +27,7 @@ public partial class PlayerControl
                     }
                 }
             }
-            else if (player.balloonState.state == BALLOONSTATE.ELECTRIC)
+            else if (player.balloonState.state == BALLOONSTATE.ELECTRIC && canMove == true)
             {
                 if (checker.interactedObj != null)
                 {
