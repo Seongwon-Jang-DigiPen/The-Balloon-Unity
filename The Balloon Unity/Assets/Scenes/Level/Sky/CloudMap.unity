@@ -360,6 +360,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &67756337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -687,6 +688,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &150102151
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1280,6 +1282,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &345138782
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1892,6 +1895,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &522024218
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2041,6 +2045,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &535054190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2190,6 +2195,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &578795139
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4063,6 +4069,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &987883658
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4465,6 +4472,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &1061649730
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7464,11 +7472,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1828191739, guid: 6f5c24bd0f8897647b3330826d560251, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.899998
+      value: 0.6399994
       objectReference: {fileID: 0}
     - target: {fileID: 1828191739, guid: 6f5c24bd0f8897647b3330826d560251, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66.91
+      value: 0.71000046
       objectReference: {fileID: 0}
     - target: {fileID: 1828191739, guid: 6f5c24bd0f8897647b3330826d560251, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7612,11 +7620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 6f5c24bd0f8897647b3330826d560251, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.899998
+      value: 0.6399994
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 6f5c24bd0f8897647b3330826d560251, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66.91
+      value: 0.71000046
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 6f5c24bd0f8897647b3330826d560251, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7690,6 +7698,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &1423375925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8863,11 +8872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6322240160975169378, guid: 1349e298d78963d498bec4dd98f495f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.9
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 6322240160975169378, guid: 1349e298d78963d498bec4dd98f495f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 66.91
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 6322240160975169378, guid: 1349e298d78963d498bec4dd98f495f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9019,6 +9028,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &1624443926
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9168,6 +9178,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &1640400736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17641,7 +17652,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -40594,8 +40605,8 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 1786435950, guid: 889215cd7c8855a429614834e603a362, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 4
     m_Data: {fileID: 589089382, guid: 06604a9e411b908488a9e64375bb53c7, type: 3}
   - m_RefCount: 5
@@ -40612,8 +40623,8 @@ Tilemap:
     m_Data: {fileID: -262932480, guid: 06604a9e411b908488a9e64375bb53c7, type: 3}
   - m_RefCount: 14
     m_Data: {fileID: -371738791, guid: 06604a9e411b908488a9e64375bb53c7, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1786435950, guid: 889215cd7c8855a429614834e603a362, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 479873490, guid: 06604a9e411b908488a9e64375bb53c7, type: 3}
   - m_RefCount: 85
@@ -40872,6 +40883,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &1877092296
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41363,6 +41375,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &2010526208
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41512,6 +41525,7 @@ MonoBehaviour:
   switchObj: {fileID: 131539007}
   activateSprite: {fileID: 21300000, guid: 65d49b067e1e1ec429c2a64c70607e1f, type: 2}
   deactivateSprite: {fileID: 21300000, guid: 8b489b32607dca745bf9a8f9766f3567, type: 2}
+  inverseCollision: 0
 --- !u!61 &2035874550
 BoxCollider2D:
   m_ObjectHideFlags: 0
