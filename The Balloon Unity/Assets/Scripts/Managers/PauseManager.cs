@@ -11,6 +11,7 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseCanvas;
     public AudioSource audiosource;
     public AudioSource audiosource2;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class PauseManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(resume.gameObject);
         AudioListener.pause = true;
+        PlayerControl.canMove = false;
         Debug.Log("paused");
     }
 
@@ -55,6 +57,7 @@ public class PauseManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         AudioListener.pause = false;
+        PlayerControl.canMove = true;
         Debug.Log("unpaused");
     }
 
