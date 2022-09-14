@@ -41,6 +41,7 @@ public partial class PlayerControl : MonoBehaviour
     private SpriteRenderer spriteRenderer = null; 
     private bool isHitted = false;
     private bool isInvincible = false;
+    static public bool canMove = true;
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -48,6 +49,11 @@ public partial class PlayerControl : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        canMove = true;
     }
 
     private void Update()
@@ -59,7 +65,7 @@ public partial class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {
         CheckGround();
-        if (isDoAction == false && isInteract == false && isHitted == false)
+        if (isDoAction == false && isInteract == false && isHitted == false && canMove == true)
         {
             Movement();
             Jump();
