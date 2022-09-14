@@ -76,7 +76,7 @@ public partial class PlayerControl : MonoBehaviour
 
     void CheckGround()
     {
-         isTouchingGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + new Vector2(circleCollider.offset.x, circleCollider.offset.y - circleCollider.radius / 3), circleCollider.radius - circleCollider.radius / 10, groundLayer) && isCollidedAnything;
+         isTouchingGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + new Vector2(circleCollider.offset.x, circleCollider.offset.y - circleCollider.radius / 3), circleCollider.radius - circleCollider.radius / 10, groundLayer);
 
         //Physics2D.OverlapBox(transform.position - new Vector3(0, circleCollider.radius / 2 - circleCollider.offset.y), new Vector2(circleCollider.radius * 0.9f, circleCollider.radius * 0.2f),0, groundLayer) && isCollidedAnything;
     }
@@ -123,7 +123,7 @@ public partial class PlayerControl : MonoBehaviour
     }
     void Jump()
     {
-        if (isJumpKeyPressed == true && isTouchingGround == true && isJump == false)
+        if (isJumpKeyPressed == true && isTouchingGround == true && isCollidedAnything && isJump == false)
         {
             JumpParticle();
             SoundManager.instance.PlaySound("Jump");
