@@ -76,7 +76,7 @@ public partial class PlayerControl : MonoBehaviour
 
     void CheckGround()
     {
-        isTouchingGround = Physics2D.OverlapBox(transform.position - new Vector3(0,  boxCollider.size.y / 2 - boxCollider.offset.y), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f),0, groundLayer);
+        isTouchingGround = Physics2D.OverlapBox(transform.position - new Vector3(0,  boxCollider.size.y / 2 - boxCollider.offset.y), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f),0, groundLayer) && isCollidedAnything;
     }
     void Movement()
     {

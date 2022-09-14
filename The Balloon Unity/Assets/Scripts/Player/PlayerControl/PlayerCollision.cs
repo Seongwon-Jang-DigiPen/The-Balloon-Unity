@@ -8,8 +8,10 @@ public partial class PlayerControl
     bool isNearFurryBlock = false;
     bool isOnFurryBlock = false;
     bool isInsideWind = false;
+    bool isCollidedAnything = false;
     private void OnCollisionStay2D(Collision2D collision)
     {
+        isCollidedAnything = true;
         if (collision.collider.CompareTag("Monster"))
         {
             if (isDash == false)
@@ -30,6 +32,7 @@ public partial class PlayerControl
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        isCollidedAnything = false;
         if (collision.collider.CompareTag("FurryBlock"))
         {
             isNearFurryBlock = false;
