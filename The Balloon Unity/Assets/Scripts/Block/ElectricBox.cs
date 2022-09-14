@@ -36,10 +36,6 @@ public class ElectricBox : MonoBehaviour
             rigid.drag = activateDrag;
             rigid.mass = activateMass;
         }
-        if(ct != catched)
-        {
-            rigid.velocity = Vector2.zero;
-        }
 
         ct = catched;
     }
