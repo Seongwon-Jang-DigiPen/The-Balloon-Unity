@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class StartSound : MonoBehaviour
+public class StartToFlat : MonoBehaviour
 {
-    public string soundName = "Chapter1BGM";
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(Player.playerTag))
+        if(collision.CompareTag(Player.playerTag) == true)
         {
-            SoundManager.instance.PlayBGM("Chapter1BGM", true);
+            collision.GetComponent<Player>().ChangeState(BALLOONSTATE.Flat);
             Destroy(this.gameObject);
         }
     }

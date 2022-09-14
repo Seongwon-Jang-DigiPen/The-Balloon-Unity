@@ -64,12 +64,12 @@ public partial class PlayerControl
             }
             yield return null;
         }
-        if (isDoAction == true)
+        if (isHitted == false)
         {
             player.ChangeState(BALLOONSTATE.NORMAL);
             StartCoroutine(IInvincible());
-            isDoAction = false;
         }
+        isDoAction = false;
     }
 
     void Dash()
@@ -98,6 +98,7 @@ public partial class PlayerControl
             }
             if (isHitted == true)
             {
+ 
                 break;
             }
             yield return null;
@@ -141,7 +142,7 @@ public partial class PlayerControl
             }
             yield return null;
         }
-        if (isDoAction == true)
+        if (isHitted == false)
         {
             if (SprinkleNum == 0)
             {
