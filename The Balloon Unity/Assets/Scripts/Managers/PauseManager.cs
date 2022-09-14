@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class PauseManager : MonoBehaviour
 {
-    bool paused = false;
+    static public bool paused = false;
     public Button resume;
     public GameObject pauseCanvas;
     public AudioSource audiosource;
@@ -55,6 +55,7 @@ public class PauseManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         AudioListener.pause = false;
+        Debug.Log("unpaused");
     }
 
     public void Resume()
