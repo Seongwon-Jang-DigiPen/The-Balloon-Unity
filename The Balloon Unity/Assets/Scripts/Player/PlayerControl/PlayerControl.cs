@@ -37,7 +37,7 @@ public partial class PlayerControl : MonoBehaviour
     private Rigidbody2D playerRb = null;
     private Animator animator = null;
     private Player player = null;
-    private BoxCollider2D boxCollider = null;
+    private CircleCollider2D circleCollider = null;
     private SpriteRenderer spriteRenderer = null; 
     private bool isHitted = false;
     private bool isInvincible = false;
@@ -47,7 +47,7 @@ public partial class PlayerControl : MonoBehaviour
         player = GetComponent<Player>();
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -76,7 +76,9 @@ public partial class PlayerControl : MonoBehaviour
 
     void CheckGround()
     {
-        isTouchingGround = Physics2D.OverlapBox(transform.position - new Vector3(0,  boxCollider.size.y / 2 - boxCollider.offset.y), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f),0, groundLayer) && isCollidedAnything;
+         isTouchingGround = Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + new Vector2(circleCollider.offset.x, circleCollider.offset.y - circleCollider.radius / 3), circleCollider.radius - circleCollider.radius / 10, groundLayer) && isCollidedAnything;
+
+        //Physics2D.OverlapBox(transform.position - new Vector3(0, circleCollider.radius / 2 - circleCollider.offset.y), new Vector2(circleCollider.radius * 0.9f, circleCollider.radius * 0.2f),0, groundLayer) && isCollidedAnything;
     }
     void Movement()
     {
@@ -347,7 +349,8 @@ public partial class PlayerControl : MonoBehaviour
     private void OnDrawGizmos()
     {
         //Gizmos.color =new Vector4(1,1,1,0.5f);
-        //Gizmos.DrawSphere(transform.position - new Vector3(0, boxCollider.size.y/2), boxCollider.size.x * 4 / 10);
+       
+        //Gizmos.DrawSphere(new Vector2(transform.position.x, transform.position.y) + new Vector2(circleCollider.offset.x, circleCollider.offset.y - circleCollider.radius / 3), circleCollider.radius - circleCollider.radius / 10);
         //Gizmos.DrawCube(transform.position - new Vector3(0,boxCollider.size.y / 2 - boxCollider.offset.y), new Vector2(boxCollider.size.x * 0.9f, boxCollider.size.y * 0.2f));
         //Physics2D.OverlapBox(transform.position - new Vector3(0, boxCollider.size.y / 2), boxCollider.size, groundLayer);
     }
