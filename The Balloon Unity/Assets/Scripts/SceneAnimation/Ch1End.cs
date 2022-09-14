@@ -14,6 +14,7 @@ public class Ch1End : SceneAnimation
 
     private void Awake()
     {
+        SoundManager.instance.PlayBGM("Chapter1BGM", true);
     }
     protected override IEnumerator IAnimation()
     {
