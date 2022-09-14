@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -1002,7 +1002,6 @@ TextureImporter:
       Endingcut_18: 934303653
       Endingcut_30: 1502413646
       Endingcut_14: -211046589
-      Endingcut_35: 2087313229
       Endingcut_13: 1564648960
       Endingcut_39: 622966944
       Endingcut_31: 1598684366
@@ -1027,12 +1026,13 @@ TextureImporter:
       Endingcut_41: -1049389981
       Endingcut_36: 1577080778
       Endingcut_20: 1661550338
+      Endingcut_35: 2087313229
       Endingcut_4: 307775407
-      Endingcut_29: -949922985
       Endingcut_26: 304540622
       Endingcut_17: -252400613
       Endingcut_28: 930044144
       Endingcut_33: 1337931515
+      Endingcut_29: -949922985
       Endingcut_37: 1339720212
       Endingcut_0: -1874512059
       Endingcut_2: -1844787882
