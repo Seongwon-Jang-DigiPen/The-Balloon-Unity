@@ -5,9 +5,11 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
     bool canCheckPoint = true;
+    public Animator SaveAni;
+    public SpriteRenderer render;
     private void Start()
     {
-
+        render.sprite = null;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,8 +32,10 @@ public class CheckPoint : MonoBehaviour
     }
     IEnumerator Count()
     {
+        SaveAni.SetTrigger("Start");
         canCheckPoint = false;
         yield return YieldInstructionCache.WaitForSeconds(3f);
+        render.sprite = null;
         canCheckPoint = true;
     }
 }
