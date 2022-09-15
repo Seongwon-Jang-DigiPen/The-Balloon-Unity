@@ -7820,6 +7820,10 @@ PrefabInstance:
       propertyPath: startSound
       value: Chapter2BGM
       objectReference: {fileID: 0}
+    - target: {fileID: 8247326861548430825, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
+      propertyPath: NextSceneName
+      value: CloudMap2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
 --- !u!1001 &1229462379
@@ -47745,7 +47749,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1828191739, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08000071
+      value: -0.08000083
       objectReference: {fileID: 0}
     - target: {fileID: 1828191739, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -47893,7 +47897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.08000071
+      value: -0.08000083
       objectReference: {fileID: 0}
     - target: {fileID: 6509337011485073960, guid: 20e9899a17f632a418aad80f857653a9, type: 3}
       propertyPath: m_LocalPosition.y

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level/Sky/CloudMap.unity
     guid: 92caa1f8da450ea42a475c88a3129b1f
   - enabled: 1
+    path: Assets/Scenes/Level/Sky/CloudMap2.unity
+    guid: 456d0df4e124538478bdc44182472a02
+  - enabled: 1
     path: Assets/Scenes/CutScene/CutSceneStart.unity
     guid: c4dfb40a8bf7ac14580bbacc66ca7e1f
   - enabled: 1
