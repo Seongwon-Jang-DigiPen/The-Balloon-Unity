@@ -81,13 +81,17 @@ public class SoundManager : MonoBehaviour
         Debug.Log(name + "does not exist");
     }
 
+    public void StopBGM()
+    {
+        asBGM.Stop();
+    }
+
     public void StopAll()
     {
         for (int i = 0; i < asSFX.Length; ++i)
         {
             asSFX[i].Stop();
         }
-        asBGM.Stop();
     }
 
     public void StopSFX(string name)
