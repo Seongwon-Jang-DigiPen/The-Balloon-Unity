@@ -20,7 +20,7 @@ public class Pinny : MoveBlock
     }
     private void Start()
     {
-        player = GameObject.FindWithTag(Player.playerTag);
+        player = GameObject.FindObjectOfType<Player>().gameObject;
     }
     private void Update()
     {
@@ -53,7 +53,7 @@ public class Pinny : MoveBlock
     {
         if (findLimit.IsTouching(player.GetComponent<Collider2D>()) == true)
         {
-            if (traceLimit?.IsTouching(player.GetComponent<Collider2D>()) == true)
+            if (traceLimit.IsTouching(player.GetComponent<Collider2D>()) == true)
             {
                 if (isTrace == false)
                 {
