@@ -38,6 +38,7 @@ public class LoadingSceneController : MonoBehaviour
 
     IEnumerator LoadSceneProcess()
     {
+        RedBlueSwitch.WorldRedBlueState = REDBLUESTATE.RED;
         progressBar.fillAmount = 0;
         AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
