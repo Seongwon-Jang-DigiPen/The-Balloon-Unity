@@ -531,14 +531,6 @@ PrefabInstance:
       propertyPath: aniTime
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3983467295494078757, guid: cf05e4d3c3a9e464b9c4c1ed9b0c9e9e, type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3983467295494078757, guid: cf05e4d3c3a9e464b9c4c1ed9b0c9e9e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf05e4d3c3a9e464b9c4c1ed9b0c9e9e, type: 3}
 --- !u!114 &340177447 stripped

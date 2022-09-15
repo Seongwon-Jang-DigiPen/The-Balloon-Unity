@@ -1761,10 +1761,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneAnimationCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3983467295414755461, guid: 8373b858742376249ba4691afcd85224, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983467295414755461, guid: 8373b858742376249ba4691afcd85224, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 110ee5061570fb24cae569227e316a8d, type: 3}
     - target: {fileID: 3983467295494078755, guid: 8373b858742376249ba4691afcd85224, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.15002441
       objectReference: {fileID: 0}
+    - target: {fileID: 3983467295494078757, guid: 8373b858742376249ba4691afcd85224, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983467295494078757, guid: 8373b858742376249ba4691afcd85224, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 110ee5061570fb24cae569227e316a8d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8373b858742376249ba4691afcd85224, type: 3}
 --- !u!114 &340177446 stripped
