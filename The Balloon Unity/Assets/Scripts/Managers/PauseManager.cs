@@ -71,6 +71,7 @@ public class PauseManager : MonoBehaviour
     public void LastSave()
     {
         SoundManager.instance.PlaySound("Button");
+        UnpauseGame();
         SaveData data = SaveLoadManager.LoadData();
         if (data.isSave == true)
         {
@@ -82,6 +83,7 @@ public class PauseManager : MonoBehaviour
     public void Mainmenu()
     {
         SoundManager.instance.PlaySound("Button");
+        UnpauseGame();
         LoadingSceneController.LoadScene("TitleScreen");
         Debug.Log("mainmenu");
     }

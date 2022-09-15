@@ -26,6 +26,11 @@ public class SwitchBlock : MonoBehaviour
             spriteRenderer.sprite = activateSprite;
             col.enabled = !inverseCollision;
         }
+        if (switchObj?.turnSwitch == false && spriteRenderer.sprite == activateSprite)
+        {
+            spriteRenderer.sprite = deactivateSprite;
+            col.enabled = inverseCollision;
+        }
     }
 
     private void OnDrawGizmos()
