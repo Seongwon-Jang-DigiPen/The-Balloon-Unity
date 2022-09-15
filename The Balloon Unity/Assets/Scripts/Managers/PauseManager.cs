@@ -11,7 +11,7 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseCanvas;
     public AudioSource audiosource;
     public AudioSource audiosource2;
-    public GameObject player;
+    //public GameObject player;
 
     // Start is called before the first frame update
     void Start()

@@ -67,7 +67,7 @@ public class EventManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("In EventManager, listenList have null");
+                Debug.Log("In EventManager, listenList have null");
             }
         }
     }

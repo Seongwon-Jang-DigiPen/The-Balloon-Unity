@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Text credits;
     public GameObject[] BGMrect;
     public GameObject[] SFXrect;
+    public Sprite sprite;
 
     int BGMvol = 5;
     int SFXvol = 5;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
             GameObject bgm = new GameObject();
             bgm.transform.SetParent(settingPanel.transform);
             Image image = bgm.AddComponent<Image>();
-            image.color = new Color(1, 1, 1, 0);
+            image.sprite = sprite;
             bgm.AddComponent<Outline>();
             bgm.GetComponent<RectTransform>().anchoredPosition = BGMpos + new Vector3(50 * i, 0, 0);
             bgm.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
             GameObject sfx = new GameObject();
             sfx.transform.SetParent(settingPanel.transform);
             Image image = sfx.AddComponent<Image>();
-            image.color = new Color(1, 1, 1, 0);
+            image.sprite = sprite;
             sfx.AddComponent<Outline>();
             sfx.GetComponent<RectTransform>().anchoredPosition = SFXpos + new Vector3(50 * i, 0, 0);
             sfx.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
