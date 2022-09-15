@@ -15,17 +15,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Level/City/Tutorial.unity
     guid: 629270b05190b7746bc382d62599719c
   - enabled: 1
+    path: Assets/Scenes/Level/City/City_Level_1.unity
+    guid: d187fe88e4d7492489479f35aec50f04
+  - enabled: 1
     path: Assets/Scenes/Level/City/CityLv3.unity
     guid: e551da984996d6c43a400e9a978253df
-  - enabled: 1
-    path: Assets/Scenes/CutScene/CutSceneCh1.unity
-    guid: 46f294dfb52352147a95e4dc83f3fc04
   - enabled: 1
     path: Assets/Scenes/Level/Sky/CloudMap.unity
     guid: 92caa1f8da450ea42a475c88a3129b1f
   - enabled: 1
     path: Assets/Scenes/CutScene/CutSceneStart.unity
     guid: c4dfb40a8bf7ac14580bbacc66ca7e1f
+  - enabled: 1
+    path: Assets/Scenes/CutScene/CutSceneCh1.unity
+    guid: 46f294dfb52352147a95e4dc83f3fc04
   - enabled: 1
     path: Assets/Scenes/CutScene/CutSceneEnd.unity
     guid: e6a2713fd2199f54ea0b28fff03eff86

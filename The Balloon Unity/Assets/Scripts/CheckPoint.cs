@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    bool canCheckPoint = false;
+    bool canCheckPoint = true;
     private void Start()
     {
 
