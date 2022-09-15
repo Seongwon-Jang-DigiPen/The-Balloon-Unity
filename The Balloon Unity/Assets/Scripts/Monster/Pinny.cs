@@ -20,7 +20,7 @@ public class Pinny : MoveBlock
     }
     private void Start()
     {
-        player = GameObject.FindWithTag(Player.playerTag);
+        player = GameObject.FindObjectOfType<Player>().gameObject;
     }
     private void Update()
     {
