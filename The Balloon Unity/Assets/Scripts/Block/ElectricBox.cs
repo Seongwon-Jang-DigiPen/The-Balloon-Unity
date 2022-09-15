@@ -20,7 +20,13 @@ public class ElectricBox : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    
+
+    private void Start()
+    {
+        rigid.drag = deactivateDrag;
+        rigid.mass = deactivateMass;
+    }
+
     public void isCatched(bool catched)
     {
         electricActivate = catched;
