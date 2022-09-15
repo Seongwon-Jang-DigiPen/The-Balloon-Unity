@@ -7,7 +7,7 @@ public class CheckPoint : MonoBehaviour
     bool canCheckPoint = false;
     private void Start()
     {
-        StartCoroutine(Count());
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
