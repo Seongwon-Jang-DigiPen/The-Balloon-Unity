@@ -70,6 +70,10 @@ public class GameManager : MonoBehaviour
             }
             credits.transform.Translate(Vector3.up * 0.7f * Time.deltaTime);
         }
+        else
+        {
+            credits.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -1845, 0);
+        }
 
         if (settingPanel.activeSelf == true)
         {

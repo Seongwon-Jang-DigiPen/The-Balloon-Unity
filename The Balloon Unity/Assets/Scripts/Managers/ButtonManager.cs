@@ -22,7 +22,13 @@ public class ButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (creditPanel.activeSelf == true)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                CreditEnd();
+            }
+        }
     }
 
     public void Play()
@@ -90,7 +96,11 @@ public class ButtonManager : MonoBehaviour
 
     public void CreditBack()
     {
-        SoundManager.instance.PlaySound("Button");
+        CreditEnd();
+    }
+
+    public void CreditEnd()
+    {
         SoundManager.instance.PlayBGM("Mainmenu", true);
         creditPanel.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
