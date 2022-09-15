@@ -303,20 +303,9 @@ public partial class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            player.ChangeState(BALLOONSTATE.Flat);
+            isInvincible = !isInvincible;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            player.ChangeState(BALLOONSTATE.NORMAL);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            player.ChangeState(BALLOONSTATE.ELECTRIC);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            player.ChangeState(BALLOONSTATE.WATER);
-        }
+
     }
 
     private void AnimInfo()
