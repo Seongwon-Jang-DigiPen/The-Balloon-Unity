@@ -8,6 +8,7 @@ public partial class PlayerControl
     bool isNearFurryBlock = false;
     bool isOnFurryBlock = false;
     bool isInsideWind = false;
+    WindArea windArea = null;
     bool isCollidedAnything = false;
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -61,6 +62,7 @@ public partial class PlayerControl
         else if(collision.CompareTag("Wind"))
         {
             isInsideWind = true;
+            windArea = collision.GetComponent<WindArea>();
         }
     }
 

@@ -2011,7 +2011,7 @@ PrefabInstance:
       objectReference: {fileID: 952969981}
     - target: {fileID: 8247326861548430825, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
       propertyPath: NextSceneName
-      value: Tutorial
+      value: CutSceneStart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}

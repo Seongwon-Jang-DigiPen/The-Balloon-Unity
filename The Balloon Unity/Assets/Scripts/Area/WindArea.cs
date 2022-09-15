@@ -7,7 +7,7 @@ public class WindArea : MonoBehaviour
     public GameObject angleObj;
     public float windForce = 1.0f;
     Vector3 objLocalEulerAngle;
-    Vector2 angle;
+    public Vector2 angle;
 
     private void Start()
     {

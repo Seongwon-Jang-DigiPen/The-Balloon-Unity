@@ -179,7 +179,10 @@ public partial class PlayerControl : MonoBehaviour
     {
         if (playerRb.velocity.y > 0 && isJump == true && isJumpKeyPressed == false)
         {
-            playerRb.AddForce(Vector2.down * playerRb.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
+            if (isInsideWind == false || (windArea.angle.y <= 0))
+            {
+                playerRb.AddForce(Vector2.down * playerRb.velocity.y * (1 - jumpCutMultiplier), ForceMode2D.Impulse);
+            }
         }
     }
 
