@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1280, 720, true);
         SoundManager.instance.BGMvolume(BGMvol);
         SoundManager.instance.SFXvolume(SFXvol);
         SoundManager.instance.PlayBGM("Mainmenu", true);
@@ -63,9 +64,9 @@ public class GameManager : MonoBehaviour
     {
         if (creditPanel.activeSelf == true)
         {
-            if (credits.GetComponent<RectTransform>().anchoredPosition.y >= 1840)
+            if (credits.GetComponent<RectTransform>().anchoredPosition.y >= 1825)
             {
-                credits.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -1900, 0);
+                credits.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -1845, 0);
             }
             credits.transform.Translate(Vector3.up * 0.7f * Time.deltaTime);
         }
