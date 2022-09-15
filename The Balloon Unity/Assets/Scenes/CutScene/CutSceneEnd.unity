@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: endAni
       value: 
       objectReference: {fileID: 952310491}
+    - target: {fileID: 8247326861548430825, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
+      propertyPath: NextSceneName
+      value: TitleScreen
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
 --- !u!1001 &769655912
