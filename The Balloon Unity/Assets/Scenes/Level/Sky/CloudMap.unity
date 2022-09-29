@@ -7461,7 +7461,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483650
-  - first: {x: 19, y: 76, z: 0}
+  - first: {x: 19, y: 77, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 4

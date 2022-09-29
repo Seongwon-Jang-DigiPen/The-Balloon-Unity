@@ -288,6 +288,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691dd4e4a7e177c4d86020d2227e4192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &519238501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3983467295414755458, guid: cf05e4d3c3a9e464b9c4c1ed9b0c9e9e, type: 3}
+  m_PrefabInstance: {fileID: 519238499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a432b05c27702d14db04e93a1bed813f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &596504273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1053,6 +1064,10 @@ PrefabInstance:
       propertyPath: endAni
       value: 
       objectReference: {fileID: 519238500}
+    - target: {fileID: 8247326861548430825, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
+      propertyPath: startAni
+      value: 
+      objectReference: {fileID: 519238501}
     - target: {fileID: 8247326861548430825, guid: 9be78c3297a64d942a4e490f8ba4de06, type: 3}
       propertyPath: NextSceneName
       value: CloudMap
