@@ -35,17 +35,7 @@ public class CutScene02 : MonoBehaviour
                 Ch1endcutLoop.GetComponent<Animator>().Play("Ch1endcutLoop", -1, 0);
             }
         }
-        if (Ch1endcutLoop.GetComponent<SpriteRenderer>().isVisible)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                Ch1endcutLoop.GetComponent<SpriteRenderer>().enabled = false;
-                Ch1endcutLoop.GetComponent<Animator>().enabled = false;
-                Ch2startcut.GetComponent<SpriteRenderer>().enabled = true;
-                Ch2startcut.GetComponent<Animator>().enabled = true;
-                Ch2startcut.GetComponent<Animator>().Play("Ch2startcut", -1, 0);
-            }
-        }
+        
         if (Ch2startcut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Ch2startcut.GetComponent<SpriteRenderer>().isVisible)
         {
             if (!Ch2startcutLoop.GetComponent<SpriteRenderer>().isVisible)
@@ -57,11 +47,23 @@ public class CutScene02 : MonoBehaviour
                 Ch2startcutLoop.GetComponent<Animator>().Play("Ch2startcutLoop", -1, 0);
             }
         }
+    }
+
+    public void OnEnter(InputAction.CallbackContext context)
+    {
+        if (Ch1endcutLoop.GetComponent<SpriteRenderer>().isVisible)
+        {
+            Ch1endcutLoop.GetComponent<SpriteRenderer>().enabled = false;
+            Ch1endcutLoop.GetComponent<Animator>().enabled = false;
+            Ch2startcut.GetComponent<SpriteRenderer>().enabled = true;
+            Ch2startcut.GetComponent<Animator>().enabled = true;
+            Ch2startcut.GetComponent<Animator>().Play("Ch2startcut", -1, 0);
+        }
         if (Ch2startcutLoop.GetComponent<SpriteRenderer>().isVisible)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
+            if (context.started == true)
             {
-                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
                 Debug.Log("Cutscene end");
             }
         }

@@ -68,7 +68,12 @@ public class GameManager : MonoBehaviour
             {
                 credits.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -1845, 0);
             }
-            credits.transform.Translate(Vector3.up * 0.7f * Time.deltaTime);
+            float speed = 0.7f;
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                speed = 3.0f;
+            }
+            credits.transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
         else
         {

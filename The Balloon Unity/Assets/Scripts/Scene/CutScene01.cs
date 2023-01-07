@@ -42,17 +42,6 @@ public class CutScene01 : MonoBehaviour
                 CastlecutLoop.GetComponent<Animator>().Play("CastlecutLoop", -1, 0);
             }
         }
-        if (CastlecutLoop.GetComponent<SpriteRenderer>().isVisible)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-            { 
-                CastlecutLoop.GetComponent<SpriteRenderer>().enabled = false;
-                CastlecutLoop.GetComponent<Animator>().enabled = false;
-                Kingcut.GetComponent<SpriteRenderer>().enabled = true;
-                Kingcut.GetComponent<Animator>().enabled = true;
-                Kingcut.GetComponent<Animator>().Play("Kingcut", -1, 0);
-            }
-        }
         if (Kingcut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Kingcut.GetComponent<SpriteRenderer>().isVisible)
         {
             if (!KingcutLoop.GetComponent<SpriteRenderer>().isVisible)
@@ -62,17 +51,6 @@ public class CutScene01 : MonoBehaviour
                 KingcutLoop.GetComponent<SpriteRenderer>().enabled = true;
                 KingcutLoop.GetComponent<Animator>().enabled = true;
                 KingcutLoop.GetComponent<Animator>().Play("KingcutLoop", -1, 0);
-            }
-        }
-        if (KingcutLoop.GetComponent<SpriteRenderer>().isVisible)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                KingcutLoop.GetComponent<SpriteRenderer>().enabled = false;
-                KingcutLoop.GetComponent<Animator>().enabled = false;
-                Kingtalk1.GetComponent<SpriteRenderer>().enabled = true;
-                Kingtalk1.GetComponent<Animator>().enabled = true;
-                Kingtalk1.GetComponent<Animator>().Play("Kingtalk1", -1, 0);
             }
         }
         if (Kingtalk1.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Kingtalk1.GetComponent<SpriteRenderer>().isVisible)
@@ -108,17 +86,6 @@ public class CutScene01 : MonoBehaviour
                 KingtalkLoop.GetComponent<Animator>().Play("KingtalkLoop", -1, 0);
             }
         }
-        if (KingtalkLoop.GetComponent<SpriteRenderer>().isVisible)
-        {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                KingtalkLoop.GetComponent<SpriteRenderer>().enabled = false;
-                KingtalkLoop.GetComponent<Animator>().enabled = false;
-                Exilecut.GetComponent<SpriteRenderer>().enabled = true;
-                Exilecut.GetComponent<Animator>().enabled = true;
-                Exilecut.GetComponent<Animator>().Play("Exilecut", -1, 0);
-            }
-        }
         if (Exilecut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Exilecut.GetComponent<SpriteRenderer>().isVisible)
         {
             if (!ExilecutLoop.GetComponent<SpriteRenderer>().isVisible)
@@ -130,11 +97,39 @@ public class CutScene01 : MonoBehaviour
                 ExilecutLoop.GetComponent<Animator>().Play("ExilecutLoop", -1, 0);
             }
         }
+    }
+
+    public void OnEnter(InputAction.CallbackContext context)
+    {
+        if (CastlecutLoop.GetComponent<SpriteRenderer>().isVisible)
+        {
+            CastlecutLoop.GetComponent<SpriteRenderer>().enabled = false;
+            CastlecutLoop.GetComponent<Animator>().enabled = false;
+            Kingcut.GetComponent<SpriteRenderer>().enabled = true;
+            Kingcut.GetComponent<Animator>().enabled = true;
+            Kingcut.GetComponent<Animator>().Play("Kingcut", -1, 0);
+        }
+        if (KingcutLoop.GetComponent<SpriteRenderer>().isVisible)
+        {
+            KingcutLoop.GetComponent<SpriteRenderer>().enabled = false;
+            KingcutLoop.GetComponent<Animator>().enabled = false;
+            Kingtalk1.GetComponent<SpriteRenderer>().enabled = true;
+            Kingtalk1.GetComponent<Animator>().enabled = true;
+            Kingtalk1.GetComponent<Animator>().Play("Kingtalk1", -1, 0);
+        }
+        if (KingtalkLoop.GetComponent<SpriteRenderer>().isVisible)
+        {
+            KingtalkLoop.GetComponent<SpriteRenderer>().enabled = false;
+            KingtalkLoop.GetComponent<Animator>().enabled = false;
+            Exilecut.GetComponent<SpriteRenderer>().enabled = true;
+            Exilecut.GetComponent<Animator>().enabled = true;
+            Exilecut.GetComponent<Animator>().Play("Exilecut", -1, 0);
+        }
         if (ExilecutLoop.GetComponent<SpriteRenderer>().isVisible)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
+            if (context.started == true)
             {
-                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
                 Debug.Log("Cutscene end");
             }
         }

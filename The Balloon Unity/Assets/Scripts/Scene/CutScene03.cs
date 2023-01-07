@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CutScene03 : MonoBehaviour
 {
@@ -32,11 +33,15 @@ public class CutScene03 : MonoBehaviour
                 EndingcutLoop.GetComponent<Animator>().Play("EndingcutLoop", -1, 0);
             }
         }
+    }
+
+    public void OnEnter(InputAction.CallbackContext context)
+    {
         if (EndingcutLoop.GetComponent<SpriteRenderer>().isVisible)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
+            EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
+            if (context.started == true)
             {
-                EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
                 Debug.Log("Cutscene end");
             }
         }

@@ -576,6 +576,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883119995}
   - component: {fileID: 883119996}
+  - component: {fileID: 883119997}
   m_Layer: 0
   m_Name: CutScene02
   m_TagString: Untagged
@@ -614,6 +615,72 @@ MonoBehaviour:
   Ch1endcutLoop: {fileID: 703184145}
   Ch2startcut: {fileID: 835505132}
   Ch2startcutLoop: {fileID: 1352379961}
+--- !u!114 &883119997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883119994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: fad1d16112181e64a8e678cfaf9bbe2c, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a2d5e9bd-9b5e-4990-a9b4-9258e016050a
+    m_ActionName: PlayerActions/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/SwitchProControllerHID/dpad/up,/SwitchProControllerHID/dpad/down,/SwitchProControllerHID/dpad/left,/SwitchProControllerHID/dpad/right,/SwitchProControllerHID/leftStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 883119996}
+        m_TargetAssemblyTypeName: CutScene02, Assembly-CSharp
+        m_MethodName: OnEnter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cccf24d3-d082-4101-924d-38013d85d802
+    m_ActionName: PlayerActions/Enter[/Keyboard/z,/SwitchProControllerHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9e9e8bc9-931d-4276-b4aa-955be5e07a30
+    m_ActionName: PlayerActions/Back[/Keyboard/x,/SwitchProControllerHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1af490c4-caa5-4a81-bf3e-01d00e355e77
+    m_ActionName: PlayerActions/Jump[/Keyboard/c,/SwitchProControllerHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b08ad4f7-7fc7-40f6-96cb-4a39d53c9151
+    m_ActionName: PlayerActions/Action[/Keyboard/x,/SwitchProControllerHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 35b48854-cdef-4575-96c1-abf1f3843715
+    m_ActionName: PlayerActions/Interact[/Keyboard/z,/SwitchProControllerHID/buttonEast]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: UIActions
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1038347460
 GameObject:
   m_ObjectHideFlags: 0
