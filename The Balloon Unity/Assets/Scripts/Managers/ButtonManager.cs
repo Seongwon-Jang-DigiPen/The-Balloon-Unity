@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -16,19 +17,11 @@ public class ButtonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (creditPanel.activeSelf == true)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                CreditEnd();
-            }
-        }
     }
 
     public void Play()
@@ -110,5 +103,13 @@ public class ButtonManager : MonoBehaviour
             menuButtons[i].gameObject.SetActive(true);
         }
         Debug.Log("End Credit");
+    }
+
+    public void CreditFinish(InputAction.CallbackContext context)
+    {
+        if (creditPanel.activeSelf == true)
+        {
+            CreditEnd();
+        }
     }
 }

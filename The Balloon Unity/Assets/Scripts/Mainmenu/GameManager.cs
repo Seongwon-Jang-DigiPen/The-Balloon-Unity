@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     int BGMvol = 5;
     int SFXvol = 5;
+
+    float speed = 0.7f;
+    double time = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -68,11 +72,6 @@ public class GameManager : MonoBehaviour
             {
                 credits.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -1845, 0);
             }
-            float speed = 0.7f;
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                speed = 3.0f;
-            }
             credits.transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
         else
@@ -82,28 +81,6 @@ public class GameManager : MonoBehaviour
 
         if (settingPanel.activeSelf == true)
         {
-            if (EventSystem.current.currentSelectedGameObject == BGM.gameObject)
-            {
-                if (BGMvol < 10 && Input.GetKeyUp(KeyCode.RightArrow))
-                {
-                    BGMvol++;
-                }
-                if (BGMvol > 0 && Input.GetKeyUp(KeyCode.LeftArrow))
-                {
-                    BGMvol--;
-                }
-            }
-            else if (EventSystem.current.currentSelectedGameObject == SFX.gameObject)
-            {
-                if (SFXvol < 10 && Input.GetKeyUp(KeyCode.RightArrow))
-                {
-                    SFXvol++;
-                }
-                if (SFXvol > 0 && Input.GetKeyUp(KeyCode.LeftArrow))
-                {
-                    SFXvol--;
-                }
-            }
             for (int i = 0; i < 10; ++i)
             {
                 if (i < BGMvol)
@@ -133,5 +110,50 @@ public class GameManager : MonoBehaviour
             SoundManager.instance.BGMvolume(BGMvol);
             SoundManager.instance.SFXvolume(SFXvol);
         }
+    }
+
+    public void OnDown(InputAction.CallbackContext context)
+    {
+        Vector2 inputValue = context.ReadValue<Vector2>();
+        if (creditPanel.activeSelf == true)
+        {
+            if (inputValue.y < 0)
+            {
+                speed = 3.0f;
+            }
+            if (context.canceled == true)
+            {
+                speed = 0.7f;
+            }
+        }
+        if (settingPanel.activeSelf == true)
+        {
+            if (context.startTime - time >= 0.05)
+            {
+                if (EventSystem.current.currentSelectedGameObject == BGM.gameObject)
+                {
+                    if (BGMvol < 10 && inputValue.x > 0)
+                    {
+                        BGMvol++;
+                    }
+                    if (BGMvol > 0 && inputValue.x < 0)
+                    {
+                        BGMvol--;
+                    }
+                }
+                else if (EventSystem.current.currentSelectedGameObject == SFX.gameObject)
+                {
+                    if (SFXvol < 10 && inputValue.x > 0)
+                    {
+                        SFXvol++;
+                    }
+                    if (SFXvol > 0 && inputValue.x < 0)
+                    {
+                        SFXvol--;
+                    }
+                }
+            }
+        }
+        time = context.startTime;
     }
 }

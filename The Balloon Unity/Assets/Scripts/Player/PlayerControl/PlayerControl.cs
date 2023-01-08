@@ -42,7 +42,7 @@ public partial class PlayerControl : MonoBehaviour
     private bool isHitted = false;
     private bool isInvincible = false;
     static public bool canMove = true;
-    private bool isCheat = false;
+
     private void Awake()
     {
         player = GetComponent<Player>();
@@ -59,7 +59,6 @@ public partial class PlayerControl : MonoBehaviour
 
     private void Update()
     {
-        Cheat();
         Flip();
         AnimInfo();
     }
@@ -298,26 +297,6 @@ public partial class PlayerControl : MonoBehaviour
             StartCoroutine(IInvincible());
             isHitted = false;
         }
-    }
-
-    private void Cheat()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            if(isCheat == true)
-            {
-                isInvincible = false;
-                spriteRenderer.color = Color.white;
-                isCheat = false;
-            }
-            else
-            {
-                isInvincible = true;
-                spriteRenderer.color = Color.red;
-                isCheat = true;
-            }
-        }
-
     }
 
     private void AnimInfo()

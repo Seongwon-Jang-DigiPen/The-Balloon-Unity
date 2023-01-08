@@ -19,11 +19,6 @@ public class CutScene02 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
-            Debug.Log("Cutscene end");
-        }
         if (Ch1endcut.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && Ch1endcut.GetComponent<SpriteRenderer>().isVisible)
         {
             if (!Ch1endcutLoop.GetComponent<SpriteRenderer>().isVisible)
@@ -66,6 +61,15 @@ public class CutScene02 : MonoBehaviour
             {
                 Debug.Log("Cutscene end");
             }
+        }
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        EventManager.Instance.PostNotification(EVENT_TYPE.Player_Clear, this);
+        if (context.started == true)
+        {
+            Debug.Log("Cutscene end");
         }
     }
 }

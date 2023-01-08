@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
@@ -24,18 +25,6 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (paused == false)
-            {
-                PauseGame();
-            }
-            else
-            {
-                UnpauseGame();
-            }
-        }
-        
     }
 
     public void PauseGame()
@@ -86,5 +75,17 @@ public class PauseManager : MonoBehaviour
         UnpauseGame();
         LoadingSceneController.LoadScene("TitleScreen");
         Debug.Log("mainmenu");
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (paused == false)
+        {
+            PauseGame();
+        }
+        else
+        {
+            UnpauseGame();
+        }
     }
 }
