@@ -79,13 +79,16 @@ public class PauseManager : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext context)
     {
-        if (paused == false)
+        if (context.started == true)
         {
-            PauseGame();
-        }
-        else
-        {
-            UnpauseGame();
+            if (paused == false)
+            {
+                PauseGame();
+            }
+            else
+            {
+                UnpauseGame();
+            }
         }
     }
 }

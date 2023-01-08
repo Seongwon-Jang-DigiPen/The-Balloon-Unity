@@ -457,6 +457,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 35b48854-cdef-4575-96c1-abf1f3843715
     m_ActionName: PlayerActions/Interact[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc871895-7866-4272-9a73-570bdab4f24e
+    m_ActionName: PlayerActions/Pause[/Keyboard/escape,/SwitchProControllerHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerActions
